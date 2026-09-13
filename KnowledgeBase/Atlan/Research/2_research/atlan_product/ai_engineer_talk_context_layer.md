@@ -156,4 +156,42 @@ Uh in the middle is kind of this context layer that our team started building. S
 building their SEO skill. Uh our best competitive intel person was building the best competitive intel skill and that kind of became this common repo
 that we were building into and pulling out from. [snorts] This sort of became our living brain.
 
+Over time, we realized there were some things that we needed in this brain, right? Uh we realized we needed a data graph like if for example our autonomous
+ads agent, we realized it needs to do analysis on a daily basis. So like which table should I go pull from? Uh we needed a library of skills. We also
+needed some other things, semantics, metrics, what is ARR, how do you measure that? Uh what is a qualified lead in our
+company? uh and or structure entities things like that.
+Over the last 6 months, we ended up creating about 300 skills and 40 agents in this team. Uh which has been
+incredible. Uh but then with this approach too, we realized that there were some challenges. We realized that
+context kind of needs to be managed like code. Um so some challenges, let's pick
+Chapter 10: The Challenges of Context Engineering
+skills. uh dependency management became really complicated. So for example, we have this comparative intelligence skill
+and it learns from the market on what's changing in the market and it improves.
+Um it feeds our category positioning skill which then feeds our sales battle card
+skill. Uh now each of these skills is learning and evolving. Uh but every time they learn and evolve it breaks something downstream. uh and these
+skills very quickly start getting outdated and start drifting. Uh who owns skill quality became another thing like who eventually owns the quality of this security and governance was a nightmare.
+Uh we had secrets hardcoded in ENV files. Uh it was people were downloading these public skill repos. This the whole
+thing was like a nightmare. Um and then I talked about context portability across all these multi-agent systems.
+Chapter 11: Defining the Context Layer: The GitHub for Context
+I started this talk by saying WTF is a context layer. Uh these are the problems that a context layer is meant to solve.
+Um the question I like to ask is what does the GitHub for context look like?
+Um few thoughts. Uh company context needs life cycle management, collaboration and versioning. Uh just
+like code does. uh you know there's questions like what's local context what's global context how
+do I keep this updated so on uh some thoughts in this can skills have a profile just like code does uh can that
+have a self-learning learning loop that's baked into it uh what does quality management look like can you have security and postures posture
+management associated with that that's really like the first step uh I see this as like having something that has
+built-in versioning and quality and dependency management. So you should be able to say, "Hey, this thing impacts all these other things. This is the approver. This is the maintainer. These
+are the contributors. How do you build like kind of human plus AI workspaces that these that these skills uh are managed via? [snorts]
+Chapter 12: Compounding Learning Loops and Traces
+Second thing, every AI interaction creates more context and harnessing this uh is gold. uh uh there's been I know a
+lot of talks about self-improving loops uh we have found that with traces deploying a specific harness that
+actually is specialized in being able to go and reverse construct from that. So think of it as AI that's reading through all your traces and almost brings it
+back to your maintainer loop and says approve reject approve reject improve this over time. Uh that's the compounding learning loop.
+And the third often a lot of people ask me this question which is like how do I start because my business is like really disperate and I have all these like 60
+Chapter 13: How to Start Building Your Company Brain
+systems and how do I even start? One of the biggest learnings we've had is context is hidden in these in business systems. Uh and across this context
+quality can really compound. So for example, if you're able to connect your Salesforce and your HubSpot to your data warehouse to your application layer and
+then you're able to reverse construct how these things are actually connected one to another, context today gets lost in every one of those hops. But if you
+can reverse construct that and then deploy AI on top of it, we've seen incredible accuracy in being able to
+reverse construct the first version of your company brain. [snorts] So I'll end with this. Uh the way I
+
 [CONTENT_PLACEHOLDER]
