@@ -91,4 +91,66 @@ Total: 19 navigations, all against `linkedin.com/search/results/{content|people}
 
 ---
 
+## 2. Every post and profile read, in order, filed or not
+
+Format per line: **Name — title/company (query it appeared under) — one-line note — FILED (bucket) / NOT FILED (why)**
+
+1. **Keerthan Gowda S** — AI Consultant at MHP-India (`Claude Code skills team`) — CLAUDE.md grew past 400 lines, billing every turn, cites a 45-person team's token-audit (14% user prompts) — **FILED, B2 (#5)**
+2. **Rajat D.** — Strategic Hiring Partner for GCCs/Product Companies (`Claude Code skills team`) — recruiting ad for a "Claude Code User" $80-100/hr contract role — **NOT FILED** (recruiting noise, no governance content)
+3. **Archita Suneja** — Founder, Quanta Auto AI (`Claude Code skills team`) — Medium explainer on Claude Agent Skills feature (progressive disclosure, skills vs CLAUDE.md/MCP/sub-agents) — **NOT FILED** (generic feature explainer, no team/governance angle)
+4. **Ryan Moeller** (reposting) / **Mehmet Suat Bilgiç** — "AI Governance Architect," Balıkesir, Türkiye (`agent skills governance`, inside the "Anthropic Claude" LinkedIn group) — long philosophical post on governance as "executable system architecture," the "Verification Cost Paradox" — **NOT FILED** (too abstract/general, not skill-file specific; kept as background color only)
+5. **Osama Hussain** — Hiring Talent @ Infosys (`agent skills governance`) — Infosys Consulting hiring ad, "Principal Consultant – AI Consulting" — **NOT FILED** (recruiting noise)
+6. **Harendra Dogra** — AI Security Consultant, Secure Axis Labs (`agent skills governance`) — "10 Red Flags in AI Sec Operations (2026)" incl. 21%-visibility stat — **FILED, B3 (#12)**
+7. **Murali K. (Kallem)** — Data & AI Executive, CDO/CAIO Advisor (ex Salesforce/Box/Toyota/GE) (`SKILL.md`) — "SKILL.md Trap": natural language isn't a deterministic state machine, 98% success = failing grade — **FILED, B4 (#13)**
+8. **Hassan Bin Tila** — Autonomous & Open Cloud RAN Architect (`SKILL.md`) — SKILL.md as "operating manual" vs 500-word prompt templates, generic explainer — **NOT FILED** (no governance/team angle)
+9. **Rajiv Selvaraj** — B2B partner/service-connector (`SKILL.md`) — "Claude Code Skills, explained like a beginner course," 343 reactions/54 comments — **FILED, B1 (#4)**
+10. **Ashuta Kaul** — Talent Acquisition Specialist, EU hiring (`AI agent registry`) — GenAI/AI Engineer hiring ad, ThoughtLabs Belgium — **NOT FILED** (recruiting noise)
+11. **Sujit Dhanuka** — AI Scientist & Mentor (`AI agent registry`) — registry/gateway/code-scanner all miss unauthorized tool-permission expansion — **FILED, B3 (#10)**
+12. **Ranjita M** — Solution Architect, InfoVision Labs (`AI agent registry`) — "AI agents need containment by architecture," references a "2026 OpenAI containment incident" — **NOT FILED** (adjacent — containment/access-control architecture broadly, not skill-file specific; considered but left out)
+13. **Tod N.** — "Creative problem solver" (`context engineering skills`) — career-advice post recommending Missy Webb — **NOT FILED** (irrelevant)
+14. **Missy Webb** — Engineering Manager, Y-12 National Security Complex (`context engineering skills`) — campus-recruiting repost ("ONE" program via Handshake) — **NOT FILED** (irrelevant, campus recruiting)
+15. **Ravi Sanchala** — CEO @ KENKODE (`context engineering skills`) — "prompt engineering is becoming outdated" career-skill explainer — **NOT FILED** (generic, not governance)
+16. **Jayesh Vagh** — FEXP @ Handshake AI (`context engineering skills`) — "we are about to overcomplicate AI engineering" context-engineering explainer — **NOT FILED** (generic, not governance)
+17. **Marius Bene** — Executive Director, Future WorkForce Global (`skills sprawl AI agents`) — "Agent Sprawl" newsletter, cites Gartner 10:1 agents-to-people by 2028 — **FILED, B2 (#6)**
+18. **Bernard Ablola** — "creativity is a weapon" (`skills sprawl AI agents`) — repost recommending Dr. Wanda Walker — **NOT FILED** (irrelevant)
+19. **Dr. Wanda Walker** — Leadership Coach & Consultant (`skills sprawl AI agents`) — "Flourishing Leadership" newsletter on human skills vs automation, 365 reactions — **NOT FILED** (about human leadership skills, not AI agent skills — a keyword-collision result)
+20. **Maryam Ghodratabadi** — Product & Business Analysis, Fintech (`skills sprawl AI agents`) — comment on AI-infrastructure-race theme — **NOT FILED** (irrelevant)
+21. **Bernard Marr** — Author/Keynote Speaker/Futurist (`skills sprawl AI agents`) — sponsored AWS content, Thomson Reuters CTO interview on infra modernization — **NOT FILED** (sponsored, generic infra, not skills-specific)
+22. **Saniyamirza Shaik** — Student, Vaagdevi Engineering College (`internal AI skills library`) — personal IBM SkillsBuild AI Fundamentals credential post — **NOT FILED** (irrelevant)
+23. **Neil Grimes** — Education & Curriculum Materials Librarian, William Paterson University (`internal AI skills library`) — peer-reviewed research on STEM librarians' AI use — **NOT FILED** (irrelevant, library science)
+24. **Business Training Media, Inc.** (company) (`internal AI skills library`) — "Google AI Essentials" course ad — **NOT FILED** (course marketing)
+25. **Codelitics** (company page) (`Claude Code rollout engineering team`) — vendor pitch: 30-min fit call, one-repo pilot AI-coding measurement layer, mentions Claude Code/Cursor/Codex/Copilot — **NOT FILED as numbered finding** (kept as vendor/competitive-landscape color only)
+26. **Abhisheik Deo** — Hands-on Architect, 19+ yrs, runs Claude Code + Codex across 20-engineer team (`Claude Code rollout engineering team`) — seats-vs-artefacts, 1,400 weekly skill invocations / 8 skills = 78% load — **FILED, B1 (#2)** — best single find of the scan
+27. **Andrew Adams** — "Helping Creative Teams Ship Studio Quality Content... Wireflow AI" (`Claude Code rollout engineering team`) — video-generation workflow demo built "in Claude Code" — **NOT FILED** (creative/video-AI demo, not governance)
+28. **Srinivas Bommena** — Chief AI Officer @ TechvestGlobal (`agent governance versioning`) — "How to Build Agentic AI Governance Engine" newsletter teaser — **NOT FILED** (generic governance engine, not skill-file specific)
+29. **Koushik Lahiri** — Principal Pre-Sales & Client Engagement, Fernsquare (`agent governance versioning`) — "AI Governance Has a Blind Spot" — inter-agent decision ownership — **NOT FILED** (not skill-file versioning)
+30. **intelligentMDG** (company page) (`agent governance versioning`) — "What Happens When an AI Agent Creates Your Master Data Record?" SAP MDG governance — **NOT FILED** (master-data governance, not skills)
+31. **Ivee Bhuyan** — DotNet/AI/Azure/Product Management (`AI coding agent adoption metrics`) — personal reflection on ChatGPT/Copilot use, embeds a LinkedIn Learning course ad — **NOT FILED** (generic AI-agents-101 reflection)
+32. **Ben Blackmore** (profile handle: benripkens) — CTO @ Dash0 (`AI coding agent adoption metrics`) — "several thousand agents in production" = seat count; building "Darkplane" adoption metric — **FILED, B2 (#7)**
+33. **Mumshad Mannambeth** — Founder & CEO, KodeKloud (`AI coding agent adoption metrics`) — AI-code-quality stats (1.7x more issues, 91% longer review, 10x vulnerabilities at 4x speed), 456 reactions — **NOT FILED as numbered finding** (about AI code quality/DevOps broadly, not skills governance; used only for the B5 engagement-pattern observation)
+34. **Alok Singh Tomar** — IT student (`Codex skills team`) — hackathon project thanking a coding club named "Codex" — **NOT FILED** (name collision, irrelevant)
+35. **Elaine Colenbrander** — Creative Director/Writer (`Codex skills team`) — Asana Brand Designer job-ad repost — **NOT FILED** (irrelevant)
+36. **Prateek Midha** — Marketing/Branding (`Codex skills team`) — "Seeking a Technical Co-Founder/CTO," namedrops Codex/Claude Code/Cursor once — **NOT FILED** (co-founder-search ad, not governance)
+37. **Aditya Goenka** — Founder @ Be10x (`agent skills security`) — NVIDIA scanned 42,000+ skills, ~1-in-4 risky; built "SkillSpector" scanner — **FILED, B3 (#8)**
+38. **vamsi U** — Digital Marketing Intern, Visualpath (`agent skills security`) — "what skills to become an AI agent developer" training-course marketing — **NOT FILED** (lead-gen content)
+39. **Pethuraj M** — offensive-security practitioner, builder of "AgentSeal" (`agent skills security`) — security toolkit: red-team prompts, MCP-poisoning detection, skill-file scanning — **FILED, B3 (#9)**
+40-49. **People-search cards, query `AI enablement`** (10 cards, page 1 only): Cory Eno (Eightfold — Claude enablement, **FILED B5**), Aidan Millar (Mubadala — $100M transformation, **FILED B5**), Shane Kelly (World Wide Technology, **FILED B5**), Kashish Khemka (Wood, **FILED B5**), Ben Gold (Toyota North America, **FILED B5**), Sage Franch (Fluent Software / CLAIR AI Governance Association, **FILED B5**), Ben Ortega (Backbase, VP Strategic AI Enablement — conversational-AI sales focus — **seen, NOT individually named** in the findings file), Srinivas P (Deloitte, **FILED B5**), Karthikeyan Rajendran (Ford, **FILED B5**), Mauro Spigolon (Eva Miller — smaller company — **seen, NOT individually named**).
+50-59. **People-search cards, query `developer productivity AI`** (10 cards, page 1 only): Dhruv Gajaria (Microsoft), Sanyasirao Dharmuktula (ServiceNow), Vishnupriya kumaar (Prodapt), George Bocancios (Mojar AI, co-founder), Madeeswaran K. (JetBrains), Swagath Suvarna (Clarivate), Kshitij Agarwal (Bito — building an AI Architect/Code Review Agent, closest of the batch to "dev productivity tooling" but still an IC title), Aniruddha Bhanja Chowdhury (IBM), Ashutosh Vishnoi (Automation Anywhere), Michael Malak (Oracle) — **none individually filed**; used only in aggregate as negative evidence that "developer productivity" is not a distinctly-titled role the way "AI enablement" is.
+60. **John McCann** — Head of Product, ComplyFlow (`shared skills library Claude Code team`) — building shareskills.ai; "sharing a skill ≠ running a library" — **FILED, B1 (#1)** — the competitor find
+61. Abhisheik Deo — same post resurfacing under this query, already logged at #26 — **not re-filed, not double-counted**
+62. **Rizwan Saudagar** — Engineering Leader, Agentic AI, FDE (`shared skills library Claude Code team`) — team-size-based skill/tool complexity model from an "AI-Assisted Development" course review — **FILED, B1 (#3)**
+63. **Raj Bonigala** — Software Engineering Manager, AI & Cloud Automation (`skills registry overkill just use a repo`) — "Claude Code skill map," one tool per build stage, sourced from GitHub stars + skills.sh installs — **NOT FILED** (a directory/leaderboard curation piece, not a governance argument; profile and article link captured but left out of final findings)
+64. **John Kleist III** — Chief Growth Officer, SkillsTX, "Skills Forensics™" (`skills registry overkill just use a repo`) — "82% role match vs 27% validated evidence" workforce-credentialing content — **NOT FILED** (this is HR/human-workforce "skills" forensics — a different meaning of "skills" entirely, not AI agent skills; a pure keyword collision)
+65. **AI Alleyway** (company/publication page) (`skills registry overkill just use a repo`) — manual audit of Anthropic's official skills/plugin catalogue: 291 plugins, 238 external, attribution gaps, commit-SHA pinning — **FILED, B3 (#11)**
+66. **Dhanushree Mohan** — Senior Marketing Specialist (`agent skills are overengineered`) — Malay/English hiring ad for junior sales role — **NOT FILED** (irrelevant)
+67. **César Otero** — Fullstack Engineer (`agent skills are overengineered`) — anecdote: "100% skill match is silly," hired a data scientist as fullstack engineer — **NOT FILED** (about human hiring/skills-matching, not AI agents)
+68. **Pradip Shrivastava** — Marketing manager, textile design (`agent skills are overengineered`) — generic "companies want cheap average people" complaint — **NOT FILED** (irrelevant)
+69. **Muhammad Jameel** — Mechatronics Engineer (`don't need a skills registry`) — "you don't need thousands of certifications" career post — **NOT FILED** (human career skills, irrelevant)
+70. **Marcelo Calbucci** — Founder, Seattle Flow (`don't need a skills registry`) — "you don't need Linear, branches, PRs, CI/CD, or staging until your product has meaningful traction" — **PARTIALLY FILED** (quoted in the B4 section as the closest adjacent anti-process sentiment found, explicitly flagged as general startup-process skepticism, not skills-registry-specific)
+71. **Parth Terkar** — District Skill Development Assistant, Maharashtra State Skill Development Society (`don't need a skills registry`) — generic government skill-development messaging — **NOT FILED** (irrelevant)
+
+(Query #19 was a re-navigation of query #16's exact URL to extract hrefs via `read_page` instead of `get_page_text`; same 3 posts as #63-65 above reappeared, no new posts.)
+
+---
+
 [CONTENT_PLACEHOLDER]
