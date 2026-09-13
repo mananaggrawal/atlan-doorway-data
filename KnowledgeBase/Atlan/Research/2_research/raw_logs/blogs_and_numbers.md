@@ -113,4 +113,6 @@ Verdict: 0 useful hits. Author of the claudefa.st plugins-distribution post rema
 
 3. GET request to `https://api.npmjs.org/downloads/point/last-month/skills` → `{"downloads":38365913,"start":"2026-07-31","end":"2026-08-29","package":"skills"}`
 
+4. GET request to `https://api.npmjs.org/downloads/point/last-week/skills` → `{"downloads":9363514,"start":"2026-08-23","end":"2026-08-29","package":"skills"}`
+
 [CONTENT_PLACEHOLDER]
