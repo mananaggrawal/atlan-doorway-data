@@ -85,4 +85,51 @@ Combined verdict on AWS Agent Registry: across 5 separate query strategies (exac
 | 9 | 49529329 | AI Coding Agent Skills for Real Engineers (mattpocock/skills) | 43 | 14 | 2026-09-01 | Re-fetched to verify existing file's quotes (already extensively cited there) — **all four cited quotes (atxpace, fishfasell, hungryhobbit, clickety_clack, mock-possum) verified accurate against raw JSON.** Found one nuance: mock-possum's B3-filed quote is actually the second half of a longer comment whose first half ("just easier to build it as you go... every time the bot stumbles, teachable moment") is really a B4 "skip preset skill banks" argument — the existing file's B3 framing undersells that this is also counter-evidence. | **Re-verified, not re-filed; nuance flagged in Section 6** |
 
 Threads read via targeted comment-search hits (not full item fetch, single comment sufficed): 46900933 (Tessl/guypod), 49007271/49007958 (Ingot), 46692692 (Dockerhub for Skill.md), 46697908 (skills.sh launch), 45607117 (Claude Skills launch), 49394827 (OzBrain) — **all six were already fully quoted in the existing findings file; not re-fetched in full this session to avoid re-doing verified work**, per the task's instruction not to waste queries re-finding what's already found. Spot-checked one (49529329, row 9 above) as a verification sample and it checked out.
+## 3. FULL LIST — "PACKAGE MANAGER / REGISTRY / MARKETPLACE FOR AGENT SKILLS" SHOW HNs FOUND
+
+Every one found this session, whether or not already in the existing findings file. This supersedes
+the existing file's "at least 12 distinct" summary count with a fuller, named, sourced list.
+Sorted roughly by first-seen date.
+
+| Name | Item ID | Date | Points/Comments | Author | What it claims to do |
+|---|---|---|---|---|---|
+| OpenPackage | 46217088 | 2025-12-10 | 1 / 0 | hyericlee | "open source package manager for AI coding" — general, not skills-only |
+| Enact | 46435383 | 2025-12-30 | 6 / 2 | keithgroves | "A package manager for AI agent tools" |
+| Skills Manager (idoevergreen) | 47423910 | 2026-03-18 | 3 / 9 | evergreenxx | Cross-harness (Claude/Cursor/Copilot) skill file sync, Electron app; explicitly fields a "team-level sharing" feature request in comments |
+| Mother MCP | 46692102 | 2026-01-20 | 2 / 2 | DavidGraca | "Manage your Agent Skills like a boss — Auto provision skills" via an MCP server |
+| Sx | **48151058** | 2026-05-15 | **50 / 28** | detkin | "an open-source package manager for AI skills, MCPs, and commands" (sleuth-io/sx) — **highest-traction Show HN in this whole category found this session**; same author as AGENTS.lock below |
+| Dockerhub for Skill.md (skillregistry.io) | 46692692 | 2026-01-20 | 49 / 26 | tomaspiaggio12 | Registry/hub framed explicitly as "Dockerhub for Skill.md" |
+| AGENTS.lock | 46797831 | 2026-01-28 | 6 / 0 | iryna_kondr (product by detkin's org?) | "a package manager for Agents/Skills/MCPs" |
+| Paks (stakpak) | 46422264 | 2025-12-29 | 4 / 0 | kajogo | "Package Manager for Agent Skills: Publish, Discover, Install Everywhere" |
+| Reseed | 47489570 | 2026-03-23 | 3 / 1 | eterer | "I built a package manager for agent skills" |
+| Skills on Tessl | 46826730 | 2026-01-30 | 1 / 0 | popey | "the package manager for agent skills" — Tessl's own follow-up post |
+| Tessl (core Show HN) | 46900933 | 2026-02-05 | 7 / 2 | guypod | "A package manager for agent skills with built-in evals" — already in existing file |
+| Skill.Fish | 46843774 | 2026-02-01 | 2 / 0 | knoxgraeme | "NPM-style package manager for AI agent skills" |
+| Askill | 46970689 | 2026-02-11 | 1 / 1 | alex_metacraft | "A package manager for AI agent skills with AI safety scoring" |
+| ArteSync | 47167513 | 2026-02-26 | 1 / 0 | tsump | "A package manager for AI coding agent skills" |
+| Agent Package Manager (APM, Microsoft) | 47454448 (and re-posted as 47593879, "solve the Agent Supply Chain pandora box") | 2026-03-20 | 1 / 0 | danielmeppiel | "Agent Package Manager (APM) for Agent Configuration" — Microsoft's own entry; author dmppch also active debating skill-composition on thread #47475832 |
+| SkillCatalog | 47835430 | 2026-04-20 | 2 / 0 | sformisano | "a Git-native skill manager for AI coding tools" |
+| Ingot | 49007271 (existing file cites 49007958 — see uncertainty note) | 2026-07-22 | 7 / 2 | laul_pogan | "evidence-gated optimization and version control for agent skills" |
+| Clawx | 49166289 | 2026-08-04 | 2 / 0 | debarshri | "A package manager where packages are agent tasks" (broader than skills specifically) |
+| Skulto | comment only, no dedicated Show HN found (mentioned in 46940316) | 2026-02-09 | n/a | adamos486 | "offline-first package manager for Claude/Codex agent skills" |
+| Skillfile | 47335594 | 2026-03-11 | (points not captured; low) | _juli_ | "Declarative manager for AI skills and agents (like brewfile)" — GitHub/raw-URL/local sources |
+| drskill | 49350236 | 2026-08-18 (blog dated 07-24, HN post 08-18) | 1 / 1 | jesserobbins posting dbreunig's blog | "brew doctor for your agent's loadout" — audit/lint tool, not install/publish, but same "brew for skills" framing |
+| Skilldeck | 47719403 | 2026-04-10 | 1 / 0 | alierfan | "Desktop app to manage AI agent skill files across tools" |
+| skillrepo.dev (distribution-problem post) | 48652875 | 2026-06-23 | 6 / 0 | atxpace | "Skills don't have a quality problem. They have a distribution problem" — thesis post, not a tool launch per se, but from the same builder as the Skillsets governance post below |
+| SkillRepo Skillsets | 49495080 | 2026-08-30 | 2 / 0 | atxpace | **"Skill Governance for Teams"** — direct positioning overlap with Atlan's registry pitch; one day before AWS Agent Registry's stated GA |
+
+Registries/marketplaces found that are directories/hosting rather than CLI package managers (kept
+separate since they don't claim install/version/dependency semantics the way the above do):
+- skills.sh / Agent Skills Leaderboard (46697908) — already in existing file.
+- claudeskills.cc (45701622, 28pts/19c) — "Share, Discover, and Reuse Claude/OpenAI Agent Skills."
+- Claude Skills Marketplace / skillsmp.com (45836935, 47231764, 45848533 — three separate submissions of the same site).
+- AI Skills Marketplace / skly.ai (46923821).
+- ClawHQ (47024332) — "Fleet management dashboard and skill marketplace for AI agents."
+- Trail of Bits Skills Marketplace (47882044 and re-submitted as 49263123) — a security-firm-curated skill repo, notable because it's from a known security shop, not a random indie builder.
+- Skillhound / skillhound.ai (48376569, 48367686) — "Give your AI access to every public SKILL.md," framed as an index/search engine over public skills rather than an installer.
+- noriskillsets.dev — already in existing file (theahura's critique of skills.sh).
+- skillrepo.dev — see above, corrected from "no dedicated Show HN" to two dedicated posts.
+
+---
+
 [CONTENT_PLACEHOLDER]
