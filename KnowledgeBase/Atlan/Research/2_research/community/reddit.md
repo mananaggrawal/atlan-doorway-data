@@ -91,4 +91,59 @@ Why it matters: the "share it, but own the rollout / document what it can't catc
 Permalink: https://www.reddit.com/r/ChatGPTCoding/comments/1s6cjaq/how_do_you_know_your_ai_audit_tool_actually/ (~2026-04)
 Why it matters: adjacent trust angle — not "trusting someone else's skill" but "trusting your own skill's correctness" once it's silently doing review work for you. Relevant to any pitch that a registry's quality signal (evals, review) is what makes a skill safe to rely on, not just safe to install.
 
+---
+
+## B4 — COUNTER-EVIDENCE (hunted deliberately)
+
+**[verified]** Time-Dot-1808, r/ClaudeCode, "Am I using Claude Code wrong? My setup is dead simple while everyone else seems to have insane configs" (193 upvotes / 106 comments) — top comment, 117 upvotes:
+> "Most of the elaborate setups solve one of two things: reducing the cost of re-establishing context across sessions, or automating feedback loops. If you're not hitting friction on either, the elaborate setup just adds overhead without real benefit."
+Permalink: https://www.reddit.com/r/ClaudeCode/comments/1rovknm/comment/o9gm33l/ (2026-03-09)
+Why it matters: the strongest direct counter-argument found — the community's own top-voted answer to "is minimal enough?" is "yes, unless you're hitting two specific frictions," which cuts squarely against always needing more skill tooling. (Note: replies underneath, e.g. FWiTU's "Skills actually change this game a lot" at 17 upvotes, push back — this is a live disagreement, not a settled consensus.)
+
+**[verified]** Remarkable_Mud9885 (OP), r/claude, "Is there still any point in installing a bunch of skills?" (8 upvotes / 47 comments):
+> "I'm not a huge fan of just installing existing skills; I much prefer figuring things out and exploring on my own."
+Permalink: https://www.reddit.com/r/claude/comments/1vvfhw0/is_there_still_any_point_in_installing_a_bunch_of/ (2026-08-22)
+Why it matters: direct rejection of the premise that pre-made/shared skills are inherently desirable — some practitioners see personal skill-building as the point, not a chore to outsource to a registry.
+
+**[verified]** iamrolari's 99-upvote "never share" comment (see B3) doubles as B4: it is the top-voted answer in an 87-comment thread arguing the opposite of "share with your team" — per the thread's own auto-generated recap, "the overwhelming gut reaction is to gatekeep. Hard." (mod-bot TL;DR, not a user quote, so not counted as a verbatim finding, but useful framing).
+
+No one was found stating outright "a git repo is enough for this" or using the word "overkill" about skills/registries in any indexed result — see Null Results. The counter-evidence that did surface is more "minimalism is underrated" and "sharing carries career risk" than "registries are unnecessary infrastructure."
+
+---
+
+## B5 — SIGNAL SHAPE
+
+Subreddit activity (Reddit's own "weekly visitors" / "weekly contributions," read from each community's sidebar, 2026-09-05):
+
+| Subreddit | Weekly visitors | Weekly contributions | Created |
+|---|---|---|---|
+| r/ClaudeAI | 1.6M | 24K | 2023-01-23 |
+| r/ClaudeCode | 745K | 17K | 2025-02-24 |
+| r/claude | 377K | 4.9K | 2013-12-06 |
+| r/programming | 231K | 2.6K | -- |
+| r/ExperiencedDevs | 212K | 4.8K | -- |
+| r/devops | 124K | 2.2K | -- |
+| r/ChatGPTCoding | 105K | 1.0K | 2022-12-06 |
+| r/cursor | 105K | 2.7K | 2024-02-21 |
+| r/claudeskills | 66K | 872 | 2025-10-19 |
+
+Note: r/claudeskills is a dedicated subreddit for exactly this topic ("Skills are folders of instructions, scripts, and resources that Claude loads dynamically...") -- small in absolute terms next to r/ClaudeAI, but far denser in on-topic content per post than any general sub.
+
+Thread-level engagement, on-topic threads found (upvotes / comments):
+- "If you aren't creating skills for your own project, start now." -- 489 / 99 (r/ClaudeCode)
+- "Top Agent Skills Repositories" -- 752 / 33 (r/claudeskills)
+- "Which single skill has been the biggest game changer for you?" -- 360 / 92 (r/claudeskills, title only, not opened)
+- "my agent skills stack in 2026, actually copy-pasteable" -- 529 / 22 (r/claudeskills, title only)
+- "Do I gatekeep these skills or share with wider team?" -- 96 / 87 (r/ClaudeAI)
+- "I don't use any skills, what am I missing on?" -- 48 / 93 (r/ClaudeCode, title only)
+- "Recently was asked to become AI Lead for my team..." -- 75 / 40 (r/ExperiencedDevs)
+- "Am I using Claude Code wrong?..." -- 193 / 106 (r/ClaudeCode)
+- "How do you know your AI audit tool actually checked everything?..." -- 18 / 53 (r/ChatGPTCoding)
+- "Is there still any point in installing a bunch of skills?" -- 8 / 47 (r/claude)
+- "Best way to update and maintain organization skills in a team environment?" -- 6 / 11 (r/ClaudeCode) -- the single most precisely on-topic B1 thread found, and also the lowest-engagement
+- "Skill hell is real: 140+ installed skills..." -- 26 / 0 (r/claudeskills)
+- "Nobody reviews the skills their agent installs. I built a CI gate for it." -- 1 / 4 (r/ClaudeCode)
+
+Reading of the shape: general-purpose engagement (funny/venting/showcase posts) dwarfs anything team-governance-shaped by 10-50x in upvotes. The precise "how do we sync/govern skills across a team" question exists, is asked earnestly, and gets real practitioner answers with working config snippets -- but it's a minority thread type that tops out in the single-to-low-double-digit upvotes, not the hundreds. The team-sharing pain is real but niche relative to Reddit's overall skills conversation, which skews toward personal productivity and showcase content.
+
 [CONTENT_PLACEHOLDER]
