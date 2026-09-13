@@ -166,4 +166,75 @@ Full list of B3 story-level hits (malicious/security), for completeness, beyond 
 
 ---
 
+## 5. NEW EVIDENCE QUOTES EXTRACTED THIS SESSION (candidates to add to the findings file, organized by bucket)
+
+### B1 — Sharing
+- **Seattle3503**, on Anthropic's own "Skills for organizations" launch thread:
+  > "My company has a plugin marketplace in a git repo where we host our shared skills. It would be nice if we could plug that into the web interface."
+  https://news.ycombinator.com/item?id=46315414, comment id 46315929 (2025-12-18)
+  Why it matters: on Anthropic's *own* announcement of org-level skill sharing, a real practitioner's first reaction is "we already built this ourselves in git, please integrate with it" — simultaneously B1 (the sharing need is real and already being solved ad hoc) and B4 (git is the actual mechanism in production, a hosted product is asked to plug into it, not replace it).
+
+- **prateeksi**, on "Skills Manager – manage AI agent skills across Claude, Cursor, Copilot":
+  > "The fragmentation problem across agents is real, we ran into the exact same issue managing rules across different dev environments... Also wondering if you plan to support team-level skill sharing, not just individual installs from GitHub repos."
+  https://news.ycombinator.com/item?id=47423910, comment id 47424726 (2026-03-18)
+  Why it matters: an unprompted request for exactly "team-level sharing" as distinct from "individual installs from GitHub" — nearly a plain-English restatement of Atlan's ownership/access pillar, on a thread with under 10 comments (i.e., a small enough thread that this is a considered response, not noise).
+
+- **dmppch / latand6 exchange**, on "Skills are quietly becoming the unit of agent knowledge":
+  > dmppch: "The distribution problem is harder than it looks because it's actually a composition problem in disguise. A single skill is trivially shareable — zip it, gist it, whatever. But in practice you end up with skills that depend on other skills, or a skill that assumes specific instructions are already loaded, conflicting skills, versioning and supply chain issues - and suddenly you need dependency resolution. I've built a package-manager approach for this (APM)..."
+  > latand6 (reply): "Yeah, I've built my own skill-package manager as well btw! Then it clicked and I hyperfocused for a whole week and vibecoded a skill marketplace haha."
+  https://news.ycombinator.com/item?id=47475832, comment ids 47494948 / 47495718 (2026-03-23)
+  Why it matters: dmppch's comment is the clearest unprompted articulation found anywhere in this research of *why sharing a single skill file is not the hard part* — dependencies between skills, conflicting skills, and versioning are — i.e., independently arriving at Atlan's "dependencies" and "versions" pillars, not just "identity/ownership."
+
+### B2 — Sprawl & cross-harness drift
+- **kristo**, on the Anthropic org-skills thread:
+  > "Still can't symlink skills from Claude code to codex tho :/"
+  https://news.ycombinator.com/item?id=46315414, comment id 46319069 (2025-12-18)
+  Why it matters: terse, upvote-friendly restatement of the exact cross-harness path-fragmentation problem (dave1010uk's longer comment on this already exists in the file) — corroborating evidence that this specific pain point recurs across multiple independent threads over many months (Dec 2025 → Jan 2026 → Sept 2026, i.e. still unresolved 9 months later).
+
+- **druide67**, on "Skills Manager" thread:
+  > "One thing I've noticed managing rules across Claude Code and Copilot: the same instruction produces very different results depending on the agent. Claude follows multi-step rules well, Copilot tends to ignore anything beyond the first line... Seems like the hard problem isn't syncing files — it's that the same 'skill' needs different phrasing per agent to actually work."
+  https://news.ycombinator.com/item?id=47423910, comment id 47425295 (2026-03-18)
+  Why it matters: a *harder* version of the cross-harness problem than simple file-sync — content itself needs to be forked per-harness, which complicates any registry's "one skill, many consumers" assumption. Worth flagging as a nuance/objection for the pitch to pre-empt.
+
+- **QubridAI**, same thread:
+  > "It seems like we're already running into 'tooling sprawl' with AI agents, and this is a good move to help manage it."
+  https://news.ycombinator.com/item?id=47423910, comment id 47456174 (2026-03-20)
+
+### B3 — Trust & safety
+- **rideontime**, on "Malicious skills targeting Claude Code and Moltbot users":
+  > "I don't know how many people are involved in managing the ClawHub registry, but there is no evidence that the skills listed there are scanned by any security tooling. Many of the payloads we found were visible in plain text in the first paragraph of the SKILL.md file."
+  https://news.ycombinator.com/item?id=46827731, comment id 46828390 (2026-01-30)
+  Why it matters: concrete, specific "no scanning happened, and it wouldn't even have been hard to catch" — a direct case for the review/scanning layer a governed registry provides. (Caveat: this comment is itself citing a third-party blog post whose headline dang called linkbait — the underlying claim about ClawHub's lack of scanning is plausible and corroborated by the seven other independent incident reports in Section 4, but treat with the same care as the rest of that cluster.)
+
+- **arabking**, SkillGuard Show HN:
+  > "I built this after the ClawHavoc campaign (341 malicious skills in 3 days, Jan 2026) and after Snyk's ToxicSkills audit, which showed that 13.4% of skills contain critical security issues. There was no OSS scanner..."
+  https://news.ycombinator.com/item?id=47868237, comment id 47868265 (2026-04-22)
+  Why it matters: names a **Snyk-branded security audit ("ToxicSkills") with a specific 13.4% critical-issue rate** — notably, Snyk's founder (Guy Podjarny) is also the person behind Tessl, already the strongest B1 validation in the existing file. Two separate Snyk-lineage data points (Tessl's product thesis + a "ToxicSkills" audit) both independently converge on the skills-governance problem — worth naming Snyk/Podjarny explicitly as a through-line in the deck.
+
+- **jesserobbins** describing **drskill**:
+  > "drskill is 'brew doctor for your agent's loadout', a CLI that audits the Skills and MCP servers your agents are loading. It can scan up to 34 issue categories like missing/duplicate descriptions, SKILL.md spec violations, secrets. It will also audit reads session traces to show which tools actually got called."
+  https://news.ycombinator.com/item?id=49350236, comment id 49350237 (2026-08-18)
+  Why it matters: this is the single closest point-solution found to Atlan's "usage and traces" pillar specifically (not just versioning/ownership) — a tool whose entire premise is auditing which skills/tools actually got invoked, as of Aug 2026, i.e. very recent and squarely adjacent to what a registry's usage-tracking feature would subsume.
+
+### B4 — Counter-evidence
+- **Seattle3503** (see B1 above) doubles as B4: the "please integrate with our existing git repo" framing implies git + a homegrown marketplace is already working for them; a hosted product is welcome only as a plug-in to that, not a replacement.
+
+- **mock-possum**, full comment (existing file only quotes the second half):
+  > "In my experience, it's just easier to build it as you go. Every time the bot stumbles, make sure it's a teachable moment and the lesson is learned. Every once in a while, do some house cleaning. Trying to start with these preset banks of instructions just never seems like it works out in the long run. It's also unsettling catching it behaving in an odd way, and realizing that it was taking a cue from instructions you never wrote, but imported from elsewhere."
+  https://news.ycombinator.com/item?id=49529329, comment id 49531012 (2026-09-01)
+  Why it matters (reclassification note): the existing file files only the back half of this comment under B3 (trust discomfort with imported instructions). Read whole, the comment's primary claim is B4 — "don't start from preset skill banks at all, build organically as the agent stumbles" — with the B3 discomfort offered as a secondary reason. Recommend either re-filing under B4 or cross-listing in both buckets with the fuller quote.
+
+- **kian / getstowly exchange**, "Ask HN: I still don't understand why AI agents need 'skills'":
+  > kian: "how much do you make selling skills on marketplace, just curious? It seems like it'd be impossible to vet a skill without reading it, so the entire concept mystifies me just a little bit."
+  https://news.ycombinator.com/item?id=49139845, comment id 49140987 (2026-08-02)
+  Why it matters: skepticism specifically about *commercial* skill marketplaces (as opposed to free sharing) — relevant if Atlan's registry pitch ever touches monetization/paid skills, a dimension the existing file doesn't cover at all.
+
+- **infotainment / bad_username consensus**, same thread:
+  > infotainment: "'Well-organized markdown docs' are exactly what skills are."
+  > bad_username: "Skills is just lazy loading of well-organized Markdown docs. The 'lazy' part is the core part."
+  https://news.ycombinator.com/item?id=49139845, comment ids 49139888 / 49141677 (2026-08-02)
+  Why it matters: a calm, non-cynical version of the "skills aren't magic" reduction — useful as a level-setting counter-frame distinct from the more emotionally loaded B4 quotes already in the file (Sammi, parasxos, etc.).
+
+---
+
 [CONTENT_PLACEHOLDER]
