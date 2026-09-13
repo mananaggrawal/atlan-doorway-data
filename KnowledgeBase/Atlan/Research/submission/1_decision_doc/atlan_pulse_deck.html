@@ -1,0 +1,324 @@
+<title>Which Skills Actually Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --page:#F9F9FC; --surface:#FFFFFF; --surface-2:#F2F2F7;
+  --ink:#3E4C59; --ink-strong:#1B1C24; --muted:#77778E; --faint:#A3A3B8;
+  --blue:#2026D2; --blue-soft:#EDEEFD; --cyan:#62E1FC; --pink:#F34D77; --pink-soft:#FDEDF1;
+  --line:#DDDDE3; --line-soft:#E9E9F0;
+  --display:"Funnel Display",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --body:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--page);color:var(--ink);font-family:var(--body);
+  -webkit-font-smoothing:antialiased;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px 0 12px;
+}
+.stage{
+  position:relative;
+  width:min(calc(100vw - 36px), calc((100vh - 100px) * 16 / 9));
+  aspect-ratio:16/9;container-type:size;
+  background:var(--page);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(30,30,60,.10);
+  background-image:linear-gradient(rgba(0,0,0,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+.slide{position:absolute;inset:0;padding:5.6cqw 6.2cqw 4.4cqw;display:none;flex-direction:column;font-size:1.9cqw;line-height:1.5}
+.slide.on{display:flex}
+.progress{position:absolute;top:0;left:0;height:3px;background:var(--blue);z-index:9;transition:width .3s ease}
+
+.eyebrow{font-family:var(--mono);font-size:1.1cqw;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:2.6cqw}
+h1{font-family:var(--display);font-weight:600;font-size:6.4cqw;line-height:1.03;letter-spacing:-.035em;color:var(--ink-strong);margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:600;font-size:4.5cqw;line-height:1.06;letter-spacing:-.032em;color:var(--ink-strong);margin:0;text-wrap:balance}
+h3{font-family:var(--display);font-weight:600;font-size:2.3cqw;line-height:1.2;letter-spacing:-.018em;color:var(--ink-strong);margin:0}
+.turn{color:var(--blue);display:block}
+.turn-pink{color:var(--pink);display:block}
+p{margin:0}
+.lede{font-size:2.05cqw;line-height:1.5;color:var(--ink);max-width:48ch}
+strong{color:var(--ink-strong);font-weight:600}
+.mono{font-family:var(--mono)}
+.num{font-variant-numeric:tabular-nums}
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:2.6cqw;min-height:0;padding-top:2.6cqw}
+.foot{margin-top:auto;padding-top:1.9cqw;border-top:1px solid var(--line);font-size:1.16cqw;color:var(--faint);line-height:1.5}
+.foot a{color:var(--blue);font-weight:600;text-decoration:none;border-bottom:1px solid #B9BBEC}
+.foot a:hover{border-bottom-color:var(--blue)}
+mark{background:linear-gradient(transparent 62%, var(--cyan) 62%);color:inherit;padding:0 .1em}
+
+/* chrome */
+.chrome{display:flex;align-items:center;gap:14px;width:min(calc(100vw - 36px), calc((100vh - 100px) * 16 / 9))}
+.dots{display:flex;gap:5px;flex:1;flex-wrap:wrap}
+.dot{width:15px;height:4px;border-radius:2px;background:#D7D7E2;border:0;padding:0;cursor:pointer;transition:.18s}
+.dot:hover{background:#B4B4C6}
+.dot.on{background:var(--blue)}
+.dot:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.navbtn{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:6px 11px;cursor:pointer;transition:.15s}
+.navbtn:hover{color:var(--ink-strong);border-color:#C2C2D0}
+.navbtn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.counter{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.06em;font-variant-numeric:tabular-nums;min-width:54px;text-align:right}
+
+/* pieces */
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4cqw}
+.four .n{font-family:var(--mono);font-size:1.15cqw;color:var(--blue);letter-spacing:.12em;margin-bottom:1cqw;display:block}
+.four p{font-size:1.78cqw;line-height:1.4;color:var(--muted);margin-top:.9cqw}
+.four .it{border-top:2px solid var(--line);padding-top:1.2cqw}
+.four .it.hot{border-top-color:var(--pink)}
+
+.bignums{display:grid;grid-template-columns:repeat(3,1fr);gap:3.4cqw}
+.bignum .v{font-family:var(--display);font-weight:600;font-size:5.6cqw;line-height:1;letter-spacing:-.04em;color:var(--ink-strong);font-variant-numeric:tabular-nums;display:block}
+.bignum .v.pk{color:var(--pink)}
+.bignum .k{font-size:1.5cqw;line-height:1.4;color:var(--muted);display:block;margin-top:.8cqw;max-width:22ch}
+
+.names{display:flex;flex-wrap:wrap;gap:.9cqw}
+.chip{font-family:var(--mono);font-size:1.5cqw;color:var(--ink-strong);background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:.7cqw 1.15cqw}
+.chip.dim{color:var(--muted)}
+
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:4cqw}
+.ch{font-family:var(--mono);font-size:1.15cqw;letter-spacing:.18em;text-transform:uppercase;padding-bottom:1cqw;border-bottom:2px solid var(--line);margin-bottom:1.6cqw}
+.ch.pk{color:var(--pink);border-bottom-color:var(--pink)}
+.ch.bl{color:var(--blue);border-bottom-color:var(--blue)}
+.twocol ul{margin:0;padding:0;display:flex;flex-direction:column;gap:1.15cqw}
+.twocol li{list-style:none;font-size:1.95cqw;line-height:1.35;color:var(--ink-strong);font-weight:500}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5cqw}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.9cqw 1.7cqw;position:relative}
+.step .n{font-family:var(--mono);font-size:1.1cqw;color:var(--blue);letter-spacing:.12em}
+.step .t{font-family:var(--display);font-weight:600;font-size:2.4cqw;color:var(--ink-strong);letter-spacing:-.02em;margin-top:.5cqw;display:block}
+.step .d{font-size:1.35cqw;line-height:1.4;color:var(--muted);margin-top:.6cqw;display:block}
+.step::after{content:"→";position:absolute;right:-1.15cqw;top:50%;transform:translateY(-50%);font-size:1.4cqw;color:var(--faint);line-height:1}
+.step:last-child::after{content:none}
+.loopline{display:flex;align-items:center;gap:1.3cqw;border:1px dashed #B9BBEC;background:var(--blue-soft);border-radius:8px;padding:1.35cqw 1.8cqw;font-size:1.62cqw;color:var(--blue);line-height:1.4}
+.loopline span{font-size:2.2cqw;line-height:1}
+
+.rail{display:flex;flex-direction:column;gap:1.5cqw}
+.ri{display:grid;grid-template-columns:2.9cqw 1fr;gap:1.3cqw;align-items:start}
+.ri .rn{font-family:var(--mono);font-size:1.25cqw;color:var(--blue);letter-spacing:.06em;padding-top:.35cqw}
+.ri .rb{font-size:1.78cqw;line-height:1.38;color:var(--ink-strong)}
+.ri .rb i{font-style:normal;color:var(--muted)}
+
+.norow{display:grid;grid-template-columns:1fr 1.3fr;gap:2.4cqw;padding:1.15cqw 0;border-top:1px solid var(--line-soft);align-items:baseline}
+.norow:first-child{border-top:0}
+.norow .a{font-size:1.9cqw;color:var(--ink-strong);font-weight:600;line-height:1.3}
+.norow .b{font-size:1.62cqw;line-height:1.4;color:var(--muted)}
+.norow .b b{color:var(--pink);font-weight:600}
+
+.funnel{display:flex;flex-direction:column;gap:.65cqw}
+.fr{display:grid;grid-template-columns:1fr auto;gap:2cqw;align-items:baseline;padding:.85cqw 1.5cqw;border-radius:6px;background:var(--surface);border:1px solid var(--line-soft)}
+.fr .l{font-size:1.62cqw;color:var(--ink)}
+.fr .v{font-family:var(--mono);font-size:1.85cqw;color:var(--ink-strong);font-variant-numeric:tabular-nums}
+.fr.op{background:transparent;border:0;padding:.15cqw 1.5cqw}
+.fr.op .l,.fr.op .v{font-size:1.35cqw;color:var(--faint);font-family:var(--mono)}
+.fr.out{border-color:var(--blue);background:var(--blue-soft)}
+.fr.out .v,.fr.out .l{color:var(--blue)}
+
+.verd{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6cqw}
+.vc .vh{font-family:var(--mono);font-size:1.15cqw;letter-spacing:.18em;text-transform:uppercase;display:block;padding-bottom:1cqw;border-bottom:2px solid;margin-bottom:1.3cqw}
+.vc.go .vh{color:#2E8B57;border-color:#2E8B57}
+.vc.ch2 .vh{color:#C0891F;border-color:#C0891F}
+.vc.st .vh{color:var(--pink);border-color:var(--pink)}
+.vc p{font-size:1.75cqw;line-height:1.38;color:var(--ink-strong)}
+
+.cmd{display:inline-flex;align-items:center;font-family:var(--mono);font-size:2.6cqw;color:var(--blue);background:var(--surface);border:1.5px solid var(--line);border-radius:7px;padding:.85cqw 1.6cqw;letter-spacing:-.01em}
+.checks{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1cqw}
+.ck{border:1px solid var(--line);border-radius:7px;padding:1.25cqw 1.3cqw;background:var(--surface);font-size:1.5cqw;color:var(--muted);line-height:1.3}
+.ck b{display:block;color:var(--ink-strong);font-weight:600;font-size:1.62cqw;margin-bottom:.35cqw}
+.ck.hi{background:var(--blue-soft);border-color:#C4C6F5}
+.ck.hi b{color:var(--blue)}
+
+/* share card */
+.mock{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.5cqw;box-shadow:0 8px 26px rgba(30,30,60,.08)}
+.mhd{display:flex;align-items:center;gap:.85cqw;margin-bottom:1cqw}
+.mav{width:2.5cqw;height:2.5cqw;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan))}
+.mn{display:block;font-size:1.3cqw;color:var(--ink-strong);font-weight:600;line-height:1.25}
+.mh{display:block;font-size:1.15cqw;color:var(--faint);line-height:1.25}
+.mt{font-size:1.42cqw;color:var(--ink);line-height:1.4;margin-bottom:1.1cqw}
+.mcard{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#141517}
+.mcb{display:flex;align-items:center;justify-content:space-between;padding:.95cqw 1.2cqw;border-bottom:1px solid rgba(255,255,255,.1)}
+.mbrand{font-family:var(--display);font-weight:700;font-size:1.25cqw;color:#fff;letter-spacing:-.02em;display:flex;align-items:center;gap:.55cqw}
+.mbrand i{width:.6cqw;height:.6cqw;border-radius:50%;background:var(--cyan);display:block}
+.minv{font-family:var(--mono);font-size:1cqw;color:#8A8DA0}
+.mgrid{padding:1.3cqw 1.2cqw;display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw}
+.ms .v{font-family:var(--display);font-weight:600;font-size:2.5cqw;line-height:1;color:#fff;font-variant-numeric:tabular-nums;display:block}
+.ms .v.cy{color:var(--cyan)}
+.ms .v.pk{color:var(--pink)}
+.ms .k{font-family:var(--mono);font-size:.95cqw;letter-spacing:.1em;text-transform:uppercase;color:#8A8DA0;display:block;margin-top:.35cqw}
+
+.shot{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface);box-shadow:0 14px 40px rgba(30,30,60,.12)}
+.shot-bar{display:flex;align-items:center;gap:.55cqw;padding:.8cqw 1.1cqw;background:var(--surface-2);border-bottom:1px solid var(--line-soft)}
+.shot-bar i{width:.62cqw;height:.62cqw;border-radius:50%;background:#CFCFDC;display:block}
+.shot-url{margin-left:1cqw;font-family:var(--mono);font-size:1cqw;color:var(--faint)}
+.shot img{display:block;width:100%}
+
+.pillrow{display:flex;gap:1.5cqw;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:1.16cqw;color:var(--faint);letter-spacing:.03em}
+.pill{display:inline-flex;align-items:center;gap:.6cqw;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:.55cqw 1.2cqw;color:var(--ink-strong)}
+.pill i{width:.6cqw;height:.6cqw;border-radius:50%;background:var(--blue);display:block}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+.cohorts{display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw}
+.co .lbl{font-family:var(--mono);font-size:1.15cqw;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);padding-bottom:.9cqw;border-bottom:2px solid var(--blue);display:block;margin-bottom:1.5cqw}
+.co .q{font-family:var(--display);font-weight:500;font-size:1.95cqw;line-height:1.26;letter-spacing:-.018em;color:var(--ink-strong);margin-bottom:1cqw}
+.co .src{font-family:var(--mono);font-size:1.05cqw;color:var(--faint);display:block;margin-bottom:1.2cqw}
+.co .so{font-size:1.78cqw;line-height:1.38;color:var(--ink)}
+.co .so b{color:var(--pink);font-weight:600}
+.srcs{display:flex;flex-direction:column;gap:.5cqw}
+.sr{display:grid;grid-template-columns:1fr auto;gap:1.6cqw;align-items:baseline;padding:.6cqw 0;border-bottom:1px solid var(--line-soft)}
+.sr .l{font-size:1.55cqw;color:var(--ink)}
+.sr .v{font-family:var(--mono);font-size:1.62cqw;color:var(--ink-strong);font-variant-numeric:tabular-nums}
+.sr.tot{border-bottom:0;border-top:2px solid var(--ink-strong);margin-top:.5cqw;padding-top:1cqw}
+.sr.tot .l,.sr.tot .v{font-weight:600;color:var(--ink-strong);font-size:1.85cqw}
+.shotnote{font-size:1.72cqw;line-height:1.4;color:var(--ink)}
+.shotnote b{color:var(--ink-strong);font-weight:600}
+</style>
+<div class="stage" id="stage">
+<div class="progress" id="progress"></div>
+
+<section class="slide on" style="justify-content:center">
+  <p class="eyebrow">Atlan &nbsp;·&nbsp; GTM work sample &nbsp;·&nbsp; 07 Sep 2026</p>
+  <h1>Anyone can store your skills.<span class="turn">Nobody tells you which ones work.</span></h1>
+  <div class="pillrow" style="margin-top:4cqw">
+    <span class="pill"><i></i>Manan Aggrawal</span>
+    <span>Working direction — nothing signed off</span>
+  </div>
+</section>
+
+<section class="slide">
+  <p class="eyebrow">Research</p>
+  <h2>Five days. Six surfaces.<span class="turn">Every quote traced to a source.</span></h2>
+  <div class="mid">
+    <div class="bignums">
+      <div class="bignum"><span class="v">6</span><span class="k">surfaces searched — GitHub, HN, Reddit, X, LinkedIn, vendor security research</span></div>
+      <div class="bignum"><span class="v">58</span><span class="k">people complaining in public, by name, with dates</span></div>
+      <div class="bignum"><span class="v">0</span><span class="k">published benchmarks for how many skills a team should have</span></div>
+    </div>
+  </div>
+  <p class="foot">Full source list, quotes and links: <a href="https://docs.google.com/spreadsheets/d/1sxGDnqcJbxRQNHDMw-DFtg9h5uJV4Xdu8NFQTdsrC74/edit?usp=sharing" target="_blank" rel="noopener">the research sheet ↗</a></p>
+</section>
+
+<section class="slide">
+  <p class="eyebrow">ICP identification</p>
+  <h2>Fourteen personas tested.<span class="turn">One clears the bar.</span></h2>
+  <div class="mid">
+    <div class="twocol">
+      <div>
+        <div class="ch bl">Strong signal</div>
+        <ul><li>Agencies, dev shops, MSPs, consultancies</li><li>Data &amp; analytics consultancies</li><li>Sales engineers (individual)</li><li>Public skill-repo forkers</li></ul>
+      </div>
+      <div>
+        <div class="ch pk">Checked, ruled out</div>
+        <ul><li>Legal &amp; HR — zero results, not a blocked search</li><li>Support/CX — lives in vendor consoles</li><li>Finance, PMs, freelancers, cohorts — thin or unconfirmed</li></ul>
+      </div>
+    </div>
+  </div>
+  <p class="foot">Every persona checked against the same test: a named complaint, in public, with a date — not a survey answer.</p>
+</section>
+
+<section class="slide" style="justify-content:center">
+  <p class="eyebrow">The decision</p>
+  <h1>The firm that bills for a repeatable deliverable.<span class="turn">Not the engineer we started with.</span></h1>
+  <div class="bignums" style="margin-top:5cqw">
+    <div class="bignum"><span class="v">$4,000/mo</span><span class="k">a client already asked to buy the workflow, not the agency</span></div>
+    <div class="bignum"><span class="v">10–50</span><span class="k">client orgs one firm can carry a skill into</span></div>
+    <div class="bignum"><span class="v pk">2,500 vs 20</span><span class="k">orgs reached at 500 firms, vs. 500 engineers on the old invite loop</span></div>
+  </div>
+  <p class="foot">r/agency, 62 comments, read directly. Their own top answer: never hand over the file — so the wedge is <strong>share the score, never the skill</strong>, the same mechanic two slides from here.</p>
+</section>
+
+<section class="slide">
+  <p class="eyebrow">The problem</p>
+  <h2>Three cohorts.<span class="turn">One complaint underneath.</span></h2>
+  <div class="mid">
+    <div class="cohorts">
+      <div class="co">
+        <span class="lbl">The team</span>
+        <p class="q">“We have to clone the repo and copy the skill files manually with a script.”</p>
+        <span class="src">GitHub · claude-code#28327</span>
+        <p class="so">The pain: <b>no way to share skills with a team</b> — only copy-paste.</p>
+      </div>
+      <div class="co">
+        <span class="lbl">The power user</span>
+        <p class="q">“Every skill you install rides along in your context and competes for attention.”</p>
+        <span class="src">Reddit · r/claudeskills</span>
+        <p class="so">The pain: <b>too many skills, agent picks the wrong one</b>.</p>
+      </div>
+      <div class="co">
+        <span class="lbl">The reviewer</span>
+        <p class="q">“A skill is just instructions your agent will follow, and it changes silently.”</p>
+        <span class="src">Reddit · r/ClaudeCode</span>
+        <p class="so">The pain: <b>no way to tell if a skill is safe to trust</b>.</p>
+      </div>
+    </div>
+  </div>
+  <p class="foot">Same question, asked three ways: which of these still deserves to be here?</p>
+</section>
+
+<section class="slide" style="justify-content:center">
+  <p class="eyebrow">The deepest pain</p>
+  <h1>Finding a skill is solved.<span class="turn">Trusting one is not.</span></h1>
+  <div class="bignums" style="margin-top:5cqw">
+    <div class="bignum"><span class="v pk">26.1%</span><span class="k">of 42,447 skills scanned carry a vulnerability</span></div>
+    <div class="bignum"><span class="v">1%</span><span class="k">of your context window goes to the skill listing, every session</span></div>
+    <div class="bignum"><span class="v">~300</span><span class="k">skills Atlan built internally in six months</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <p class="eyebrow">The competition</p>
+  <h2>Everyone is building the same shelf.<span class="turn-pink">So the wedge has to be somewhere else.</span></h2>
+  <div class="mid">
+    <div class="names">
+      <span class="chip">AWS Agent Registry</span><span class="chip">Google</span><span class="chip">JFrog</span>
+      <span class="chip">Tessl</span><span class="chip">shareskills.ai</span><span class="chip">NVIDIA</span>
+      <span class="chip dim">skills.sh &nbsp;<span class="num">1.32M</span> installs</span><span class="chip dim">+12 Show HNs this year</span>
+    </div>
+    <p class="lede">Six vendors, a dozen launches, <strong>nobody winning.</strong> Storage is table stakes within two quarters.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <p class="eyebrow">Where the value is</p>
+  <h2>Everyone is building the shelf.<span class="turn">Nobody is building the evidence.</span></h2>
+  <div class="mid">
+    <div class="twocol">
+      <div>
+        <div class="ch pk">Crowded</div>
+        <ul><li>Storage</li><li>Directories and marketplaces</li><li>Package-manager CLIs</li><li>“Share with your team”</li></ul>
+      </div>
+      <div>
+        <div class="ch bl">Open</div>
+        <ul><li>Which skills actually ran</li><li>What each one costs you</li><li>Who owns them</li><li>The benchmark itself</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <p class="eyebrow">The build</p>
+  <div style="display:flex;align-items:center;gap:2.6cqw;flex-wrap:wrap"><h2>Atlan Pulse</h2><span class="cmd">npx atlan-pulse</span></div>
+  <div class="mid">
+    <p class="lede">Reads your skills <strong>and your session history</strong>. Tells you what's dead, duplicated, expensive, unowned or over-permissioned.</p>
+    <div class="checks">
+      <div class="ck hi"><b>Never invoked</b>has never once run</div>
+      <div class="ck hi"><b>Concentration</b>top 3 skills' share</div>
+      <div class="ck hi"><b>Context cost</b>what it costs per session</div>
+      <div class="ck"><b>Stale</b>old, still loaded</div>
+      <div class="ck"><b>Orphaned</b>no owner</div>
+      <div class="ck"><b>Duplicates</b>same job, different words</div>
+      <div class="ck"><b>Risky perms</b>wider access than needed</div>
+      <div class="ck"><b>Pack</b>bundle + send to a teammate</div>
+    </div>
+  </div>
+  <p class="foot">The three in blue need session history. Competitors scan files — history is the only thing that can say a skill is <em>dead</em>, not just old. <span style="opacity:.8">Until it's on npm, <span class="mono">npx github:mananaggrawal/atlan-pulse</span> is the form that runs today.</span></p>
+</section>
+
+<section class="slide">
+  <p class="eyebrow">What you get</p>
+  <h2>One command. One page.</h2>
+  <div class="mid">
+    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:3.4cqw;align-items:center">
+      <div class="shot">
+        <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">atlan-pulse-report.html</span></div>
+        <img src="data:image/jpeg;base64,[CONTENT_PLACEHOLDER]
