@@ -1,0 +1,17 @@
+# GTM problem catalog (2026-09-08)
+
+A structured catalog of every persona problem surfaced across all Atlan research, each tagged with its evidence strength. The full 217-line sourced version with exact quotes lives in Manan's local notes; this is the compact summary.
+
+**Evidence-tag key:** `[VERIFIED PRIMARY]` read directly from the source · `[CORROBORATED]` consistent across 2+ independent secondary sources · `[VENDOR CONTENT]` from a company selling into the pain, treat cautiously · `[INFERENCE]` a connection being drawn, not something a persona stated · `[CONFIRMED ABSENT]` actually checked and found nothing (stronger than a mere tooling gap).
+
+**Structure of the full catalog:** Part A — 13 personas (engineers, GTM/RevOps, agencies/dev-shops/MSPs/consultancies, data/analytics, finance/accounting, HR/recruiting, legal, CX/support, PM/shadow-AI, sales engineers/presales, freelance marketers, cohort/education, OSS skill-repo forkers), problems P1-P36, each with a one-line citation and evidence tag. Part B — 9 structural/cross-cutting problems (P37-P45: the sharing hypothesis is dead, the wedge isn't unclaimed, the "registry graveyard," truncation solved, corrected stats, the 4%-vs-40-70% distribution number, the 3 surviving loop patterns when the shared object is proprietary, Atlas/Pulse's own single-tenant gap, no TAM computed yet for the agency ICP). Part C — 6 unsourced wedge proposals (badge, ungoverned-fork checker, skill-doctor comparison, provenance certificate, CI/PR bot, leaderboard) — explicitly our own synthesis, not research findings.
+
+**Most important sourcing flag:** P42, the 4% vs 40-70% distribution-loop number the whole ICP-v2 argument leaned on, is tagged `[INFERENCE / TRIANGULATED]` — the original research itself says it's triangulated from OpenView's dev-tool referral share, not observed directly. It's the least-sourced number carrying the most argumentative weight in the whole bet.
+
+**Strongest verified-primary findings:** the r/agency thread (62 comments, read directly) — clients paying $4,000/mo asking to buy the AI outright, and the community's own top-voted advice being *don't* expose the raw file; the r/consulting thread — the moat is "partner-only knowledge," not generic AI output; the agentman.ai teardown — a live, funded competitor already shipping "use-only" redacted skill sharing aimed at legal/PE/healthcare; the OSS star counts (shields.io live data) — mattpocock/skills ~257k, karpathy-skills ~211k, marketingskills ~48k; Atlas/Pulse's own single-tenant, no-use-only-mechanism limitation, confirmed against agentman.ai's shipped feature.
+
+**Confirmed-absent:** r/LawFirm — zero results for any AI-skill-sharing search. r/humanresources — near-silence.
+
+**Still-open gaps:** r/accounting / r/CPA / r/taxpros not yet directly searched. PreSales Collective and large-vendor SE blogs not yet read directly. No combined/de-duplicated TAM computed yet for "5-80 employee, BYO-agent, repeatable-deliverable firms," despite individual size counts in hand for three sources.
+
+**How to apply:** don't restate a problem from this summary alone without checking its evidence tag first, especially anything tagged `[INFERENCE]` or `[VENDOR CONTENT]`.
