@@ -107,4 +107,37 @@ Why it matters: cross-harness reliability doubt — also doubles as counter-evid
 Link: https://news.ycombinator.com/item?id=46692692, comment id 46700355
 Why it matters: ownership/attribution integrity problem on an existing registry — exactly what Atlan's "identity and ownership" pillar is meant to fix.
 
+---
+
+## B3 — TRUST & SAFETY
+
+**[verified, HN]** simonw — on the original Claude Skills launch:
+> "I remain afraid of prompt injection. If I'm telling Claude Code to retrieve data from issues in public repos there's a risk someone might have left a comment that causes it to steal API keys or delete files or similar."
+Link: https://news.ycombinator.com/item?id=45607117, comment id 45623714
+Why it matters: the most-followed independent AI commentator on HN, on the record about injection risk from untrusted content Skills can pull in.
+
+**[verified, HN]** azraellzanella, same thread, quoting Anthropic's own docs back with alarm:
+> "'Keep in mind, this feature gives Claude access to execute code. While powerful, it means being mindful about which skills you use—stick to trusted sources to keep your data safe.' Yes, this can only end well."
+Link: https://news.ycombinator.com/item?id=45607117, comment id 45607941
+Why it matters: sarcastic pushback on Anthropic's own "trust the source" hand-wave — precisely the gap a governed registry closes.
+
+**[verified, HN]** dirk94018 (NoClaw author) — Show HN: NoClaw – Mac Mini Assistant the Unix Way:
+> "We built NoClaw after watching OpenClaw users burn $800-$3600/month on tokens, deal with 1,100+ malicious ClawHub skills, and have agents email their entire contact list unprompted."
+Link: https://news.ycombinator.com/item?id=47437814, comment id 47437817 (2025-12-26)
+Why it matters: a concrete, numbered incident of skill-marketplace supply-chain compromise (1,100+ malicious skills in one registry) — the strongest quantitative trust/safety data point found on HN.
+
+**[verified, HN]** XCSme — on "Dockerhub for Skill.md":
+> "My question comes from security, adding that skills just provides a line of bash, with no further info. I checked the .md file but it just lists a list of commands with agent-browser."
+Link: https://news.ycombinator.com/item?id=46692692, comment id 46699552
+Why it matters: concrete "I can't tell what this skill actually does before running it" concern — provenance/review gap.
+
+**[verified, HN]** mock-possum — on "AI Coding Agent Skills for Real Engineers":
+> "It's also unsettling catching it behaving in an odd way, and realizing that it was taking a cue from instructions you never wrote, but imported from elsewhere. Like playing a game of pretend with someone else's rules."
+Link: https://news.ycombinator.com/item?id=49529329, comment id 49531012
+Why it matters: visceral "imported instructions I didn't write are steering the agent" trust discomfort — very human framing of the supply-chain problem.
+
+All B3 items above are [verified, HN] — pulled directly from raw Algolia API JSON, not summarized or paraphrased.
+
+Landscape context (not a quote, but relevant B3 signal): at least 6 independent "scan/verify skills before install" security products surfaced solely from HN Show-HN searches in the last year — Vett (vett.sh), Skillcop, Aguara, SkillSpec, Socket's skills.sh integration, and Askill's "AI safety scoring." That many independent security tools targeting one 10-month-old file format is itself a strong B3 signal.
+
 [CONTENT_PLACEHOLDER]
