@@ -69,4 +69,54 @@ Chapter 4: Performance = Intelligence + Context
 cognitive horsepower that's what the model benchmarks measure every day But it's also a function of context. This is what they say in the human world as
 learning on the job, right? Knowledge and skills and expertise that you learn over time.
 
+And in the last decade, uh we have compounded on one of those parameters.
+Uh intelligence has thousandxed in the last decade. Just in the last 6 months, we have 2xed on that axis. On the other
+hand, context, the situated knowledge of your business, that's barely moved.
+We've moved some data to the cloud uh but that's about it. It's otherwise logged in dashboards and Slack threads
+and uh the head of that analyst who might be leaving next week. Um and so the question ahead of us and I
+really believe this is the next frontier is how do we help AI build context about our business? Um, and every time I'm
+faced with a question about how do we help AI do this, I always like to go back and understand how did we help humans do this? Uh, so I'm going to take
+Chapter 5: The Human Learning Model: Lessons from Maya
+you into the life of, you know, a u exemplar employee Maya. Uh, let's say she's a data analyst at Mech Context
+Burgers because I thought I was going to be creative and I'm not very creative.
+Um, and you know, let's say she's that analyst that everybody, you know, pings in your company. Uh, right? She's the
+person that everybody sends a message to every morning when they're trying to solve a problem. So, let's say this morning, uh, there's a franchisee owner
+who sends her a message and says, "Why is my drive-thru time up this week? Why is this metric up this week?" Sounds
+like a really simple question. Um, but it's actually a really complicated question to ask.
+Just to answer this one very simple question, Maya first needs to know uh what is drive-through time uh and who's
+asking? Is it finance or is it you know my ops team? And it might mean different things. Uh but not just that, what does
+this week mean? Is the cutoff period Monday to Sunday? Is it Pacific time? Is it Eastern time? Uh that's knowledge.
+Like that's facts. That's the map of the business. Um but not just that. Uh there's expertise uh right there's um
+you know a diagnostic playbook. What what does a great analyst do? They know that you know quarter 3 is a season seasonal quarter because of weather
+patterns and they know to go check if the reason there's a spike is because of seasonality. They also know that the
+company launched a product uh just that previous quarter and so they know to check if that's why the root cause
+analysis failed. Uh this is expertise and skills that people pick up over time as they learn on the job. Uh and then
+there's norms, right? Um there's, you know, persona scoping. Who's asking the question? How do I answer this question?
+Um and Maya, she's one of those like cool people. She nails it. She sends an answer not just with the answer, but with the why and the root cause, and she finds the reason for it.
+How did Maya learn to do this? Um she just joined the company a year ago. Um first Maya you know has for like she
+joined and she got some training like all of us do but that's not where any of us learn right in our companies. How do we learn? We learn because you shadow
+like the best teammate and then you see why they're doing something and then you learn from that and then you make a mistake. Who here has learned more from
+a mistake than anything else? Right? You make a mistake and then you learn. uh
+your manager gives you feedback and you learn not to do that again. You deal with an edge case and then you learn from that. That's how all of us humans learn at work.
+And so then the question is how do you help build the agent Maya? Uh and now I want to walk you through our experiments
+Chapter 6: Evolution of Agent Architecture at Atlan
+and learnings as we've built this at Atlan um era one and this was roughly about 18 months ago now. Um we uh
+started on the the track of bootstrapping agents. Um and the way we went about it was and we started this
+with our customer experience team. Uh and we did this jobs to be done analysis map, right? And so we said, hey, if you
+are someone on our customer experience team, what are all the things that you do on a day-to-day basis? And then we made some hypothesis. We we said, you
+know, for example, one part of the job is documentation and meeting prep. Uh we said well AI could probably do that job
+pretty well. Uh and so we build a scaling factor. So on the other hand relationship management is something that our customer experience team does
+and we said hm that doesn't sound like something AI is going to be able to do anytime soon. And so we built a scaling factor [snorts] and then we basically
+started bootstrapping these individual agents that were like built for that specific topic. Uh our team got
+creative. So we had Hermione who is our health intelligence lead and then we had you know money penny who was our financial risk analyst and we just made
+that particular agent really good at doing that one thing. Um and that worked
+for some time um but then we realized there were some challenges with this approach. The first context engineering
+uh we got to the point by middle of last year where building an agent was really easy took like 5 minutes. uh but giving it the business context that it took to
+actually get it to be accurate took forever. Uh quality of the agent often dependent uh on the quality of context
+engineering and that led to a lot of weird lost trust cases with our stakeholders. [snorts] Um then as we
+started taking this into production we started seeing that these agents basically were kind of like living on their own island. Uh now imagine for
+example if you're in a human team and your marketing changes positioning on your you know and then they come to the town hall and they tell you that they
+changed positioning and so then you know the SDR on your team or your sales development rep they know that they should use that new positioning. This is
+like the infrastructure that we've built for humans inside our organizations.
+
 [CONTENT_PLACEHOLDER]
