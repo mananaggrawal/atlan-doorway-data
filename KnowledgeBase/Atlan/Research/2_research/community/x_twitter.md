@@ -174,4 +174,41 @@ Why it matters: shows a single plain-text file, no tooling at all, can get enorm
 
 No one was found explicitly saying "a registry is overkill, git is enough" in as many words — six targeted queries ("just a git repo" skills, "don't need a registry", skills registry overkill, "a shared drive"/"a folder" ... enough, "just copy paste" skill.md, "would not run"/"wouldn't run" claude skill) returned null or off-topic results (logged below). Read charitably, this is weak evidence either way — it may mean the objection isn't being voiced on X in a findable form, not that it doesn't exist.
 
-[CONTENT_PLACEHOLDER]
+---
+
+## B5 — SIGNAL SHAPE (who drives this conversation, reach, and what it implies for channel viability)
+
+Ranked by verified view/engagement count on their most substantive on-topic post:
+
+1. **eric provencher (@pvncher)** — Codex DX @OpenAI, 37.9K followers. "Rethinking skills and prompts for GPT-6 Astra": **1.5M views, 3.5K likes, 452 reposts, 80 replies**, posted 2026-09-05 (same day as this research). The single highest-signal artifact found: an OpenAI staffer's practitioner-grade teardown of skill sprawl went viral same-day. https://x.com/pvncher/status/2095991462416490862
+2. **Nick Launches AI Agents (@nicklaunchesai)** — 95,110 views on the MCP/skills-registry-scale sprawl post. https://x.com/nicklaunchesai/status/2096131257407324642
+3. **Mid-reach AI-influencer accounts** on SKILL.md-adjacent explainer content (@Flagvance 379 engagements, @AISystems_hq 381,772 views on "a skill is a folder with one file").
+4. **Official brand accounts actively marketing into this exact space**: **@awscloud** (31,717 views, "Is AI agent sprawl the new technical debt?" launching AWS Agent Registry) and **@glean** (Glean AI Gateway, governed layer for skills/MCP/memories, via quote at https://x.com/tonygentilcore/status/2093093636066136465, 2,148 views on the amplifying quote-tweet). This is the strongest signal that enterprise-platform vendors already see this as a live, budget-worthy category.
+5. **Named, credible infra people speaking organically (not marketing)**: Darren Shepherd (@ibuildthecloud, Rancher/Acorn co-founder) — 1,140 views; chetan conikee (@conikeec, shipped skillrecall) — 325 views; Patrick Debois (Tessl) referenced via @CoreyGallon — 139 views.
+6. **Long tail of small builder/security accounts** (@stratamindlabs, @SilkNodeio, @sunglasses_dev, @apprater, @Marwan_3atef, @Astrodevil_, @DannielDevOps) each under 500 views but collectively converging, unprompted, on the same vocabulary: "intake gate," "supply chain," "no versioning, no scanning, no signing," "policy-gates."
+
+Read: the loudest voices are (a) a small number of very-high-reach practitioner/insider accounts who occasionally post deep, on-topic essays that spike into hundreds of thousands of views, and (b) official accounts of large platforms (AWS, Glean, JFrog via commentary, NVIDIA via commentary) already shipping competing or adjacent governance products. The steady-state chatter is a long tail of low-reach (dozens to low-hundreds of views) builder and security accounts, in English, Japanese, and Chinese, independently reinventing the same vocabulary.
+
+---
+
+## Null / low-yield queries (logged as instructed)
+
+- `"claude code" skills share` (f=live) — returned unrelated model-comparison/news content, nothing on team sharing.
+- `AGENTS.md skills team` (f=live) — dominated by unrelated GPT-6 Astra launch commentary and an "AI Engineering Skills Map" (human skills, not SKILL.md files) from Andrew Ng — false-positive keyword match, excluded.
+- `"my skills" claude code teammate` (f=live) — single loosely-relevant result (@sourfraser, "Claude + Skills = an AI employee for every job"), no teammate-handoff content.
+- `"just a git repo" skills` (f=live) — 2 results, both off-topic (agent-OS and agent-readiness content, not the "git repo is enough" objection).
+- `"over-engineering" skills claude` (f=live) — on-topic-adjacent but no direct counter-argument to a registry; mostly CLAUDE.md/skill-pack promo content.
+- `"don't need a registry"` (f=live) — 100% off-topic (wedding registries, gun registries, parody accounts).
+- `skills registry overkill` (f=live) — zero results.
+- `"a shared drive" OR "a folder" claude skills enough` (f=live) — no on-topic hits.
+- `"just copy paste" skill.md` (f=live) — 2 results, both unrelated (crypto guide, an agent card game).
+- `"would not run" OR "wouldn't run" claude skill` (f=live) — zero results.
+- `"internal skill library"` (f=live) — zero results.
+- `"our skills" claude code` (f=live) — mostly GTM/agency case studies, nothing on internal skill libraries specifically.
+- `"shared this skill" OR "gave my team" claude` (f=live) — 100% off-topic (unrelated personal/lifestyle tweets from years prior; keyword collision).
+
+---
+
+## Channel-viability read
+
+X surfaces this conversation daily, in real practitioner language, and at least one OpenAI staffer and several infra-credible independents post about it organically with real reach (1.5M and 95K view posts this week alone). But it is also visibly becoming a vendor battleground — AWS, Glean, JFrog, and NVIDIA are already marketing competing or adjacent products into the same feed. Grassroots demand is real but diffuse (dozens of small accounts, tens to low-hundreds of views each); the reach is concentrated in a handful of high-follower insiders, not a movement with many mid-tier voices — so X is viable for finding interview subjects and validating language, but the audience for a paid-acquisition push is thin and increasingly noisy with competitor messaging.
