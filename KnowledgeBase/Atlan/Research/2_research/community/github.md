@@ -92,4 +92,61 @@ file meant for team-wide, reviewed configuration." **Author:** denwitham | **Dat
 the tooling itself violates it — evidence the boundary between shared/team and personal config is fragile
 even where Anthropic designed for it. [verified]
 
+---
+
+## B2 — SPRAWL: too many skills, wrong skill invoked, context budget, staleness, version confusion
+
+**Verdict: real and actively tooled-for by Anthropic, but the tooling itself is buggy** — Claude Code ships
+a `/skill-doctor` command specifically to help users prune skills by token cost, which is itself the subject
+of a same-day bug report saying its numbers are wrong. That's strong evidence sprawl is common enough to
+need a built-in diagnostic, and that the diagnostic is still immature.
+
+1. **Quote:** "`/skill-doctor`'s per-skill token/usage table is misleading enough to actively mislead pruning
+   decisions." **Author:** shrek1ee | **Date:** 2026-09-05
+   **Link:** https://github.com/anthropics/claude-code/issues/92327 | **Bucket:** B2
+   **Why it matters:** Confirms (a) Anthropic ships a pruning tool because sprawl is common, and (b) a
+   session's full token cost gets misattributed to every skill it touched, undermining the very metric users
+   need to decide what to delete. [verified]
+
+2. **Quote:** "positional-argument substitution [is] applied to the entire SKILL.md body, rewriting any
+   literal $N token... 22/27 skills exposed, 0/27 use argument placeholders."
+   **Author:** grantable-chris | **Date:** 2026-09-04 | **Link:** https://github.com/anthropics/claude-code/issues/91957
+   **Bucket:** B2 | **Why it matters:** A silent content-corruption bug across most of one real production
+   skill library — nobody would know which "version" of the skill actually ran in a given session; the
+   issue cross-references 4 other overlapping bug reports (#79859, #78759, #87109, #84212). [verified]
+
+3. **Quote:** "Twenty skills? You're burning tokens showing Claude options it doesn't need for the current
+   task." **Author:** Michael Jovanovich | **Date:** 2025-11-27
+   **Link:** https://responseawareness.substack.com/p/scaling-claude-code-skills-without
+   **Bucket:** B2 | **Why it matters:** Independent practitioner built a semantic (vector-search) skill
+   catalog specifically to solve context-budget dilution from too many skill listings. [verified]
+
+---
+
+## B3 — TRUST: hesitancy to install others' skills, prompt injection, credentials, review before adoption
+
+**Verdict: real, and quantified.** skills.sh (vercel-labs/skills) already runs three separate third-party
+security scanners per listed skill (Gen Agent Trust Hub, Socket, Snyk) and open issues are actively pushing
+for a fourth, purpose-built layer for prompt-injection-style attacks — evidence the marketplace operator
+itself treats an unreviewed skill as a live risk, not a hypothetical one.
+
+1. **Quote:** "Across ~96,000 skills scanned (ClawHub, skills.sh, MCP registries), 552 were confirmed
+   malicious after manual review." **Author:** eeee2345 | **Date:** 2026-06-30
+   **Link:** https://github.com/vercel-labs/skills/issues/1552 | **Bucket:** B3
+   **Why it matters:** A hard number for base-rate malicious-skill prevalence across the ecosystem, cited to
+   justify adding an agent-threat-specific audit panel (tool poisoning, instruction-override, mapped to
+   MITRE ATLAS / OWASP Agentic Top 10) because "a SKILL.md can hijack an agent with zero malicious code and
+   no hash to flag" — i.e. existing dependency/malware scanners miss the skill-specific attack surface. [verified]
+
+2. **Quote:** "In ClawHub specifically (9,676 skills), ATR flagged 182 as CRITIC[AL]"
+   **Author:** eeee2345 | **Date:** 2026-06-30 | **Link:** https://github.com/vercel-labs/skills/issues/1552
+   **Bucket:** B3 | **Why it matters:** ~1.9% critical-flag rate in one large public registry — a concrete
+   number for "how much of what's out there is actively dangerous," useful for a governed-registry pitch. [verified]
+
+3. **Quote:** "skills.sh listing... currently shows Gen Agent Trust Hub as Safe and Socket with no alerts,
+   while Snyk reports Critical because of E005 and W011." **Author:** zztimur | **Date:** 2026-07-18
+   **Link:** https://github.com/vercel-labs/skills/issues/1722 | **Bucket:** B3
+   **Why it matters:** Shows three independent scanners can disagree on the same skill — trust signals on
+   today's biggest community registry are inconsistent, not a solved problem. [verified]
+
 [CONTENT_PLACEHOLDER]
