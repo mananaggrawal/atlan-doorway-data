@@ -99,4 +99,11 @@ Verdict: 1 hit opened and used (rywalker.com), which itself only gave a third-pa
 Results (9 links): almost entirely Wikipedia disambiguation noise for people named "Claude" — Claude Lalumière, Claude Lucas, Claude Pujade-Renaud, Hervé Claude, Claude Kayat, Claude Brami, Claude Arnaud, Julius Fast — all clearly false-positive matches from the search engine treating "Claude Fast" as a person's name rather than a website; plus claudefa.st itself (homepage, "Claude Fast: AI Led Development + Growth Marketing Kits") and claudefa.st/blog (dup, blog index). None of the Wikipedia results opened (obviously irrelevant on title alone).
 Verdict: 0 useful hits. Author of the claudefa.st plugins-distribution post remains unconfirmed beyond the inferred Twitter handle "@AbdoMobayad" found via the direct page re-fetch. This is a genuine, acknowledged attribution gap in the filed blogs_and_press.md (I wrote "byline unclear... site linked to @AbdoMobayad" rather than asserting authorship).
 
+---
+
+## 3. PAGE-BY-PAGE FETCH LOG (in the order I opened them)
+
+1. heyclau.de/entry/guides/team-onboarding-with-claude-code-plugins-and-skills — author kiannidev, HeyClaude, 2026-06-14. What was on it: a team-onboarding playbook for plugins/skills (curated bundles, scope standardization, staged day/week/month rollout, champion kit). Filed: YES, B1, 5 quotes.
+2. claudefa.st/blog/tools/mcp-extensions/plugins-distribution — author unclear (site "Claude Fast," Twitter @AbdoMobayad inferred on 2nd fetch), no date visible on first fetch. What was on it: personal-setup-to-org-standard lifecycle for plugins, versioning mechanics (semver vs. commit-SHA). Filed: YES, B1, 5 quotes. Re-fetched a second time later (see #23) purely to try to pin down authorship — inconclusive.
+
 [CONTENT_PLACEHOLDER]
