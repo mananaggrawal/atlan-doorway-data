@@ -132,4 +132,38 @@ separate since they don't claim install/version/dependency semantics the way the
 
 ---
 
+## 4. B3 QUANTITATIVE LANDSCAPE — MALICIOUS/COMPROMISED SKILL COUNTS (full list, with source, for reconciling against the existing file's single NoClaw figure)
+
+The existing findings file cites one number: NoClaw's "1,100+ malicious ClawHub skills." This session found that number sits inside a cluster of **at least six different vendor/blogger-reported counts**, none of which appear to be independently audited against each other — worth flagging to the requester as a single underlying incident (ClawHub/OpenClaw skill marketplace, Jan-Mar 2026) being re-counted differently by each writeup, not six separate incidents:
+
+| Reported figure | Source | Item ID | Date |
+|---|---|---|---|
+| "1 of 286" skills had a credential stealer (original incident) | AutoPilotAI comment citing the original Moltbook finding | 46976845 (comment 47121948) | 2026-02-23 |
+| "341 malicious ClawedBot skills" ("ClawHavoc") | Koi.ai blog, HN submission by Santas | 46901092 | 2026-02-05 |
+| "1,100+ malicious ClawHub skills" | NoClaw's own Show HN (already in existing file) | 47437814 | 2026-03-19 |
+| "824 malicious skills found" | independent scanner builder, Show HN (baz_sec) | 47370624 | 2026-03-13 |
+| "20% contamination" on ClawHub | matrixgard, commenting on the above | comment on 47370624 | 2026-03-16 |
+| "1,103 are malicious" of 14,706 audited | RankClaw Show HN (do_anh_tu) | 47287985 | 2026-03-07 |
+| "14,704 skills indexed, 3,721 AI deep audited" (same RankClaw data, different framing) | do_anh_tu comment | comment on 47027788 | 2026-03-01 |
+| "13.4% of skills contain critical security issues" (Snyk's "ToxicSkills" audit) | arabking, SkillGuard Show HN | 47868237 | 2026-04-22 |
+
+Separately, the original 181-point "Malicious skills targeting Claude Code and Moltbot users" thread
+(46827731) — the highest-points security story found — **was flagged by dang (HN moderator) himself
+as having a linkbait/misleading submitted title, noting the underlying article "describes no actual
+such incident."** This doesn't invalidate the broader ClawHub pattern (which the other seven sources
+above corroborate independently), but it does mean the single highest-points thread in this whole
+research pass is not itself reliable evidence — worth being precise about in the deck.
+
+Full list of B3 story-level hits (malicious/security), for completeness, beyond what's summarized above:
+- "Towards a Risk Assessment of Malicious Skill Files in Coding Agents" (arxiv, submitted twice: 49305777 and 49218275).
+- "Malicious AI 'Skills' on OpenClaw's ClawHub Marketplace Bypass Scanners" (48662618).
+- "Malicious Skills Found in OpenClaw's ClawHub Marketplace" (esecurityplanet writeup, 46908022).
+- "Malicious Agent Skills in the Wild" (arxiv, 48987510).
+- "Malicious MoltBot skills used to push password-stealing malware" (BleepingComputer, 46866781).
+- "Show HN: Skillcop: Block malicious Claude Skills before they execute" (47457995) — already known via existing file's "6 security scanners" landscape note; now has a direct item ID.
+- SkillGuard (47868237, arabking) — NEW scanner not in existing file's list of 6.
+- Aguara (mentioned in a "[dead]" story 47269529/comment 47269530) — already in existing file's list of 6, now has a direct quote: "173 rules across 13 categories: prompt injection, credential leaks, data exfiltration, supply chain, SSRF."
+
+---
+
 [CONTENT_PLACEHOLDER]
