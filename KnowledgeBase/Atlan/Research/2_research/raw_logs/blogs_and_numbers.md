@@ -107,4 +107,6 @@ Verdict: 0 useful hits. Author of the claudefa.st plugins-distribution post rema
 
 ## 2. NPM / API CALLS — raw endpoint hits via curl (Bash tool, container)
 
+1. GET request to `https://api.npmjs.org/downloads/point/last-month/@anthropic-ai/claude-code` → raw response: `{"downloads":80220622,"start":"2026-07-31","end":"2026-08-29","package":"@anthropic-ai/claude-code"}`
+
 [CONTENT_PLACEHOLDER]
