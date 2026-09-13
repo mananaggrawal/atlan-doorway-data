@@ -105,4 +105,6 @@ Verdict: 0 useful hits. Author of the claudefa.st plugins-distribution post rema
 
 ---
 
+## 2. NPM / API CALLS — raw endpoint hits via curl (Bash tool, container)
+
 [CONTENT_PLACEHOLDER]
