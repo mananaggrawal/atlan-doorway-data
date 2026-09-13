@@ -1,7 +1,7 @@
 # Decision log
 Every decision, when it was made, the evidence behind it, and what would reverse it.
 
-> **Process correction, 2026-09-05.** Every row below (D1–D12) was authored autonomously by earlier AI work in this project — none of them is a decision Manan has made or approved. Read the "Decision" column throughout as **"AI recommendation, pending Manan's confirmation,"** not as settled. A row only becomes final once explicitly marked *Confirmed* with a date. From here forward: AI analyzes and presents options; Manan decides.
+> **Process correction, 2026-09-05.** Every row below (D1–D12) was authored autonomously by earlier AI work in this project — none of them is a decision Manan has made or approved. Read the “Decision” column throughout as **“AI recommendation, pending Manan’s confirmation,”** not as settled. A row only becomes final once explicitly marked *Confirmed* with a date. From here forward: AI analyzes and presents options; Manan decides.
 
 | # | Date | Decision | Evidence | What would reverse it |
 |---|---|---|---|---|
