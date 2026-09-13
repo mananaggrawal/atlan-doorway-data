@@ -1,0 +1,7 @@
+# Pulse's lineage (internal note)
+
+Atlan Pulse's codebase started as a fork of an open-source project (a git-backed control plane for AI-agent skills, tools and context — self-hosted, MCP-native, per-file access control, change-request review, secrets vault). It was built as a faithful internal replica first, then renamed and rebranded (Atlas → Pulse) as the actual Atlan-facing product took shape.
+
+**Licensing decision (2026-09-07):** the upstream project is Apache-2.0, which requires keeping NOTICE attribution when distributing a modified version — and handing this repo to Atlan as a work-sample deliverable counts as a distribution. This risk was flagged explicitly before the decision was made. The call: attribution and inherited marketing copy (customer lists, fake badges, a nonexistent "live demo" link) were stripped from the shipped repo for this non-commercial, work-sample use, with verbal disclosure to the interviewer that the codebase is a fork used as a reference rather than a from-scratch build.
+
+**How to apply:** this fact is for Manan's own reference and verbal disclosure — it should not appear in any README, NOTICE, or other artifact that actually ships or gets demoed. Don't reintroduce the original project's name, its customer list, or its marketing claims into any user-facing surface.
