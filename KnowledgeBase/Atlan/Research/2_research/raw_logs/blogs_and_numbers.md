@@ -106,4 +106,24 @@ Verdict: 0 useful hits. Author of the claudefa.st plugins-distribution post rema
 1. heyclau.de/entry/guides/team-onboarding-with-claude-code-plugins-and-skills — author kiannidev, HeyClaude, 2026-06-14. What was on it: a team-onboarding playbook for plugins/skills (curated bundles, scope standardization, staged day/week/month rollout, champion kit). Filed: YES, B1, 5 quotes.
 2. claudefa.st/blog/tools/mcp-extensions/plugins-distribution — author unclear (site "Claude Fast," Twitter @AbdoMobayad inferred on 2nd fetch), no date visible on first fetch. What was on it: personal-setup-to-org-standard lifecycle for plugins, versioning mechanics (semver vs. commit-SHA). Filed: YES, B1, 5 quotes. Re-fetched a second time later (see #23) purely to try to pin down authorship — inconclusive.
 
+---
+
+## 2. NPM / REGISTRY API CALLS — raw endpoint hits via the container's HTTP client
+
+[NOTE: the exact shell commands and raw JSON response bodies from this section are omitted here — repeated attempts to write the literal API-call syntax and query-string URLs into this file were blocked by a proxy-level filter on this KB connection. The substance is preserved below in prose; see the local research folder for the exact commands/output if needed.]
+
+1. Queried the npm download-stats endpoint for the `@anthropic-ai/claude-code` package for the last month and last week. Last-month figure: 80,220,622 downloads (window 2026-07-31 to 2026-08-29). Last-week figure: 21,450,823 downloads (window 2026-08-23 to 2026-08-29).
+2. Queried the same download-stats endpoint for a package literally named `skills`. Last-month figure: 38,365,913 downloads (same window). Last-week figure: 9,363,514 downloads (same window). This number is flagged throughout the filed report as hard to interpret at face value.
+3. Searched the npm registry's package-search endpoint for "skills claude" (10 results). Read off three smaller, more typical skills-adjacent packages before truncating the output: `@vegastack/skills` (monthly ~2,369 / weekly ~1,483 downloads, an installer/verifier for VegaStack Agent Skills), `@gallopsystems/agent-skills` (monthly ~1,851 / weekly ~705, symlinks itself into `.claude/skills` and `.agents/skills` on install), `@rheged-studio/agent-skills` (monthly ~568 / weekly ~320, describes itself as skills.sh-compatible bundles). These three to four orders of magnitude smaller than the `skills` package's 38.4M/month is itself evidence supporting the distrust flag on that figure — an unusually large gap for what should be a comparable category of tool, not otherwise explained in this pass (transitive/CI-triggered installs, a postinstall dependency of something else, or bot traffic are all plausible but unconfirmed; I did not check the package's declared dependents or search for large projects that depend on it, which would be the obvious next diagnostic step). This comparison itself was not written into the filed quantitative_baseline.md, an omission noted here.
+4. Fetched the npm registry's package-metadata record for `skills` directly and parsed it. Confirmed: latest published version 1.5.23; description "The open agent skills ecosystem"; homepage and repository both point to the `vercel-labs/skills` GitHub repo; the last five published versions were 1.5.20, 1.5.21, 1.5.22, 1.5.23, and a 1.5.23 snapshot; the latest version's declared runtime dependencies are the `tar` and `yaml` packages; its declared CLI entry points are named `skills` and `add-skill`. This is the evidence chain that let me assert — confirmed via package identity (repo, description, CLI entry-point names), not asserted from memory or guesswork — that the npm `skills` package IS the skills.sh command-line tool.
+
+---
+
+## 3. PAGE-BY-PAGE FETCH LOG (in the order I opened them)
+
+3. **zackproser.com/blog/claude-skills-internal-training** — author Zachary Proser, 2025-10-21. What was on it: skills as self-documenting runbooks, tribal-knowledge argument, "shared library" framing. Filed: YES, B1, 4 quotes. Flagged as an interview candidate.
+4. **dev.to/shimo4228/15-days-of-skill-sprawl-in-claude-code-lessons-from-3-audits-27em** — author shimo4228, 2026-02-22. What was on it: first-hand diary of 3 self-run skill audits, truncation at Discovery stage, duplicate Swift/Python skills, recurring-audit necessity. Filed: YES, B2, 4 quotes. Flagged as interview candidate.
+5. **mindstudio.ai/blog/context-rot-claude-code-skills-bloated-files** — author Luis Chavez-Mattos (Director of Product), 2026-03-24. What was on it: "context rot" concept, token-cost math for bloated skill files, 2,000-3,000 token rule of thumb. Filed: YES, B2, 5 quotes.
+6. **sentinelone.com/blog/marketplace-skills-and-dependency-hijack-in-claude-code** — 2026-01-06, no individual byline surfaced by the fetch. What was on it: concrete dependency-hijack attack via an installed marketplace skill, trust-boundary argument. Filed: YES, B3, 5 quotes.
+
 [CONTENT_PLACEHOLDER]
