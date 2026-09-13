@@ -108,4 +108,142 @@ but is vendor-adjacent content with ZERO named practitioners and no case study [
 is an opportunity (nobody has claimed the narrative) AND a risk (we would have to produce the proof
 ourselves - a customer story or our own instrumented before/after). ***
 
+## ============ ICP A: THE GTM ENGINEER / REVOPS BUILDER ============
+
+### Day 1-7 - authoring
+A1. THE SKILL SILENTLY NEVER FIRES AND THERE IS NO ERROR.
+  "A skill with a vague description is a skill that never fires, and the failure is silent." [vendor]
+  Katya Tarapovskaia, Youstellar (Revenue AI/ABM), 17 Apr 2026 [reported]:
+   "Undertriggering (skill doesn't load when it should): Users ask 'why isn't it working?'"
+   Then the consequence: "USERS DISABLE IT."
+  *** That two-step - doesn't fire -> user disables it -> skill graveyard - IS THE DAY-1 FAILURE LOOP
+  FOR ICP A, and it is the seed of the Week-2 accumulation problem. ***
+  Solved free? Partially - skill-creator exists, docs cover descriptions. But nothing tells a
+  non-engineer WHY their skill lost the trigger race against Claude's trained behaviour (#30387 shows
+  this is a model-level precedence problem, not a docs problem).
+A2. YAML / naming friction (name capped at 64 chars, lowercase, cannot contain "anthropic"/"claude").
+  A real wall for someone who doesn't use git. LOW INTENSITY, LOW DIFFERENTIATION - DO NOT LEAD.
+
+### Week 2-4 - accumulation
+A3. THE SKILL COUNT OUTRUNS DISCOVERY. Tightest ICP-A artifact found:
+  sidchaudhary/gtm-skills - 78 GTM SKILLS ACROSS 7 GTM ROLES, by Sid Chaudhary, founder of Intempt
+  [verified]. Its own README carries the warning verbatim:
+   *** "Don't install all 78 on day one. You'll use nine of them and forget the rest." ***
+   "You don't need to be technical. If you can type a sentence, you can use these."
+  78 skills x ~109 chars overhead + descriptions is comfortably past a 16,000-char budget. THE
+  FLAGSHIP GTM SKILL PACK, ON INSTALL, IS THE TRUNCATION EVENT.
+  Solved free? YES, largely, as of Sept 2026. Do not lead with it.
+A4. COST/CONTEXT BURN. ICP A has NO instrumentation at all - subscription, hits limits, no /context
+  habit. [assumption - NO ICP-A-specific token-spend testimony exists. All quantified cost evidence
+  in this space comes from engineers. HONEST EVIDENCE GAP.]
+
+### Month 2-3 - drift
+A5. THE CRM CHANGED AND THE SKILL NOW WRITES PLAUSIBLE GARBAGE.
+  *** COULD NOT FIND A SINGLE VERBATIM, NAMED ACCOUNT of a Claude skill writing to the wrong CRM
+  field after a schema change. Searched five ways. *** What exists: the mechanism named by vendor
+  content; Forte Group's CTO on silent corruption; and STRONG ANALOGOUS evidence from the same
+  buyer's world - Salesforce/Marketo/Zapier INVALID_FIELD sync threads, and an Adobe Experience
+  League thread literally titled "The silent breakdown of automated workflows no one notices until
+  it's too late."
+  REAL, UNSERVED, AND UNDOCUMENTED.
+
+### The moment a SECOND PERSON gets involved
+A6. "CAN YOU SEND ME THAT" AND THERE IS NO ANSWER THAT ISN'T A COPY.
+  For ICP B the answer is "clone this repo." *** ICP A CANNOT SAY THAT. THAT ASYMMETRY IS THE WHOLE
+  ICP-A WEDGE. ***
+  Karlsson, 6 Apr 2026 [verified]: "When a coworker said 'hey, can you show me how you do that
+   LinkedIn thing?' - the answer wasn't a Notion doc or a prompt to paste somewhere. It was
+   'clone this repo.'"
+  What happens when the answer IS a Notion doc - Laura Klein, NIELSEN NORMAN GROUP, 31 Oct 2025
+  [verified - research org, STRONGEST NON-VENDOR SOURCE ON THIS MOMENT]:
+   "They've accumulated massive collections of multistep prompts that MIGHT AS WELL BE MAGIC SPELLS."
+   "This knowledge could be valuable to other members of the team, but it's TRAPPED IN INDIVIDUAL
+    PRACTITIONERS' HEADS."
+   *** "everybody ends up with their own PRIVATE SPELLBOOK rather than anything shared and, more
+    importantly, TESTED." ***
+   "we can't even see what others are doing... We can't build on each other's approaches because we
+    can't easily share our AI-assisted work."
+   "Making everyone figure out AI alone creates chaos and risk."
+  The divergence cost - Jessica Jess, Enterpret, 30 Jun 2026 [reported, VENDOR MARKETING, illustrative
+  only]: "five different PRD formats, five different ways of citing customer evidence, and five
+   different definitions of 'done'." "without versioning you'll spend an hour debugging before
+   realizing they're on different versions." "The work doesn't compound; it spreads."
+  AND THE STRONGEST EVIDENCE THAT THE PROMPT-LIBRARY WORKAROUND FAILS - Brad Wilkins, VP of People
+  and Organization at Cognite [verified - NAMED EXECUTIVE, NON-VENDOR]:
+   "Prompts are the opening move. They are not the unit of work."
+   *** "Had I known this earlier, I would have SKIPPED THE MONTHS OF PROMPT-LIBRARY CURATION that
+    everyone in our field has been doing and gone directly to skill design." ***
+  Solved free? NO, NOT FOR ICP A. git (they don't use it), shared Drive/Notion (no versioning, no
+  sync into the agent, Wilkins says it wastes months), plugin marketplace (requires publishing a git
+  repo). Anthropic's org skill provisioning requires an ADMIN to upload - it gives a team-of-one NO
+  way to hand a skill to one colleague.
+
+### The moment a THIRD+ PERSON or a MANAGER gets involved
+*** A7. THE CRM PERMISSION MODEL DOES NOT SURVIVE THE AGENT. THE SHARPEST VERIFIED ICP-A FINDING IN
+THE ENTIRE RESEARCH, AND IT IS AN ACTUAL INCIDENT. ***
+  HubSpot Community, "HubSpot Connector for Claude - Permissioning Needs", RevOps Discussions forum
+  [verified - real named practitioners on a first-party vendor forum]:
+  alijensen, 5 May 2026: "We're experiencing two critical issues with the Claude-HubSpot connector
+   that pose serious DATA INTEGRITY RISKS." "As a HubSpot admin, I have NO WAY TO SET CONNECTOR-LEVEL
+   PERMISSIONS (e.g. read-only vs manage objects) on a per-user basis. The connector simply inherits
+   each user's existing HubSpot permissions." "HubSpot allows admins to restrict bulk CRM updates to
+   a maximum of 10 records at a time - intended as a safeguard against mass data changes. However,
+   THIS LIMIT IS TRIVIALLY BYPASSED BY INSTRUCTING CLAUDE TO LOOP THE UPDATE FUNCTION."
+  JTolley, 6 May 2026: "I believe you're correct on those two issues... ADMINS HAVE NO CONTROLS -
+   I've heard other Admin/RevOps folks complaining about the same permission structure."
+  *** cc-revops, 9 Jun 2026 - THE INCIDENT: "a rep CLOSED LOST a deal by accident that was already in
+   CLOSED WON... The rep was UNABLE TO DO IT IN THE UI but the MCP CONNECTOR HAD PERMISSIONS." ***
+  mwx-Marcus, 8 Jul 2026: "The bulk update limit exists for a reason, and 'just tell Claude to loop
+   it' shouldn't be a bypass."
+  THE ARC: May -> Jun -> Jul, FOUR different practitioners, escalating, a HubSpot moderator who had
+  no answer ("I don't see any mention of these specific limits"), and by 22 Jul A THIRD-PARTY VENDOR
+  SHOWED UP IN THE THREAD SELLING GRANULAR MCP PERMISSIONS. A MARKET FORMING IN PUBLIC, IN A REVOPS
+  FORUM, OVER TEN WEEKS.
+  WHO: the manager / RevOps admin / the org. THE FIRST PAIN IN THE CHAIN A BUDGET HOLDER FEELS.
+  Solved free? NO. Neither HubSpot nor Anthropic had shipped a fix. Anthropic's Apr 2026 admin
+  controls (groups, spend caps, managed Claude Code policies, usage analytics) cover tools/files/MCP
+  at POLICY level and do NOT provide per-skill permission, per-skill usage, or cost attribution.
+  Intensity: "WE HAD AN INCIDENT." HIGHEST IN THE CORPUS FOR ICP A.
+A8. "IS ANYONE EVEN USING THESE, AND WHAT DID THEY COST?" /skill-doctor answers this for ONE PERSON'S
+  LOCAL SESSION, not a team. It "records whether a skill ran during a session but NOT WHETHER THE
+  SKILL IMPROVED THE RESULT" - making valuable rarely-used procedures indistinguishable from dead
+  ones. AND: ICP A IS NOT IN CLAUDE CODE. They are in Claude.ai / Cowork, WHERE /skill-doctor DOES
+  NOT EXIST.
+
+## ============ ICP B: THE ENGINEER AT AN AI-NATIVE STARTUP ============
+B1. THE SKILL LOSES THE TRIGGER RACE TO TRAINED BEHAVIOUR (~50% on git/shell/formatting). #30387.
+  Solved free? NO - closed as "not planned", caps-lock enforcement doesn't work. But YOU CANNOT SELL
+  A FIX FOR THE MODEL'S TRIGGER PRECEDENCE. Great hook, unsellable.
+B2. TOKEN/CONTEXT BURN. SOLVED FREE as of Sept 2026. Occasionally an incident when it triggers
+  premature compaction mid-task (#15377: compacting at ~65% because 246K tokens of MCP context).
+B3. *** SKILL DRIFT - instructions silently stop matching reality. THE ONLY PAIN IN THE ICP-B CHAIN
+  THAT GIT DOES NOT TOUCH. Git tells you what changed in the skill. IT CANNOT TELL YOU THE WORLD
+  CHANGED UNDERNEATH AN UNCHANGED SKILL. *** Compounded by MCP config drift - tool schemas change
+  under the skill. /skill-doctor measures INVOCATION, NOT CORRECTNESS.
+B4. HANDOFF / VERSIONING - *** SOLVED FREE. NEVER MENTION IT TO ENGINEERS. ***
+  Karlsson: "Updating the brand voice is a PR. One PR, and every skill picks it up on the next
+  git pull." What git does NOT solve, and he names it himself:
+   "WHO OWNS THIS WHEN YOU'RE ON VACATION?" / "There's an owner (me, for now, ideally not just me
+   forever) who watches for regressions and reviews PRs." / "NAME AN OWNER BEFORE YOU SHARE THE REPO
+   WITH ANYONE." / "I didn't set out to build internal tooling. I built a few Claude Code skills for
+   myself because I was tired of copy-pasting."
+  THE RESIDUAL PAIN IS OWNERSHIP AND REGRESSION-WATCHING, NOT STORAGE OR DIFFING.
+B5. NO PER-SKILL ACCOUNTABILITY AT ORG LEVEL. Anthropic's org skills shipped 18 Dec 2025 - admin
+  central provisioning, enabled-by-default, user toggle-off, a skills directory with Notion/Canva/
+  Figma/Atlassian. EXPLICITLY NOT INCLUDED: skill versioning, approval workflows, usage analytics,
+  drift detection, per-skill permissions. Apr 2026 admin controls added spend caps and Claude Code
+  usage analytics - but analytics are "lines of code accepted, suggestion accept rate, session
+  volume", NOT per-skill usage or cost attribution.
+DEPARTURE: mitigated for ICP B because skills live in a repo that survives the person. BUT
+  ~/.claude/skills/ (global scope) does NOT, and shimo4228 found engineers keep a large global layer
+  - 17 global skills at his peak, and his top recommendation was "Don't put project-specific skills
+  in global." THE GLOBAL LAYER IS THE ICP-B BUS-FACTOR SURFACE.
+
+THE MANAGER'S FOUR QUESTIONS, mapped:
+  Which version is canonical? -> solved by git for B, UNSOLVED for A
+  Who owns it? -> UNSOLVED FOR BOTH (Karlsson's "who owns this when you're on vacation")
+  Is it safe? -> UNSOLVED FOR BOTH, and demonstrably dangerous (the HubSpot bulk-limit bypass)
+  What did it cost / is anyone using it? -> partially solved, per-session per-individual only,
+    via /skill-doctor. ZERO ORG-LEVEL ROLL-UP.
+
 [CONTENT_PLACEHOLDER]
