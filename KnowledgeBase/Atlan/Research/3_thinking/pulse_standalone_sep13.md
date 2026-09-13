@@ -126,7 +126,7 @@ and excluded from the score. That separation is what makes the number defensible
 | **Token cost** | listing tokens vs 1,536-char / ~100-word budget, per skill and summed; body tokens vs 500-line rule; reference-file weight; "loaded but never invoked" tax | is this description as short as it can be *without* losing the near-miss? |
 | **Dedupe** | description trigram + shingle similarity; body near-duplicate; name collision | intent overlap two skills describe in different words — the case measurement cannot catch |
 | **Security** | credential shapes (never echo the value), `allowed-tools` breadth, `bypassPermissions`, fetch-and-follow instructions, declared egress, destructive tool + remote content combined | injection reachability: does fetched content actually reach a point treated as instruction? |
-| **Vulnerability / supply chain** | referenced scripts and their imports, a piped-install line that fetches and runs a remote script directly, unpinned dependencies, dead or off-domain links, files referenced but missing | does the skill do something the description does not disclose? |
+| **Vulnerability / supply chain** | referenced scripts and their imports, install/`curl | sh` lines, unpinned dependencies, dead or off-domain links, files referenced but missing | does the skill do something the description does not disclose? |
 | **Improvement** | structure: missing description, no trigger phrasing, no owner, staleness by git date, >500 lines, no progressive disclosure when >300-line refs exist | the rewrite: propose a concrete shorter description and a concrete structural fix, quoting the line |
 
 **Score** stays 0–100 with published weights on `/method`, sub-scores always shown, `engine v1`
