@@ -149,4 +149,75 @@ itself treats an unreviewed skill as a live risk, not a hypothetical one.
    **Why it matters:** Shows three independent scanners can disagree on the same skill — trust signals on
    today's biggest community registry are inconsistent, not a solved problem. [verified]
 
+---
+
+## B4 — COUNTER-EVIDENCE: status quo is fine / dotfiles suffice / this is over-engineering
+
+**Honest search result: this is the weakest bucket, and the strongest version found is nuanced rather than
+a flat "you don't need this."** No GitHub issue or comment in this pass stated outright that a governed
+registry is unnecessary. The actual do-nothing case has to be assembled from what teams visibly settle for:
+
+1. **Quote:** "my dotfiles have grown well beyond shell configs. They now manage my AI coding agents too."
+   ...outcome claimed: "Now: New machine? Clone the repo, run `install.sh`, done."
+   **Author:** Dr. Mowinckel | **Date:** 2026 | **Link:** https://drmowinckels.io/blog/2026/dotfiles-coding-agents/
+   **Bucket:** B4 | **Why it matters — the best honest counter-argument:** a single competent individual
+   CAN make dotfiles-based sync work across their own machines. The caveat that undercuts it as an
+   enterprise answer: this required building custom symlink management, marketplace integration, and
+   install scripts — i.e. the "just dotfiles" case is only free for a solo developer; for a team it
+   reappears as exactly the DIY infrastructure work (#28327, #1132) that people are asking Anthropic to
+   avoid building themselves. [verified]
+
+2. **Structural counter-argument (not a quote):** Anthropic already ships a plugin-marketplace primitive
+   (`claude plugin marketplace add owner/repo`, `.claude/plugins/known_marketplaces.json`) and multiple
+   community "plugin marketplace template" repos exist precisely to package it
+   (e.g. https://github.com/ivan-magda/claude-code-plugin-template — "This GitHub template gives you a
+   working marketplace structure, scaffolding commands, validation, and CI/CD automation.") [verified].
+   This is the real status-quo answer teams reach for before considering a third-party registry, and it is
+   the honest baseline a governed-registry pitch has to out-argue — not "nothing," but "git repo + Anthropic's
+   native marketplace feature, self-assembled."
+
+3. Note: the strongest flat "don't need this" sentiment on this general theme was found by a companion
+   researcher on Hacker News, not GitHub — see `2_research/community/reddit_hn.md`, quote from user
+   "Sammi": "I've been pitched products like ozbrain before, but I've failed to see the need over what I
+   already have. Seems like more complication for no gain to me." (HN, not GitHub, so not re-logged here.)
+
+---
+
+## B5 — NUMBERS (public unauthenticated GitHub REST API, api.github.com, checked 2026-09-05)
+
+All figures below via `GET /repos/{owner}/{repo}` unauthenticated (60 req/hr limit). Stars = stargazers_count.
+
+| Repo | Stars | Forks | Open issues | Created | Last push |
+|---|---:|---:|---:|---|---|
+| anthropics/skills | 174,451 | 20,662 | 1,208 | 2025-09-22 | 2026-09-03 |
+| anthropics/claude-code | 144,148 | 23,027 | 13,893 | 2025-02-22 | 2026-09-04 |
+| vercel-labs/skills (skills.sh) | 30,451 | 2,613 | 1,184 | 2026-01-14 | 2026-08-18 |
+| modelcontextprotocol/registry | 7,222 | 979 | 166 | 2025-02-05 | 2026-09-02 |
+| openai/codex | 121,711 | 18,667 | 15,414 | 2025-04-13 | 2026-09-05 |
+| wshobson/agents | 39,443 | 4,204 | 2 | 2025-07-24 | 2026-09-01 |
+| ComposioHQ/awesome-claude-skills | 74,518 | 8,576 | 1,403 | 2025-10-17 | 2026-08-10 |
+| hesreallyhim/awesome-claude-code | 53,554 | 4,667 | 994 | 2025-04-19 | 2026-09-05 |
+| VoltAgent/awesome-openclaw-skills | 52,394 | 5,014 | 2 | 2026-01-25 | 2026-09-05 |
+| github/awesome-copilot | 38,664 | 4,889 | 61 | 2025-06-11 | 2026-09-04 |
+| VoltAgent/awesome-agent-skills | 33,781 | 3,572 | 23 | 2025-10-28 | 2026-09-05 |
+| K-Dense-AI/scientific-agent-skills | 42,871 | 3,919 | 31 | 2025-10-19 | 2026-09-02 |
+| JimLiu/baoyu-skills | 25,673 | 2,853 | 18 | 2026-01-13 | 2026-07-04 |
+| phuryn/pm-skills | 26,019 | 2,798 | 42 | 2026-03-01 | 2026-07-03 |
+| alirezarezvani/claude-skills | 25,566 | 3,612 | 12 | 2025-10-19 | 2026-08-30 |
+| travisvn/awesome-claude-skills | 14,974 | 1,940 | 795 | 2025-10-16 | 2026-04-28 |
+| ccplugins/awesome-claude-code-plugins | 931 | 450 | 170 | 2025-10-13 | 2026-08-12 |
+| daymade/claude-code-skills | 1,377 | 218 | 16 | 2025-10-22 | 2026-09-05 |
+| karanb192/awesome-claude-skills | 505 | 249 | 214 | 2025-10-21 | 2026-09-01 |
+
+Notes on the table:
+- jeremylongshore/claude-code-plugins-plus-skills and ComposioHQ/awesome-claude-plugins both returned HTTP
+  301 "Moved Permanently" (renamed/transferred) at query time and were not re-resolved — excluded rather
+  than guessed.
+- High open-issue counts on anthropics/claude-code (13,893) and openai/codex (15,414) reflect these are
+  the flagship CLI repos fielding all bug/feature traffic, not skill-specific — treat as a ceiling, not a
+  skills-specific signal. The skills-specific issue volume is what's hand-picked into B1-B3 above.
+- Several "awesome-claude-skills"-named repos exist independently (ComposioHQ, travisvn, karanb192,
+  Chat2AnyLLM, bbgnsurftech) — the name is not unique, which is itself a small discoverability/duplication
+  data point relevant to B2.
+
 [CONTENT_PLACEHOLDER]
