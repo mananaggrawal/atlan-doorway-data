@@ -258,3 +258,4 @@ Attempted query: `https://grep.app/api/search?q=SKILL.md` and the equivalent hum
 - WebFetch, `https://scottspence.com/posts/organising-claude-code-skills-into-plugin-marketplaces` —
   describes personal marketplace organization but makes no comparative "sufficiency" argument against a
   governed registry; not usable as a B4 quote.
+
