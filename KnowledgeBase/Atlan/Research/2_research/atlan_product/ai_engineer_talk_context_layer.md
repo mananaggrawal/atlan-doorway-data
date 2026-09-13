@@ -194,4 +194,26 @@ then you're able to reverse construct how these things are actually connected on
 can reverse construct that and then deploy AI on top of it, we've seen incredible accuracy in being able to
 reverse construct the first version of your company brain. [snorts] So I'll end with this. Uh the way I
 
-[CONTENT_PLACEHOLDER]
+Chapter 14: Defining the Context Layer Architecture
+think about a context layer is it's a system that turns knowledge and expertise and norms that we talked about
+that Maya knows into a machine usable context for AI systems. Um
+at a very high level the way I like to think of it is it looks like this. Uh it continually is mining context from your
+business systems. It's feeding this in to that one company brain. It's harnessing this in skills and context
+development life cycles as your teams go and deploy these agents. And then it has a bunch of ways you can retrieve it. So
+MCP, SQL, vector retrieval, hybrid assembly, all these different ways that you retrieve it and pull back from traces and build this compounding
+learning loop. [snorts] Today we're largely building agents by hard- coding context.
+The scale of this problem I truly believe is unhived because with scale this can become really unsustainable. Uh and a little dangerous like all of us
+know this this old joke which is if you ask sales and finance the revenue number you're going to get two different numbers. uh we're fast approaching a
+moment of starting to deploy autonomous systems where the same thing is starting to happen.
+Chapter 15: Conclusion: Context is IP
+So I'll end with one last thing. I started this presentation by saying context is king. Um I'd like to end it
+by saying context is also IP. Something I think a lot about is in a world where
+you and your competitor have access to the same models and the same intelligence, what differentiates a company? What differentiates a customer
+support agent at American Express versus Amazon? Uh that's how you do business.
+That's what makes your company special.
+uh context is how we take and encode our culture and our norms into something that we will be proud of as we build
+autonomous frontier firms. Um and that's all I had. Um you can find me at proalpa
+on Twitter um or write to me. We are actively working with folks on the frontier ongoing and shipping and
+building company brands. Um so if you'd like to talk to us, feel free to reach out. Thank you.
+[applause]
+[music]
