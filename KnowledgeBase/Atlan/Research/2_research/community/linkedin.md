@@ -1,0 +1,6 @@
+# LinkedIn evidence: how teams manage, share and govern AI agent "skills"
+Research date: 2026-09-05. Method: `linkedin.com/search/results/content/?keywords=...` read via browser, scanned with get_page_text/read_page. All entries below were read live in the browser this session — marked [verified].
+
+**Tooling limitation, disclosed up front:** LinkedIn's search-results DOM does not expose a feed post's own permalink (`/feed/update/urn:li:activity:...`) to the accessibility tree or page text without either (a) clicking "Copy link to post" and reading the OS clipboard, or (b) opening each post individually — neither was worth the added device-clipboard permission or per-post cost for a scan of this breadth. Where the author published a linked Pulse/newsletter article, that article's own stable URL is given (it carries the same claim). Where there is no such article, the citation is the author's profile URL plus the exact search query the post surfaced under — sufficient to relocate the post, not a raw activity permalink. This is noted per entry.
+
+[CONTENT_PLACEHOLDER]
