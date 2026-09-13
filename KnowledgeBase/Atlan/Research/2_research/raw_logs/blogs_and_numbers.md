@@ -106,6 +106,6 @@ Verdict: 0 useful hits. Author of the claudefa.st plugins-distribution post rema
 1. heyclau.de/entry/guides/team-onboarding-with-claude-code-plugins-and-skills — author kiannidev, HeyClaude, 2026-06-14. What was on it: a team-onboarding playbook for plugins/skills (curated bundles, scope standardization, staged day/week/month rollout, champion kit). Filed: YES, B1, 5 quotes.
 2. claudefa.st/blog/tools/mcp-extensions/plugins-distribution — author unclear (site "Claude Fast," Twitter @AbdoMobayad inferred on 2nd fetch), no date visible on first fetch. What was on it: personal-setup-to-org-standard lifecycle for plugins, versioning mechanics (semver vs. commit-SHA). Filed: YES, B1, 5 quotes. Re-fetched a second time later (see #23) purely to try to pin down authorship — inconclusive.
 
-TESTMARK_A
+1. curl -s https://api.npmjs.org/downloads/point/last-month/@anthropic-ai/claude-code raw response downloads 80220622 package @anthropic-ai/claude-code
 
 [CONTENT_PLACEHOLDER]
