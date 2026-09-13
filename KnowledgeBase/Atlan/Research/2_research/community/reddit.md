@@ -48,4 +48,47 @@ Why it matters: [note — "60k stars" is the commenter's own unverified claim ab
 Permalink: https://www.reddit.com/r/claudeskills/comments/1w2a45r/skill_hell_is_real_140_installed_skills_made_my/ (2026-08-30)
 Why it matters: independent builder shipping a free desktop "Skill Manager" (Tauri+React, open source) to solve cross-tool/cross-machine skill fragmentation — third-party confirmation the exact problem (skills scattered per-tool, no shared view) is real enough to build for, even with zero-comment traction.
 
+---
+
+## B2 — SPRAWL
+
+**[verified]** Abu_BakarSiddik, same "Skill hell is real" post:
+> "every skill you install rides along in your context, and its description competes for attention. Past a certain count — especially with overlapping skills — triggering gets visibly worse."
+Permalink: https://www.reddit.com/r/claudeskills/comments/1w2a45r/skill_hell_is_real_140_installed_skills_made_my/
+Why it matters: names the exact mechanism (context/description competition) behind "wrong skill fires" — a precise technical articulation of B2, from the subreddit built specifically around this pain.
+
+**[verified]** MeshugaTech, r/ClaudeCode ("If you aren't creating skills..." thread):
+> "tracking which rules actually prevent errors vs which ones Claude ignores, then pruning the ignored ones. Smaller, tighter rule sets work better than comprehensive ones."
+Permalink: https://www.reddit.com/r/ClaudeCode/comments/1rerqqd/comment/o7fimuu/
+Why it matters: describes manual, ad hoc "does this skill still earn its keep" pruning — exactly the staleness/quality-signal gap a registry with usage/eval data would remove.
+
+**[verified]** Necessary_Abroad6632 (OP), r/ClaudeCode, "Nobody reviews the skills their agent installs. I built a CI gate for it." (1 upvote / 4 comments):
+> "Everyone's .claude/skills/ folder is filling up with stuff pulled from marketplaces, gists, npx skills, random repos. On a team, those files land in the repo and nobody reviews them the way they'd review a dependency bump."
+Permalink: https://www.reddit.com/r/ClaudeCode/comments/1vmwmfn/nobody_reviews_the_skills_their_agent_installs_i/ (2026-08-12)
+Why it matters: dual B2/B3 — sprawl (folder fills up from many uncoordinated sources) compounding directly into an unreviewed-dependency trust problem. The linked tool (baselane-sh/agpm, "the approval and audit layer for agent skills") had 0 stars / 2 contributors at read time — a real but very early, unproven point solution.
+
+---
+
+## B3 — TRUST
+
+**[verified]** Necessary_Abroad6632, same post:
+> "A skill is just instructions your agent will follow and it changes silently."
+Permalink: https://www.reddit.com/r/ClaudeCode/comments/1vmwmfn/nobody_reviews_the_skills_their_agent_installs_i/
+Why it matters: crisp one-line statement of the exact supply-chain/drift risk a governed registry (pinned versions, review-gated updates) is built to close.
+
+**[verified]** iamrolari, r/ClaudeAI, "Do I gatekeep these skills or share with wider team?" (96 upvotes / 87 comments) — top comment at 99 upvotes:
+> "what keeps you valuable keeps you hired . 2) never train your potential or actual replacement unless you are leaving in your terms. I have about 30 more of these fyi"
+Permalink: https://www.reddit.com/r/ClaudeAI/comments/1tzlq8w/comment/oqbqbws/ (2026-06-08)
+Why it matters: the single highest-upvoted comment in the thread is an explicit argument AGAINST sharing skills with a team — job-security/ownership anxiety is a real, popular, and largely unaddressed objection to any "share your skills" pitch. Strong discovery-interview signal.
+
+**[verified]** OkAerie7822, same thread (76 upvotes, the leading counter-argument to gatekeeping):
+> "Gatekeeping buys you 3-6 months before someone else builds something similar. Sharing with you as the architect who runs the implementation makes you the internal AI expert for a process that touches senior leadership."
+Permalink: https://www.reddit.com/r/ClaudeAI/comments/1tzlq8w/comment/oqbtlfe/ (2026-06-08)
+Why it matters: the "share it, but own the rollout / document what it can't catch" camp — this is closer to how a registry with clear ownership and audit trail would be pitched internally, in the community's own words.
+
+**[verified]** BullfrogRoyal7422 (OP), r/ChatGPTCoding, "How do you know your AI audit tool actually checked everything? I was fairly confident that my skill suite did. It didn't." (18 upvotes / 53 comments):
+> "It had reported its findings with confidence, I'd acted on them, and more than half the actual problems were invisible to it."
+Permalink: https://www.reddit.com/r/ChatGPTCoding/comments/1s6cjaq/how_do_you_know_your_ai_audit_tool_actually/ (~2026-04)
+Why it matters: adjacent trust angle — not "trusting someone else's skill" but "trusting your own skill's correctness" once it's silently doing review work for you. Relevant to any pitch that a registry's quality signal (evals, review) is what makes a skill safe to rely on, not just safe to install.
+
 [CONTENT_PLACEHOLDER]
