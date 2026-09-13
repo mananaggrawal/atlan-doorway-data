@@ -59,4 +59,52 @@ Why it matters: direct critique of the leading skills-directory competitor (skil
 Link: https://news.ycombinator.com/item?id=45607117, comment id 45610693 (2025-10-16)
 Why it matters: predicted the entire skills-registry gold rush (confirmed by the dozen+ "package manager for skills" Show HNs found below) on day one — and flagged the supply-chain risk Atlan's trust/provenance layer answers.
 
+---
+
+## B2 — SPRAWL & DECAY
+
+**[verified, HN]** hungryhobbit — on "AI Coding Agent Skills for Real Engineers":
+> "If I had a nickel for every dev who has written a 'productivity suite' of skills, and shared it with others as if it was a burst of innovation... It turns out productivity skill sets for Claude are a bit like opinions and assholes (everyone has one, and ...)"
+Link: https://news.ycombinator.com/item?id=49529329, comment id 49529918
+Why it matters: sprawl-of-low-quality-skills complaint from a credible senior voice, describes the duplicate/low-signal problem a registry's quality/curation layer addresses.
+
+**[verified, HN]** iLoveOncall — on "Dockerhub for Skill.md":
+> "You have no versioning, no automated or simplified update, no way to verify the authors, etc. The 'installation' is literally just a wget... Most of the skills currently hosted are also really bad."
+Link: https://news.ycombinator.com/item?id=46692692, comment id 46699140 (2026-01-20)
+Why it matters: names the exact gaps (versioning, updates, author verification) in the current wave of skill directories — precisely Atlan's feature list, framed as complaints.
+
+**[verified, HN]** m-hodges — on the skills.sh launch thread:
+> "Why do none of these 'npm for Skills' document any way to do basic package management things like updates, version-pinning, or even uninstalls?"
+Link: https://news.ycombinator.com/item?id=46697908, comment id 46702297
+Why it matters: blunt, upvoted-adjacent complaint that the current tooling wave skipped package-manager basics.
+
+**[verified, HN]** dave1010uk, same thread:
+> "The install is very opaque. It's not clear where these skills are installed, how to upgrade them or remove them... Aside: although lots of agents have adopted SKILLS.md conventions, they're currently all using their own paths. There doesn't seem to be a consensus yet."
+Link: https://news.ycombinator.com/item?id=46697908, comment id 46702711
+Why it matters: cross-harness fragmentation (`.claude/`, `.codex/`, `.Gemini/`, 3+ generic paths) is exactly the distribution problem Atlan solves by targeting multiple harnesses.
+
+**[verified, HN]** jampa — on the original Claude Skills launch:
+> "CLAUDE.md files become bloated with niche workflows like CI and E2E testing. Combined with MCPs, this pollutes the context window and eventually degrades performance."
+Link: https://news.ycombinator.com/item?id=45607117, comment id 45607787
+Why it matters: names context-window bloat directly (B2's core complaint) from the very first day of Skills' existence.
+
+**[verified, HN]** CuriouslyC, same thread:
+> "Anything the model chooses to use is going to waste context and get utilized poorly. Also, the more skills you have, the worse they're going to be."
+Link: https://news.ycombinator.com/item?id=45607117, comment id 45608423
+
+**[verified, HN]** rudedogg — skills.sh launch thread:
+> "I'm having issues with the LLMs ignoring the skills content... it's put a damper in my dream of constraining them with well crafted skills"
+Link: https://news.ycombinator.com/item?id=46697908, comment id 46700528
+Why it matters: "wrong/no skill firing" complaint, a named B2 symptom.
+
+**[verified, HN]* zby, same thread:
+> "do skills reliably work for you? I mean are they reliably injected when there is a need... I have a feeling that codex still does not do it reliably - so I still have normal README files which it loads quite intelligently and it works better than the discovery via skills."
+Link: https://news.ycombinator.com/item?id=46697908, comment id 46702936
+Why it matters: cross-harness reliability doubt — also doubles as counter-evidence (falls back to plain README over skill discovery).
+
+**[verified, HN]** gtirloni — on "Dockerhub for Skill.md":
+> "It doesn't help that the skills have a checkmark next to the company's name, even though these skills weren't created by the respective companies."
+Link: https://news.ycombinator.com/item?id=46692692, comment id 46700355
+Why it matters: ownership/attribution integrity problem on an existing registry — exactly what Atlan's "identity and ownership" pillar is meant to fix.
+
 [CONTENT_PLACEHOLDER]
