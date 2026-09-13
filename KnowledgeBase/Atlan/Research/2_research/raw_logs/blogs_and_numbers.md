@@ -119,4 +119,14 @@ Verdict: 0 useful hits. Author of the claudefa.st plugins-distribution post rema
 
 6. GET request to `https://registry.npmjs.org/skills` piped to a small python parser → confirmed: `dist-tags latest: 1.5.23`; description "The open agent skills ecosystem"; homepage `https://github.com/vercel-labs/skills#readme`; repository `git+https://github.com/vercel-labs/skills.git`; last 5 published versions `['1.5.20','1.5.21','1.5.22','1.5.23','1.5.23-snapshot.0']`; latest version's declared dependencies `{'tar': '^7.5.20', 'yaml': '^2.8.3'}`; declared `bin` entries `{'skills': 'bin/cli.mjs', 'add-skill': 'bin/cli.mjs'}`. This is the evidence chain that let me assert "the npm `skills` package IS the skills.sh CLI" in the filed file — confirmed via package identity (repo, description, bin names), not asserted from memory or guesswork.
 
+---
+
+## 3. PAGE-BY-PAGE FETCH LOG (in the order I opened them)
+
+1. **heyclau.de/entry/guides/team-onboarding-with-claude-code-plugins-and-skills** — author kiannidev, HeyClaude, 2026-06-14. What was on it: a team-onboarding playbook for plugins/skills (curated bundles, scope standardization, staged day/week/month rollout, champion kit). Filed: YES, B1, 5 quotes.
+2. **claudefa.st/blog/tools/mcp-extensions/plugins-distribution** — author unclear (site "Claude Fast," Twitter @AbdoMobayad inferred on 2nd fetch), no date visible on first fetch. What was on it: personal-setup-to-org-standard lifecycle for plugins, versioning mechanics (semver vs. commit-SHA). Filed: YES, B1, 5 quotes. Re-fetched a second time later (see #23) purely to try to pin down authorship — inconclusive.
+3. **zackproser.com/blog/claude-skills-internal-training** — author Zachary Proser, 2025-10-21. What was on it: skills as self-documenting runbooks, tribal-knowledge argument, "shared library" framing. Filed: YES, B1, 4 quotes. Flagged as an interview candidate.
+4. **dev.to/shimo4228/15-days-of-skill-sprawl-in-claude-code-lessons-from-3-audits-27em** — author shimo4228, 2026-02-22. What was on it: first-hand diary of 3 self-run skill audits, truncation at Discovery stage, duplicate Swift/Python skills, recurring-audit necessity. Filed: YES, B2, 4 quotes. Flagged as interview candidate.
+5. **mindstudio.ai/blog/context-rot-claude-code-skills-bloated-files** — author Luis Chavez-Mattos (Director of Product), 2026-03-24. What was on it: "context rot" concept, token-cost math for bloated skill files, 2,000-3,000 token rule of thumb. Filed: YES, B2, 5 quotes.
+
 [CONTENT_PLACEHOLDER]
