@@ -50,4 +50,47 @@ Discrepancy note: separate secondary sources gave different install counts for t
 
 Caveat on the `skills` package number: 38M/month is very large for a skills-directory CLI. It could not be independently explained (e.g. whether it is bundled as a transitive dependency of another popular package, inflating raw download counts, since npm download counts count every CI/install pull, not unique users). Treat as a directly-measured but hard-to-interpret figure — flagging rather than asserting "38M people use skills.sh monthly."
 
+## 3. Ecosystem/spec timeline (official, dated announcements)
+
+| Event | Date | Source | Pull date | Status |
+|---|---|---|---|---|
+| Anthropic launches Agent Skills (original, Claude-only) | Oct 16, 2025 | https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills | 2026-09-05 | [verified] |
+| Agent Skills becomes a published open standard / spec site (agentskills.io) — adoption noted by Simon Willison | Dec 19-20, 2025 | https://simonwillison.net/2025/Dec/19/agent-skills/ | 2026-09-05 | [verified] |
+| agentskills.io lists 45+ adopting clients incl. Claude Code, ChatGPT/Codex, Cursor, GitHub Copilot, VS Code, Gemini CLI, Cline-adjacent tools, JetBrains Junie, Databricks, Snowflake, Kiro, Factory, etc. | current as of pull | https://agentskills.io | 2026-09-05 | [verified, live fetch] |
+| skills.sh launches | Jan 20, 2026 | https://rywalker.com/research/skills-sh | 2026-09-05 | [reported] |
+| AWS Agent Registry (Bedrock AgentCore) launches in preview | Apr 9, 2026 | https://aws.amazon.com/about-aws/whats-new/2026/04/aws-agent-registry-in-agentcore-preview | 2026-09-05 | [verified] |
+| AWS Agent Registry reaches general availability | Aug 31, 2026 | https://aws.amazon.com/about-aws/whats-new/2026/08/aws-agent-registry-generally-available/ | 2026-09-05 | [verified] |
+
+Quote, AWS Agent Registry (both preview and GA pages use near-identical language), [verified]:
+> "a private, governed catalog and discovery layer for agents, tools, skills, MCP servers, and custom resources within the organization."
+This matters directly: AWS's own positioning for a governed catalog is nearly a template for a "governed skills registry" pitch, and it went from preview to GA in under 5 months (Apr to Aug 2026) — evidence of real enterprise appetite for exactly this category, from a hyperscaler, independent of skills.sh.
+
+Not obtained despite searching: exact official dates for "Google's skill registry" and a distinct "Skills API" announcement as named in the task brief — no such Google-branded artifact was found (see Could Not Obtain section). Gemini CLI supports the Agent Skills open spec (per agentskills.io client list) but no evidence of a separate Google-run public skill *registry* was found.
+
+## 4. Survey/usage data on AI coding agent adoption
+
+### JetBrains — "AI Coding Agents: Adoption Trends" — blog.jetbrains.com/research — Aug 19, 2026 — author Mikhail Bogdanov — https://blog.jetbrains.com/research/2026/08/ai-coding-agent-adoption-2026/ — [verified] — Sample: "more than 15,000 professional developers worldwide," survey period May-July 2026.
+
+| Stat | Value |
+|---|---|
+| Developers using AI coding agents at least weekly | 90% |
+| Developers using AI coding agents daily | 68% |
+| Claude Code adoption worldwide | ~39% (up from 18% in Jan 2026) |
+| Claude Code adoption, United States | 47% |
+| Developers naming Claude Code their primary/most-used tool | 31% |
+| GitHub Copilot adoption | 21% (down from 29% a year prior) |
+| OpenAI Codex adoption | 16% (up from 3% in Jan 2026) |
+| Cursor adoption | 12% (down from 18% in Jan 2026) |
+| OpenCode adoption / awareness | 7% / 42% awareness |
+| Google Antigravity adoption | 6% |
+| JetBrains AI adoption | ~9% |
+
+Why it matters for ICP sizing: this is the most credible, large-sample, dated evidence that agentic coding tools (the substrate skills run on) are now majority-adopted at the individual-developer level (90% weekly) — but it says nothing about *team-level* skill-sharing behavior, which remains the open question (see qualitative section / "could not obtain" below).
+
+### Anthropic Economic Index — "Learning curves" report — anthropic.com/research — March 24, 2026 — https://www.anthropic.com/research/economic-index-march-2026-report — [verified]
+> "the share of tasks in this category [coding] has increased by 14% in the API" since August 2025.
+> "Long-tenure users are about 5 percentage points more likely to have a successful conversation" (3-4 points after controlling for task type).
+> "The top 10 O*NET tasks now account for 33% of traffic," up from 28% since August 2025.
+This report does not mention Agent Skills, skill counts, or team-size breakdowns at all — logged as a near-miss (see Could Not Obtain).
+
 [CONTENT_PLACEHOLDER]
