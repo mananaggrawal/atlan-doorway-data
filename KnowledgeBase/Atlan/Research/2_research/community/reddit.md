@@ -146,4 +146,39 @@ Thread-level engagement, on-topic threads found (upvotes / comments):
 
 Reading of the shape: general-purpose engagement (funny/venting/showcase posts) dwarfs anything team-governance-shaped by 10-50x in upvotes. The precise "how do we sync/govern skills across a team" question exists, is asked earnestly, and gets real practitioner answers with working config snippets -- but it's a minority thread type that tops out in the single-to-low-double-digit upvotes, not the hundreds. The team-sharing pain is real but niche relative to Reddit's overall skills conversation, which skews toward personal productivity and showcase content.
 
-[CONTENT_PLACEHOLDER]
+---
+
+## NULL RESULTS (queries that returned nothing on-topic)
+
+- `skills.sh` (site-wide) -- no relevant results; all unrelated (legal/entertainment threads).
+- `"skills registry"` (site-wide, exact phrase) -- surfaced only OpenClaw/ClawHub content (a different, unrelated tool ecosystem, not Claude Code/Codex) -- not counted as evidence here.
+- `"skill sprawl"` (site-wide, exact phrase) -- no relevant results under that exact phrasing (the on-topic "Skill hell is real" post was found via a different query).
+- r/ClaudeCode, `title:"I don't use any skills"` (exact quoted title incl. apostrophe) -- 0 results; the real thread exists but only surfaces under looser phrasing.
+- `"skills versioning"` (site-wide, exact phrase) -- 0 relevant results.
+- `"team skills library"` (site-wide, exact phrase) -- 0 relevant results.
+- r/cursor, `skills sharing team` -- 0 relevant results; r/cursor's discourse doesn't use "skills" framing for this at all (Cursor's equivalent is `.cursor/rules/*.mdc`, referenced only in passing on r/ClaudeCode, not discussed as its own governance topic on r/cursor itself).
+- r/devops, `claude skills` -- 0 team-sharing-specific threads; only general devops/AI-tooling content.
+- r/programming, `claude skills` -- only one thin, low-engagement thread (0 votes / 12 comments, about a Neovim integration).
+- r/OpenAI, `codex skills team` -- 0 relevant results.
+- r/LocalLLaMA, `agent skills sharing` -- 0 relevant results.
+- `skills "just use a git repo"` (site-wide) -- 0 relevant results.
+- `skills "overkill" claude` (site-wide) -- 0 relevant results.
+
+Reddit's search is unreliable for this kind of long-tail, technical query -- exact-phrase and `title:` filters routinely return zero even for threads known (via a "related posts" rail) to exist. Anyone repeating this pass should lean on subreddit-scoped browsing and "related posts" rails, not the search box alone.
+
+---
+
+## Channel viability read
+
+- **Access is the first finding**: Claude's own Browser pane and every HTTP-fetch/WebFetch tool hard-block all of reddit.com by policy (confirmed via repeated `request_access` failures, not just an unapproved-site prompt). old.reddit.com now requires a login for every page, including search and comments. www.reddit.com works fully logged-out and was the only viable path, reached only via a real Chrome browser under the Claude-in-Chrome extension. This is worth flagging to whoever owns the research pipeline: without this workaround, Reddit is invisible to this stack.
+- **The exact pain is real but thin**: the most precisely-worded "team skill governance" thread found (zwaantjuh's) has single-digit upvotes. The community is not organizing around this problem in one visible place inside the big general subs.
+- **A purpose-built niche exists**: r/claudeskills (created Oct 2025, 66K weekly visitors) is a dedicated home for exactly this conversation and produces much higher on-topic engagement per post (up to 752 upvotes) than the general subs manage for the same topic -- this is plausibly the single best-targeted Reddit surface for both listening and eventual distribution.
+- **Both camps are loud**: sharing/registry-shaped asks (B1) and anti-sharing, job-security-driven pushback (B3/B4) both draw real upvotes in the same threads -- any GTM message needs to address "why sharing doesn't cost you your job" as directly as it addresses "how do we sync updates."
+
+## Discovery-interview candidates (Reddit usernames, public posts only)
+
+- **zwaantjuh** (r/ClaudeCode) -- finance-team Claude admin, hand-rolling org-skill ZIP re-uploads, explicitly wants GitHub-style push/sync. Best single candidate found.
+- **Abu_BakarSiddik** (r/claudeskills) -- built a free open-source cross-tool "Skill Manager" desktop app to solve his own 140+-skill sprawl problem.
+- **Necessary_Abroad6632** (r/ClaudeCode) -- built `agpm`, an "approval and audit layer for agent skills" CI gate, from lived pain about unreviewed skill drift on a team.
+- **Dijerati** (r/ExperiencedDevs) -- newly asked to become "AI Lead" for their team's Claude Code/CLI rollout, actively looking for how to do this well.
+- **Natural-Round8762** (r/ClaudeAI) -- wrote a skill at work, is actively weighing gatekeeping it vs. formalizing and sharing it with the wider team.
