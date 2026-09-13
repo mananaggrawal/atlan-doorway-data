@@ -121,4 +121,17 @@ The same people-search discipline applied to "developer productivity AI" surface
 ### Company types represented across all findings
 Individual consultants/architects running client engagements (Abhisheik Deo, Rizwan Saudagar, Murali K.), a named competitor SaaS founder (John McCann/shareskills.ai), an infra-observability CTO (Ben Blackmore/Dash0), enterprise AI-consulting recruiters and Big-4/GCC hiring posts (Infosys, background noise), a security boutique (Secure Axis Labs), an independent security tool builder (Pethuraj M/AgentSeal), and a niche AI newsletter/publication (AI Alleyway). Notably **no large-enterprise engineering blog or named FAANG/scale-up engineering team post was found describing its own internal skills rollout** — Ramp and Stripe are referenced only secondhand, inside Abhisheik Deo's post, not as their own posts.
 
-[CONTENT_PLACEHOLDER]
+---
+
+## Null-result queries (logged as run, nothing bucket-relevant found)
+
+1. `internal AI skills library` — returned generic AI/ML skills-training and certification content (IBM SkillsBuild credential, an academic-librarian AI-competence research article, a "Google AI Essentials" course ad). No team skill-sharing or governance hits.
+2. `context engineering skills` — returned a school hiring/graduate-recruiting post, a "prompt engineering vs. context engineering" career-advice Pulse article, and an "AI engineering is getting overcomplicated" post not specific to Claude/Codex skills or governance.
+3. `agent governance versioning` — returned generic enterprise-AI-governance content (an "Agentic AI Governance Engine" teaser, a master-data-governance/SAP article, an inter-agent decision-ownership newsletter) - none addressed skill-file versioning specifically.
+4. `Codex skills team` — name-collision noise: a student hackathon team thanking a coding club called "Codex," an unrelated Asana job ad, a "seeking technical co-founder" post that only mentions Codex/Claude Code/Cursor in passing.
+5. `agent skills are overengineered` — zero relevant matches; LinkedIn auto-corrected to "over engineered" and returned unrelated resume/hiring-skills content.
+6. `don't need a skills registry` — zero relevant matches; returned generic career-skills and startup-process content, nothing about agent skill registries.
+7. `Claude Code skills team` (secondary read) — beyond the one token-bloat post logged in B2, the rest of the page was a recruiter's "Claude Code User" hiring ad and a generic "Skills vs CLAUDE.md vs MCP vs Sub-agents" explainer — no team/rollout content.
+
+## Access note
+LinkedIn was fully accessible throughout - no login wall, rate limit, or security checkpoint was encountered on any of the 19 queries run. All reading was done via the search-results content feed and get_page_text/read_page; nothing was posted, liked, followed, or messaged.
