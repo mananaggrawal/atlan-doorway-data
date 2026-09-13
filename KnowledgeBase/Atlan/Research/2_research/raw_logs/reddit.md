@@ -166,4 +166,77 @@ Plus **3 direct subreddit-homepage visits** (not searches at all, just to read t
 
 ---
 
+## 4. EVERYTHING SEEN BUT NOT FILED, AND WHY
+
+This is every thread title I saw (in a search-results listing or a "Related posts" sidebar) but did not open, or opened-adjacent comments I saw but chose not to quote, plus my reasoning where I have it.
+
+**Titles seen in sidebars/search listings, never opened, roughly in the order I encountered them:**
+- "Do you guys use skills?" — r/ClaudeCode, 8/43 — seen in Thread 1's sidebar. Not opened; time budget, and title suggested a generic yes/no poll rather than new bucket content.
+- "are skills just a set of prompt engineering?" — r/ClaudeCode, 21/33 — seen in Thread 1's sidebar. Not opened.
+- "What skills are you using?" — r/ClaudeCode, 70/64 — seen in multiple sidebars (Thread 1, Thread 2). Not opened; likely B1-adjacent (a "share your skills" thread) and probably should have been opened given how often it recurred in sidebars — logged here as a **specific gap**.
+- "Is there a way to see what skills were used?" — r/ClaudeCode, 8/9 — seen in Thread 1's sidebar. Not opened.
+- "Self-improving skills and automatic skill creation should be the norm" — r/ClaudeAI, 14/46 — seen in Thread 1's sidebar. Not opened; would likely have been strong B2 material (title closely echoes Fluent_Press2050's own evolve-yourself skill from Thread 1) — **logged as a gap**.
+- "Please share your favorite skills? Lets share exciting resources." — r/ClaudeCode, 9/13 — seen in Thread 1's sidebar. Not opened despite being directly B1-shaped by title — **logged as a gap**.
+- "What cool projects are you working on that do *not* target other developers?" — r/ClaudeCode, 20/107 — seen in Thread 1's sidebar. Not opened; title suggested general showcase, not skills-governance.
+- "Are we all just becoming product engineers?" — r/ClaudeCode — seen in Thread 1's sidebar, vote count not clearly captured in my screenshot. Not opened.
+- "What are you actually coding?" — r/ClaudeCode — seen in Thread 1's sidebar, counts not captured. Not opened.
+- "Solving the biggest issue with Vibe Coding." — r/vibecoding, 12 comments, vote count not visible (ad-adjacent post styling) — seen in Thread 1's sidebar. Not opened.
+- "Best way / place to find skills" — r/ClaudeCode, 13/30 — seen in Thread 2's and Thread 9's sidebars (recurred). Not opened despite being directly B1-shaped — **logged as a gap**.
+- "A humble guide to the multi-agent workflows I use every day" — r/ClaudeCode, 206/35 — seen in Thread 2's sidebar. Not opened; title suggested general workflow content, not skills-sharing specifically, though I noted it as a lead in my working notes at the time.
+- "Everyone on my team uses AI and teamwork got worse. How do you manage it?" — r/ClaudeAI, 20/32, 9 days old — seen in Thread 2's sidebar. Not opened; very team-shaped title, possibly relevant to B1/B3 — **logged as a gap**, especially given recency.
+- "Is it important to create skills?" — r/ClaudeCode, 11/18 — seen in Thread 2's sidebar. Not opened.
+- "Moving from Teams to Enterprise" — r/ClaudeAI, 4/17 — seen in Thread 2's sidebar. Not opened; could be relevant to org/seat-management context but title suggested billing-tier question, not skills specifically.
+- "Experienced Developers (+10 years), what are your AI-assisted workflows and best..." — r/ClaudeCode, 19/18, 1y old — seen in Thread 2's sidebar. Not opened, too old/generic.
+- "Do you guys create/manage agents and have found it meaningful?" — r/ClaudeCode, 10/15 — seen in Thread 2's sidebar. Not opened.
+- "What's your multi agent orchestration..." (title cut off) — r/ClaudeCode — seen in Thread 2's sidebar. Not opened.
+- "Can't get Skills to be used in anyway!" — r/ClaudeCode, 5/13, 9mo old — seen in Thread 1's/Thread 6's sidebar area. Not opened; likely B2-relevant (triggering failure) — **logged as a gap**.
+- "Are 'skills' just better way of managing context?" — r/ClaudeCode, 13/24, 8mo old — seen in Thread 1's sidebar. Not opened; directly B2-relevant by title — **logged as a gap**.
+- "I think 'Skills' are useless as a concept" — r/ClaudeAI, 44 comments, vote count not captured, 6mo old — seen in Thread 3's sidebar. **Not opened — this is the single biggest specific B4 gap in this pass.** By title alone this looks like it could be the strongest counter-evidence thread of the whole search, and I never opened it.
+- "Where do skills live? I'm so confused" — r/ClaudeAI, 9/17, 4mo old — seen in Thread 3's sidebar. Not opened; B2-relevant (fragmentation/discoverability confusion) — logged as a minor gap.
+- "Must-have skills" — r/ClaudeCode, 59/36, 8mo old — seen in Thread 3's sidebar. Not opened.
+- "So I just discovered premade skills. What else are there?" — r/ClaudeAI, 40/20, 26 days old — seen in Thread 1's sidebar. Not opened.
+- "Can't get my head around Skills" — r/ClaudeAI, 13/27, 3mo old — seen in Thread 3's sidebar. Not opened.
+- "Are skills gone for anybody else?" — r/ClaudeAI, 10/12, 4mo old — seen in Thread 3's sidebar. Not opened.
+- "Saw this job posting" — r/ClaudeAI, 106/23, 12 days old — seen in Thread 3's sidebar. **Flagged at the time as possibly describing an "AI/Skills Lead" job listing** — never opened to confirm. **Logged as a gap**, potentially relevant to B1/B5 (evidence that "manage the team's skills" is becoming an actual job title/responsibility in postings, not just an ad hoc Reddit-thread request).
+- "Made a 100% reliable skill" — r/ClaudeCode, 143/16, 5mo old — seen in Thread 3's sidebar. Not opened.
+- "unslop-ui (v2): a Claude skill that flags and removes the design patterns that make a website look AI-generated. (Part 2)" — r/claudeskills, 30/6 — seen in query 19's result listing. Not opened; a single-skill showcase, not governance-relevant.
+- "Barracks - manage your skills effortlessly" — r/claudeskills, 2/0 — seen in query 19's result listing. Not opened; another skill-manager-type tool (third one seen this session, after Abu_BakarSiddik's Skill Manager and Necessary_Abroad6632's agpm) — **logged as a lead**: worth checking later whether this is a fourth independent point-solution builder or a rebrand/duplicate account.
+- "How do you set up your code review skill?" — r/claudeskills, 9/16, 20 days old — seen in Thread 6's sidebar. Not opened.
+- "I just made the most insane marketing skill" — r/claudeskills, 217/24, 2mo old — seen in Thread 6's sidebar. Not opened; showcase, not governance.
+- "my agent skills stack in 2026, actually copy-pasteable" — r/claudeskills, 529/22, 9 days old — seen in Thread 6's sidebar. **Not opened despite very high engagement** — logged as a gap; likely B1-shaped (a "here's my shareable stack" post).
+- "3 months ago I shared book-to-skill here" — r/claudeskills, 151/13, 1mo old — seen in Thread 6's and Thread 7's sidebars. **Not opened** — directly B1-shaped by title (explicitly about having shared something before) — logged as a gap.
+- "I built a dashboard for skills" — r/claudeskills, 294/40, 26 days old — seen in Thread 6's sidebar. Not opened; B2-shaped (another skill-management tool) — logged as a lead, a fifth-ish point-solution builder.
+- "I built skill-router so you don't have to remember which of your 47 skills does what" — r/claudeskills, 47/18, 4mo old — seen in Thread 7's sidebar. Not opened; directly B2-shaped — logged as a lead/gap.
+- "Which single skill has been the biggest game changer for you?" — r/claudeskills, 360/92, 1mo old — seen in Thread 7's sidebar. **Not opened despite being the single highest-comment-count on-topic thread found in the entire pass (92 comments)** — this is the clearest specific gap in the whole session; a thread this size in the dedicated skills subreddit almost certainly contains more B1/B4 material than anything I did open. Logged as the top priority for a follow-up pass.
+- "Drowning with skills all around, help me find the right ones." — r/claudeskills, 22/17, 4mo old — seen in Thread 7's sidebar. Not opened; directly B2-shaped — logged as a gap.
+- "I united my last 2 years of front-end-design with coding agents into one skill... THIS is..." (title cut off) — r/claudeskills, 115/45, 14 days old — seen in Thread 7's sidebar. Not opened.
+- "Claude skill that scores your resume based on hacker-rank hiring agent" (title reconstructed from a cut-off view) — r/claudeskills, 2mo old, counts not captured — seen in Thread 6's sidebar. Not opened.
+- "I built a Claude skill from 8 months of my own Claude Code sessions" — r/claudeskills, 222/56, 2mo old — seen in query 20's result listing. Not opened.
+- "How to build Skill.md File - Universal Standard Cracked" — r/AIToolsPromptWorkflow, 248 votes / **0 comments** — seen in query 20's result listing. Not opened; flagged as suspicious (see Section 5, vote/comment-count mismatches).
+- "I made a Codex Skill for consistent article illustrations across multiple visual styles" — r/OpenaiCodex, 133/12, 3mo old — seen in query 20. Not opened; would have been useful to confirm r/OpenaiCodex's general character, never did.
+- "My best workflow so far for building projects with ChatGPT + Codex without everything turning into chaos" — r/codex, 129/55, 4mo old — seen in query 20. Not opened.
+- "I ported Gemini Conductor into Codex and damn, it is a beast..." — r/codex, 127/24, 7mo old — seen in query 20. Not opened.
+- "Built a curated list of official DevOps / Cloud / SRE MCP servers and agent skills" — r/devops, counts not captured — seen in query 25. Not opened.
+- "GitLab CI skill for ai agents based on official docs" — r/devops, counts not captured — seen in query 25. Not opened.
+- "Bringing Claude Code Skills into Neovim via ACP" — r/programming / crossposted r/neovim, 0/12 — seen in query 26. Not opened.
+- "The Busy Person's Intro to Claude Skills (a feature that might be bigger than MCP)" — r/ClaudeAI, counts not captured — seen in query 27. Not opened.
+- "I collected 37+ iOS app marketing Claude skills so you don't have to." — r/iOSAppsMarketing, counts not captured — seen in query 27. Not opened.
+- "I built a way for Claude Skill creators to get paid - looking for beta testers" — r/ClaudeAI, counts not captured — seen in query 27. **Not opened — logged as a specific gap**: this is a monetization/marketplace-economics angle that's adjacent to Atlan's registry pitch (who gets paid when a shared skill is used) and I never checked it.
+- "How you can build a Claude skill in 10 minutes that replaces a process you have been doing manually for years." — r/ClaudeCode, counts not captured — seen in query 27. Not opened.
+- "OpenAI Codex: Guide to Creating and Using Custom Skills" — r/ChatGPTCoding, counts not captured — seen in query 30. Not opened.
+- "My team has to stop this 'let me grab this AI framework' mentality and think about overall system design" — r/ChatGPTCoding, counts not captured — seen in query 30. **Not opened — logged as a gap**, title is directly B2/B4-relevant (a team-level pushback against tool sprawl).
+- Sidebar items on Thread 8 (r/ChatGPTCoding audit-tool thread): "He believes AI code auditing is the new normal for kernel..." (r/CyberNews, 145/83, 25d old, not opened), "My software engineering skills are degrading because of AI" (r/cursor, 44/46, 1y old, not opened — general AI-skill-atrophy complaint, not about Claude/Codex skill artifacts), "I audited 3 apps built mostly with AI tools. Here's what actually holds up and what's..." (r/saasbuild, 6mo old, title cut off, not opened).
+- Sidebar items on Thread 10 (r/ClaudeCode agpm thread): "I Made Claude Install and Govern an Unrestricted AI Agent. The Demo Lies..." (r/ArtificialIntelligence, 2/2, 3mo old, not opened), "Claude is completely ignoring the skills I'm adding, apparently" (r/ClaudeAI, 33 comments, vote count not captured, 10d old — **logged as a gap, directly B2-relevant and very recent**), "How do you guys deal with being a stranger to your own codebase?" (r/ClaudeAI, 75/64, 19d old, not opened — general AI-trust-in-own-code, not skills-specific).
+- Sidebar items on Thread 9 (r/claude "still any point" thread): "Well, I don't even know what to say at this point." (r/claude, 89/46, 3mo old, not opened), "Found out something interesting" (r/claude, 25/20, 1mo old, not opened), "What skill should I install to make him speak..." (title cut off, not opened).
+
+**The OpenClaw/ClawHub cluster — deliberately not pursued, biggest "we might be missing something" flag of the whole pass:**
+Surfaced repeatedly under "skills registry" and "skills" searches: "I spent a week diving deep into OpenClaw (the #5 most-starred GitHub repo right now)" (r/openclawsetup), "A top-downloaded OpenClaw skill is actually a staged malware delivery chain" (r/LocalLLaMA), "I audited all 31,000+ skills on OpenClaw's ClawHub registry for supply chain attacks. 2,371 have malicious patterns." (r/cybersecurity), "openclaw creator on managing the fastest growing oss project in 2026" (r/theprimeagen). I did not open any of these. I could not tell from the search-result snippets alone whether "OpenClaw"/"ClawHub" is: (a) a real, large, separate agent-skills ecosystem parallel to Claude Code/Codex that I simply haven't otherwise heard of, (b) a rebrand or fork of something I'd recognize under another name, or (c) satirical/parody content (the presence of a dedicated r/openclawsetup subreddit argues against pure parody, but the specific numbers — 31,000+ skills, "#5 most-starred GitHub repo right now" — are large enough that I was suspicious of taking them at face value without opening the threads). Given the task's explicit scope was Claude Code / Codex SKILL.md files, I judged this out of scope for the polished findings file, but if OpenClaw/ClawHub is real, "2,371 skills with malicious patterns out of 31,000+ audited" would be by far the single largest piece of B3 evidence found in this entire pass, so this is worth a dedicated follow-up look.
+
+**Vote/comment-count anomalies noticed but not deeply investigated:**
+- "How to build Skill.md File - Universal Standard Cracked" (r/AIToolsPromptWorkflow): 248 votes, 0 comments.
+- "Skill hell is real..." showed as votes/comments blank in the site-wide search listing (query 16) but resolved to a normal 26/0 when re-queried subreddit-scoped (query 19) — this looks like a rendering bug in the site-wide search results page specifically, not a real signal, but I did not test it further.
+- Several threads (the three cross-posted-verbatim ones especially — "Skill hell is real," "Nobody reviews the skills," and the earlier-noted "The Complete Guide to Claude Code" series) recur across 3+ subreddits with identical titles, which in at least the first two cases produced near-zero comments on every copy — read together with the point above, I'm not fully confident in low comment-counts as a signal of "nobody cared" versus "the same post fragmented its own small audience across multiple subs, or the count itself didn't render." Flagging this rather than resolving it.
+
+---
+
 [CONTENT_PLACEHOLDER]
