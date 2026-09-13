@@ -220,4 +220,41 @@ Notes on the table:
   Chat2AnyLLM, bbgnsurftech) — the name is not unique, which is itself a small discoverability/duplication
   data point relevant to B2.
 
-[CONTENT_PLACEHOLDER]
+### grep.app estimate — DID NOT WORK, reporting as required
+
+Attempted query: `https://grep.app/api/search?q=SKILL.md` and the equivalent human search URL
+`https://grep.app/search?q=SKILL.md&filter[lang][0]=Markdown`.
+- Direct API call (curl, with and without a browser User-Agent): blocked by a Vercel bot/security
+  checkpoint interstitial (HTML page titled "Vercel Security Checkpoint"), no JSON returned.
+- WebFetch on the human search URL: refused with `ROBOTS_DISALLOWED` (grep.app's robots.txt disallows
+  fetching `/search`).
+- GitHub's own code search API (`api.github.com/search/code?q=filename:SKILL.md` and
+  `q=path:.claude/skills`) was also tried as a substitute and returned `401 Requires authentication` —
+  unauthenticated code search is not available on the public REST API.
+- **No population estimate for "how many public repos contain SKILL.md or .claude/skills/" could be
+  produced from primary sources in this pass.** The closest proxy is the topic-page and awesome-list repo
+  counts above (dozens of dedicated skill-collection repos, several individually claiming 300-2,800+
+  bundled skills), but that is curation volume, not a repo-count census, and should not be reported as
+  one.
+
+---
+
+## Null-result log (exact queries that returned nothing useful)
+
+- GitHub search/issues, `repo:anthropics/skills type:discussion sharing OR team OR sync` — 0 results
+  (GitHub Discussions are not indexed by the `/search/issues` REST endpoint; would need GraphQL, which
+  requires authentication — graphql rate bucket showed limit 0 for unauthenticated access).
+- GitHub search/issues, `repo:anthropics/claude-code credentials committed skill in:title,body` — 3
+  results, none relevant (all matched unrelated "credential"/"skill" word co-occurrence in bug reports).
+- GitHub search/issues, `repo:openai/codex share prompt team members in:title,body` — 4 results, none
+  about skill/prompt sharing (Codex uses AGENTS.md, not a SKILL.md/skills directory convention, so the
+  sharing friction shows up there as AGENTS.md-discovery bugs, e.g. #30789, #26957, not skill-sharing asks).
+- WebSearch, `Claude Code skills reddit "just put it in the repo" OR "dotfiles is enough" OR "don't need a
+  marketplace"` — no on-topic GitHub or Reddit hits; returned tangential blog posts only.
+- WebSearch, `HN "Show HN" claude code skills registry comments "not needed" OR "solved problem" OR "just
+  use git"` — no flat "not needed" comment surfaced; returned registry/marketplace project listings instead.
+- WebFetch, `https://github.com/anthropics/skills/discussions/1030` — the discussion (a 257-skill registry
+  announcement) had 0 replies/comments at fetch time, so no comment-level B1/B2/B3 evidence available there.
+- WebFetch, `https://scottspence.com/posts/organising-claude-code-skills-into-plugin-marketplaces` —
+  describes personal marketplace organization but makes no comparative "sufficiency" argument against a
+  governed registry; not usable as a B4 quote.
