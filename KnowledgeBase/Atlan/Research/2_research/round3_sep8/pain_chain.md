@@ -246,4 +246,120 @@ THE MANAGER'S FOUR QUESTIONS, mapped:
   What did it cost / is anyone using it? -> partially solved, per-session per-individual only,
     via /skill-doctor. ZERO ORG-LEVEL ROLL-UP.
 
-[CONTENT_PLACEHOLDER]
+## ============ DEPARTURE / REORG - better evidence than round 2, still thin ============
+1. DIRECT SURVEY DATA - the closest thing to a hard number. Kolmogorov Law via Pollfish, n=500
+   employed US adults, 8 Jul 2026 [verified - named survey, named sample]:
+   "38% admitted they have entered at least one type of work information into a personal AI account"
+   "36.8% [use AI for work] at least partly through a personal account"
+   On leaving employment with work chats in a personal AI account: *** 16.2% WOULD KEEP THE ACCOUNT
+   UNCHANGED, BELIEVING "THE CHATS ARE MINE"; 31.6% HAD NEVER CONSIDERED THIS SCENARIO; *** 19%
+   would ask their employer for guidance. Framing: could "walk out the door by default."
+2. LEGAL FRAMING - M. Adil Yaqoob, Akerman LLP, 9 Jun 2026 [verified, law-firm client alert]:
+   employers should ask departing workers to certify they haven't "retained AI-generated summaries of
+   company information, STORED COMPANY PROMPTS OR OUTPUTS IN PERSONAL ACCOUNTS"; preserve "prompts,
+   outputs, chat histories, and memory exports." BUT: "COURTS HAVE NOT YET DIRECTLY ADDRESSED"
+   whether AI-generated summaries of trade secrets constitute misappropriation. NO CASES CITED.
+3. *** THE BEST ANALOG, AND IT IS A VERY GOOD ONE *** - KomuraSoft, "Power Automate Key-Person Risk
+   and Flow Handover", 18 Jul 2026 [verified - consultant quoting client engagements verbatim]:
+   "We had an employee who was good with Power Automate, and they automated all sorts of processes
+    around the company. NOW THEY'RE LEAVING NEXT MONTH, AND NOBODY KNOWS WHAT ANY OF THE FLOWS
+    ACTUALLY DO."
+   The later-stage version: "the person has already left, and 'ORDER NOTIFICATION EMAILS STOPPED
+    ARRIVING LAST MONTH AND THERE'S NOBODY WHO CAN FIX IT'."
+   The author notes this consultation type has "visibly increased lately."
+   MECHANISM: "Connections used to run it (the authentication to SharePoint, Outlook and so on) are
+   TIED TO THE ACCOUNT OF THE PERSON WHO CREATED THEM", and "even a co-owner cannot change the
+   credentials of a connection someone else created." Microsoft's own term: "ORPHANED FLOW."
+   *** THAT MECHANISM MAPS EXACTLY ONTO ICP A: OAuth to HubSpot/Gmail/Gong IS BOUND TO THE
+   INDIVIDUAL'S ACCOUNT. When they leave, the skill file may survive but THE CONNECTION DOES NOT. ***
+VERDICT: still no first-person "my colleague left and the skills broke" account for AI skills.
+Likely because the install base is ~12 months old and the cohort hasn't turned over yet. THE PAIN IS
+AHEAD OF THE MARKET, NOT ABSENT FROM IT. The Power Automate analog is what this looks like at T+5
+years. USE IT AS A PREDICTION, FRAMED HONESTLY, NOT AS A CLAIMED OBSERVATION.
+
+## ============ WORKAROUNDS AND WHAT THEY COST ============
+| Workaround | Who | Cost |
+|---|---|---|
+| Mass-disable skills (33 of 63) | ICP B | nobody knows if disabled = dead or dormant; no record of why |
+| Repeat audits (3 in 5 days) | ICP B | direct time, recurring forever |
+| Manual cleanup of plugins/MCPs/agents | ICP B | a full session; recovers $75-375/mo API + $200-400/mo productivity |
+| git repo + PR review | ICP B | FREE AND IT WORKS - but creates "who owns this on vacation" |
+| Notion/Drive prompt library | ICP A | Wilkins: "months of prompt-library curation" wasted |
+| Everyone builds their own | ICP A | "private spellbook", untested, unshareable, invisible |
+| Keep CLAUDE.md under 5KB | ICP B | deliberate under-specification to limit re-injection blast radius |
+| Daily human review of agent output | ICP A / manager | see Lemkin below |
+| Third-party MCP permission layers | ICP A org | a vendor appeared selling this in the HubSpot thread, 22 Jul 2026 |
+
+JASON LEMKIN, SaaStr, worth quoting in full for the MANAGER persona [verified]:
+  "Managing these agents is now 30% OF OUR CHIEF AI OFFICER'S TIME."
+  "Every single agent requires weeks of training and daily management. There's no 'set it and forget it'."
+  "Can only absorb 1.5 NEW AGENTS PER MONTH without overwhelming our team."
+  "ALL AGENTS HAVE HALLUCINATED. The key is constant calibration, not perfection."
+  "Effective cost is also OVER $500,000 A YEAR, and far more than the tools they 'replaced'."
+  "We failed spectacularly for the first 30 days. Generic messaging. Terrible response rates.
+   Prospects clicking 'spam'." / "The first 1,000 emails were manually reviewed. Every. Single. One."
+  "10X TIMES ZERO IS STILL ZERO."
+
+## ============ RANKING AND THE WEDGE ============
+Score = severity x frequency x how badly served (10 = totally unserved).
+
+ICP A:
+| # | Pain | Sev | Freq | Unserved | Score | Verdict |
+|---|---|---|---|---|---|---|
+| A7 | Agent bypasses CRM permissions; writes what the human couldn't | 10 | 4 | 9 | 360 | *** WEDGE *** |
+| A6 | Second person asks; no non-git way to hand it over | 6 | 8 | 7 | 336 | Strong #2 |
+| A5 | Skill drifts after schema change, fails silently | 8 | 6 | 10 | 480* | see note |
+| A1 | Skill never fires; user disables it | 4 | 9 | 6 | 216 | entry-level |
+| A8 | Manager: is anyone using this, what did it cost | 5 | 3 | 8 | 120 | bundle with A7 |
+| A3 | 78 skills installed, discovery truncates | 4 | 7 | 3 | 84 | SOLVED FREE |
+| A2 | YAML / naming friction | 2 | 5 | 4 | 40 | ignore |
+*A5 scores highest on paper but is MARKED DOWN IN PRACTICE because NOT A SINGLE NAMED INSTANCE could
+be verified. A campaign built on an unevidenced pain is one the buyer nods at and doesn't act on.
+TREAT A5 AS THE MESSAGE AND A7 AS THE PROOF.
+
+*** ICP A SHARPEST WEDGE: A7 - "YOUR AGENT HAS MORE PERMISSION THAN YOUR REP DOES." ***
+1. The only ICP-A pain with a VERIFIED, DATED, FIRST-PERSON INCIDENT from a real practitioner.
+2. The only one that reaches a BUDGET HOLDER. A1-A6 are felt by a team of one with no budget.
+   A7 is felt by a RevOps admin who owns the CRM and answers to a CRO.
+3. PROVABLY UNSERVED BY BOTH VENDORS. HubSpot's own moderator had no answer; four practitioners
+   across ten weeks confirmed each other; no fix shipped.
+4. IT CARRIES A5 AND A6 AS CONSEQUENCES. Once you have the permissions conversation, "and by the way
+   this skill was written against last quarter's field names, and three people have divergent copies"
+   lands without needing separate proof.
+5. IT INTERCEPTS AT A MOMENT - the first time a manager discovers the agent did something the UI forbade.
+DO NOT LEAD ICP A WITH: truncation/context bloat (solved free, and they aren't in Claude Code
+anyway), YAML friction, or generic "AI governance."
+
+ICP B:
+| # | Pain | Sev | Freq | Unserved | Score | Verdict |
+|---|---|---|---|---|---|---|
+| B3 | Skill drift - instructions silently stop matching reality | 8 | 7 | 10 | 560 | *** WEDGE *** |
+| B1 | Skill loses trigger race to trained behaviour (~50%) | 6 | 9 | 8 | 432 | strong #2, unsellable |
+| B5 | No org-level per-skill ownership/usage/cost/approval | 6 | 4 | 8 | 192 | manager-side |
+| B2 | Token/context burn | 5 | 8 | 2 | 80 | SOLVED FREE |
+| B4 | Handoff / versioning | 4 | 6 | 1 | 24 | SOLVED FREE - NEVER MENTION |
+| - | Departure | 7 | 1 | 8 | 56 | too rare to campaign on |
+
+*** ICP B SHARPEST WEDGE: B3 - THE STALE SKILL AS SILENT DATA CORRUPTION. ***
+1. THE ONLY PAIN IN THE ICP-B CHAIN GIT DOES NOT TOUCH. Git tells you what changed in the skill; it
+   cannot tell you the world changed underneath an unchanged skill. A genuinely new problem class.
+2. Everything else is either already free (B2, B4) or an Anthropic model-behaviour problem you cannot
+   fix (B1). B1 is a great HOOK - most viscerally annoying - but you cannot sell a fix for trigger
+   precedence.
+3. Vercel's 56% gives a credible, quotable, NON-VENDOR number, pointing at the same truth: THE GAP
+   BETWEEN WHAT THE AGENT WAS TOLD AND WHAT IT ACTUALLY DOES IS UNMEASURED. Drift is that gap over time.
+4. Forte Group's CTO already wrote the headline, unprompted.
+5. THE CATCH, STATED PLAINLY: WE WOULD HAVE TO PRODUCE THE FIRST REAL DRIFT INCIDENT STORY OURSELVES.
+   It does not exist publicly. Strongest argument for owning it; biggest execution risk in the plan.
+DO NOT LEAD ICP B WITH: versioning, sharing, git-shaped anything, context/token bloat, or
+/skill-doctor-adjacent "find your unused skills." All four are free, shipped, and one shipped 4 days ago.
+
+## RESIDUAL EVIDENCE GAPS - state these honestly in the appendix
+1. No verified "$3.50 to load the skill" quote. Replace it or find the original.
+2. No named CRM-drift incident. Asserted by vendors, reasoned by practitioners, never documented.
+3. No AI-specific departure story. Best available: a Power Automate analog, a Pollfish survey, and a
+   law-firm alert that explicitly notes NO CASE LAW EXISTS. Use as a closing line, never standalone.
+4. No GitHub reaction counts on the issues in this file - fetches did not surface them. Engagement
+   figures here are limited to thread post counts, dates, and duplicate-report counts.
+5. No ICP-A token-spend testimony. Every quantified cost figure comes from an engineer in Claude Code.
+   If cost is part of the ICP-A pitch, it is currently an ASSUMPTION.
