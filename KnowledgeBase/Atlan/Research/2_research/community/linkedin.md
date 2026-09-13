@@ -82,4 +82,43 @@ Why it matters: The most rigorous, numbers-first provenance/governance audit of 
 Posted 1w before capture. Query: `agent skills governance`. Profile: https://www.linkedin.com/in/harendra-dogra/
 Why it matters: A named, sourced-sounding statistic on the exact "visibility black hole" a registry addresses, from a security-consulting persona actively selling into this problem (title: AI Security Consultant, offers "strategy calls").
 
+---
+
+## B4 — COUNTER-EVIDENCE (hunted deliberately): "this is over-engineering" / "a repo is enough"
+
+**13. [verified] Murali K. — Data & AI Executive; Enterprise Data Strategy & Governance; CDO/CAIO Advisor (Salesforce, Box, Toyota, GE)**
+> "Writing 'Always call Tool A before Tool B, and only invoke Tool C if status is APPROVED' in a SKILL.md file does not create a deterministic state machine — it creates a probabilistic suggestion."
+Posted 1w before capture. Query: `SKILL.md`. Profile: https://www.linkedin.com/in/muralikallem/ — article: https://www.linkedin.com/pulse/skillmd-trap-why-english-isnt-deterministic-state-machine-kallem-pfmjc/
+Also: > "In mission-critical enterprise workflows, a 98% execution success rate is a failing grade."
+Why it matters: The clearest counter-argument found — not "a repo is enough" verbatim, but structurally the same objection aimed one level deeper: SKILL.md-as-governance is itself unreliable because natural-language instructions aren't enforceable control flow; his prescription is a hard-coded deterministic spine with skills confined to bounded cognitive tasks. A credible, senior (CDO/CAIO-advisor-level) voice — this is the objection a registry pitch most needs a real answer to. Note: this argues skills *governance-by-file* is fragile, not that governance/registries are unnecessary — no post arguing the latter ("just use a repo, skip the tooling") was found despite two dedicated searches (see null results).
+
+I did not find any post making the plainer over-engineering claim ("a shared repo/README is enough, don't build tooling for this") specific to agent skills — see null-result queries below. The closest adjacent sentiment (not skill-specific, so not logged as a numbered finding) was Marcelo Calbucci, Founder of Seattle Flow: "you don't need Linear, branches, PRs, CI/CD, or staging until your product has meaningful traction" — a general anti-premature-process argument, not about skills/agents.
+
+---
+
+## B5 — SIGNAL SHAPE: who is talking, what titles/companies, engagement, and is there a persona
+
+### Titles that own this problem (People search: "AI enablement", 2026-09-05)
+This is a real, recognized job title/function, held at large, brand-name enterprises — not just startups or agencies:
+- **Cory Eno** — "Sr. AI Enablement, Fluency, & Innovation Lead at **Eightfold** since March 2025, leading **Claude enablement** and agentic AI workflows." (Claude-specific enablement role.)
+- **Aidan Millar** — "Head of AI Enablement at **Mubadala** since December 2021, leading a **$100M** enterprise AI transformation across investment lifecycle and corporate functions."
+- **Ben Gold** — "AI Enablement Lead, **Toyota North America**... leading AI strategy, training, tool allocation and measurement for enterprise AI adoption."
+- **Karthikeyan Rajendran** — "AI Enablement Manager at **Ford Motor Company** since September 2024, leading SSDA AI adoption through incubation, governance and literacy programs."
+- **Srinivas P** — "Manager - AI Training and Enablement at **Deloitte** since June 2023."
+- **Shane Kelly** — "Team Lead - AI Enablement Team at **World Wide Technology**... driving AI native tooling adoption and enterprise enablement."
+- **Kashish Khemka** — "Technical Lead - AI Enablement at **Wood**... covering AI strategy, enablement, transformation, adoption and agentic AI."
+- **Sage Franch** — "Head of AI Enablement at Fluent Software... Founder of **CLAIR AI Governance Association**." (a named, existing AI-governance association — worth a follow-up look outside this scan.)
+[verified via LinkedIn People search results, https://www.linkedin.com/search/results/people/?keywords=AI%20enablement]
+
+### Titles that do NOT show up distinctly ("developer productivity AI")
+The same people-search discipline applied to "developer productivity AI" surfaced almost no one self-titled around developer productivity or platform engineering specifically — results skewed to individual-contributor "AI/ML Engineer," "GenAI Developer," and "Agentic AI Developer" titles at Microsoft, ServiceNow, IBM, JetBrains, Oracle, Automation Anywhere. **"AI Enablement" is a materially more established, distinctly-titled buying-center role on LinkedIn than "developer productivity."**
+
+### Engagement pattern
+- The posts making the *strongest, most specific* claims about shared skill libraries and rollout metrics (Abhisheik Deo, Rizwan Saudagar, John McCann) each sat at only 4-5 reactions — low-volume, practitioner-to-practitioner content.
+- The highest-engagement posts in the whole scan were *explainer* content aimed at beginners (Rajiv Selvaraj's "Claude Code Skills, explained like a beginner course," 343 reactions/54 comments; Mumshad Mannambeth's AI-for-DevOps guide, 456 reactions) and one security/vendor stat post (Aditya Goenka's NVIDIA-scanner post, 53 reactions).
+- This is a topic still mostly at the "here's what a skill even is" / "here's a scary stat" stage of the conversation on LinkedIn, not yet at the "here's how our 200-person org governs its skill catalog" case-study stage.
+
+### Company types represented across all findings
+Individual consultants/architects running client engagements (Abhisheik Deo, Rizwan Saudagar, Murali K.), a named competitor SaaS founder (John McCann/shareskills.ai), an infra-observability CTO (Ben Blackmore/Dash0), enterprise AI-consulting recruiters and Big-4/GCC hiring posts (Infosys, background noise), a security boutique (Secure Axis Labs), an independent security tool builder (Pethuraj M/AgentSeal), and a niche AI newsletter/publication (AI Alleyway). Notably **no large-enterprise engineering blog or named FAANG/scale-up engineering team post was found describing its own internal skills rollout** — Ramp and Stripe are referenced only secondhand, inside Abhisheik Deo's post, not as their own posts.
+
 [CONTENT_PLACEHOLDER]
