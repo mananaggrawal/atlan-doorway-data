@@ -1,27 +1,21 @@
-<!-- Remove this comment wrapper (the first and last lines of this file) to broadcast the text below to every connected agent.
-
-This file is the deployment preamble. Every agent that connects to this knowledge base over MCP, hosted or through the local doorway-mcp server, is told its content at the start of each session, whatever that agent's access. It arrives after a fixed platform header that already says what Doorway is and to search here before answering from memory; this file adds what only you know: what this knowledge base holds, where things are, and when an agent must look here first.
-
-Keep the content under 6,000 characters. Keep the first paragraph under about 220 characters: a fixed purpose sentence of 76 characters is put in front of it, the two together are cut at 300, and the result is shown at the start of the start_session, grep, list_files and read_file tool descriptions, which is all some clients (claude.ai on the web, Cline, the Agent SDK) show the model. Text inside an HTML comment like this one is never sent, so notes to yourself can stay here. Folder names you write are sent to every agent, including those that cannot open the folders.
-
-Starter skeleton, fill in and delete what does not apply:
-
-Acme is a solar developer in Spain. This knowledge base holds our project files, permitting process, customer records and engineering conventions.
+This is Manan Aggrawal's (Dashverse / Frameo AI) personal knowledge base: the Atlan Agent Registry GTM work sample (research, locked ICP, GTM strategy, campaign math) and the products built alongside it — Atlan Pulse (a skill registry + skill health tool) and this Atlan Doorway deployment itself.
 
 ## What is where
 
-- KnowledgeBase/Projects/: one folder per site, with its permits, contracts and status.
-- KnowledgeBase/Processes/: how we run permitting, procurement and commissioning.
-- KnowledgeBase/Customers/: accounts, contacts and meeting notes.
+- `KnowledgeBase/Atlan/README.md`: start here — map and one-paragraph summary of the whole Atlan effort.
+- `KnowledgeBase/Atlan/Strategy/`: the locked ICP, research findings, GTM problem catalog (with evidence tags), channel plan, path-to-100 funnel math, the decision deck, and Atlan's own Agent Registry product facts.
+- `KnowledgeBase/Atlan/Challenge/`: the original brief and the submission assembly plan.
+- `KnowledgeBase/Atlan/Product-Pulse/`: Atlan Pulse's build, deployment, landing-page conventions, and lineage/licensing notes.
+- `KnowledgeBase/Atlan/Product-Doorway/`: this deployment itself — what it is and how it was built.
 
 ## Always check here before answering about
 
-- Any project, customer or supplier by name.
-- Our permitting steps, timelines and the authorities involved.
-- Internal terms, acronyms and team responsibilities.
+- The Atlan GTM ICP, channel bet, or campaign math — don't reconstruct these from general knowledge, they're specific, evidenced decisions.
+- Any number cited in the GTM problem catalog — check its evidence tag (`[VERIFIED PRIMARY]` / `[CORROBORATED]` / `[VENDOR CONTENT]` / `[INFERENCE]`) before restating it.
+- Atlan Pulse's or Atlan Doorway's current build/deploy state.
 
 ## Conventions
 
-- Dates are written YYYY-MM-DD. Money is in EUR unless stated.
+- Dates are written YYYY-MM-DD.
+- This reflects current state, not full history — superseded drafts and raw research rounds are intentionally excluded.
 - Cite the file you read when you answer from it.
--->
