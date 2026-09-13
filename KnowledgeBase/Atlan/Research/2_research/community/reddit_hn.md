@@ -179,4 +179,59 @@ Why it matters: another concrete, functioning git-only alternative — reinforce
 Link: https://news.ycombinator.com/item?id=49394827, comment id 49394952
 Why it matters: cost/value skepticism specifically about paying for versioning infrastructure — relevant objection-handling material for pricing conversations.
 
-[CONTENT_PLACEHOLDER]
+---
+
+## Null results (queries that returned nothing usable)
+
+- WebSearch `site:reddit.com "skills" "share with my team"` — 0 reddit.com results (Wikipedia/Substack only).
+- WebSearch `site:reddit.com "SKILL.md" share team` — 0 reddit.com results.
+- WebSearch `reddit ClaudeCode skills sync across machines team` — 0 reddit.com results.
+- WebSearch `reddit "SKILL.md" team onboarding new hire` — 0 reddit.com results.
+- WebSearch `reddit claude code "too many skills" context` — 0 reddit.com results.
+- WebSearch `".claude folder" commit to repo reddit team` — 0 reddit.com results.
+- WebSearch `claude skills prompt injection reddit trust install` — 0 reddit.com results.
+- `curl old.reddit.com/r/ClaudeAI/search.json?q=share+skills+team` (both cloud container and user's Mac) — HTTP 403 Blocked.
+- `WebFetch reddit.com/r/ClaudeAI/...` — SITE_BLOCKED (explicit policy block).
+- `WebFetch r.jina.ai/https://www.reddit.com/...` — 403 from Reddit itself even via proxy.
+- `WebFetch bing.com/search?q=site:reddit.com...` and `duckduckgo.com/html/?q=site:reddit.com...` — ROBOTS_DISALLOWED.
+- HN Algolia search `query=AWS Agent Registry, tags=story` (post-2026-08-31) and `query=Amazon Bedrock Agent Registry` — **0 hits.** The AWS Agent Registry preview (~Aug 31 2026) has generated no dedicated Hacker News story as of this pull. Nearest adjacent finds: "Show HN: A Context Registry for AI coding agents" (Sept 3, 2026, unrelated to AWS) and general "agent registry" Show HNs, none AWS-branded.
+- HN Algolia `query=skills.sh vercel, tags=story` around the Jan 20 2026 launch window — the actual launch thread is titled "Show HN: Agent Skills Leaderboard" (id 46697908), not literally "skills.sh"; a literal-string search for "skills.sh" as a story title around the same 48-hour window returns 0 additional launch coverage beyond that one thread.
+- HN comment search_by_date for "sync skills machines" and "share skills teammate" surfaced mostly off-topic hits (unrelated "skills" usage — hiring posts, "communication skills," etc.) — genuine on-topic density is low; see quantitative note below.
+
+---
+
+## Quantitative
+
+Pull date for all figures: 2026-09-05.
+
+### Subreddit size (⚠ all `[reported]` — via third-party trackers, Reddit itself unreachable; treat as directional, not authoritative)
+| Subreddit | Members | Growth | Source |
+|---|---|---|---|
+| r/ClaudeAI | ~1.04M (1,043,382) | +72,740/30d (7.5%); +242,453/90d (30.3%) | subranking.com/subreddit/ClaudeAI |
+| r/ClaudeCode | ~404,000 | +378,000/yr (1,468% — new/small-base subreddit) | gummysearch.com/r/ClaudeCode |
+| r/ChatGPTCoding | ~398,000 | +84,000/yr (26.6%) | gummysearch.com/r/ChatGPTCoding |
+| r/LocalLLaMA | ~816,000 | +287,000/yr (54.1%) | gummysearch.com/r/LocalLLaMA |
+| r/cursor | ~156,000 | +61,000/yr (64.2%) | gummysearch.com/r/cursor |
+| r/ChatGPT (context, not requested but surfaced) | ~11.6M | +31,000/30d (0.3%) | prowlo.com/tools/subreddit-stats/chatgpt |
+
+No skills-specific subreddit (e.g. r/ClaudeSkills, r/AgentSkills) was found to exist.
+
+### Hacker News — launch threads
+| Story | Points | Comments | Date | Link |
+|---|---|---|---|---|
+| Claude Skills (Anthropic launch) | 816 | 427 | 2025-10-16 | https://news.ycombinator.com/item?id=45607117 |
+| Claude Skills are awesome, maybe a bigger deal than MCP (simonw) | 738 | 370 | 2025-10-17 | https://news.ycombinator.com/item?id=45619537 |
+| Show HN: Agent Skills Leaderboard (skills.sh launch) | 135 | 44 | 2026-01-20 | https://news.ycombinator.com/item?id=46697908 |
+| Show HN: OSS Agent topped TerminalBench | 393 | 148 | 2026-04-something | (adjacent, not skills-registry specific) |
+| Show HN: OzBrain, a shared brain for knowledge between agents and your team | 93 | 59 | 2026-07-15 | https://news.ycombinator.com/item?id=49394827 |
+| Dockerhub for Skill.md (skillregistry.io) | 49 | 26 | 2026-01-20 | https://news.ycombinator.com/item?id=46692692 |
+| Skill.md: An open standard for agent skills (Mintlify) | 48 | 12 | 2026-01-22 | https://news.ycombinator.com/item?id=46723183 |
+| AI Coding Agent Skills for Real Engineers (mattpocock/skills) | 43 | 14 | 2026-09-02 | https://news.ycombinator.com/item?id=49529329 |
+| Show HN: Claude Code skills that build complete Godot games | 337 | 205 | 2026-03-16 | https://news.ycombinator.com/item?id=47400868 |
+| **AWS Agent Registry** launch | — | — | ~2026-08-31 | **No dedicated HN story found** |
+
+### Package-manager-for-skills gold rush (evidence of repeated, independent re-solving of the same problem — logged as quantitative sprawl-of-solutions signal)
+At least 12 distinct "package manager / registry for agent skills" Show HNs found in HN search, most in the 0-9 point range (i.e., low individual traction, but high aggregate frequency): skillregistry.io, skills.sh (Vercel), noriskillsets.dev, Tessl (46900933), Ingot (49007958), Askill (46970692), Skill.Fish (46843774), Enact (46435383), SkillCatalog (47835430), ArteSync (47167513), Agent Package Manager/APM (47454448), ClawHQ (47024332), Skilo (47309816), skillrepo.dev (named in-comment, no dedicated Show HN found). This density — a new entrant roughly every few weeks since Jan 2026 — is itself the single best quantitative proxy for market pain found in this pass, since none had yet run away with the category as of pull date.
+
+### Security-scanner-for-skills count
+At least 6 independent skill/MCP security-scanning tools found via Show HN alone in under a year: Vett (vett.sh), Skillcop, Aguara, SkillSpec, Socket (skills.sh integration), Askill's built-in safety scoring.
