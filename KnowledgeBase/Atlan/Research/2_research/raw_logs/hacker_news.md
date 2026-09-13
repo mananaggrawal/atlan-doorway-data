@@ -1,0 +1,278 @@
+# Raw Audit Trail — Hacker News research pass, redone from scratch
+Session date: 2026-09-05. Purpose: Atlan "Agent Registry" GTM work sample research.
+This file supersedes/extends the HN portion of `2_research/community/reddit_hn.md` (that file's
+Reddit portion and its conclusions are untouched; this log adds new HN material and a full trail).
+All access via the Hacker News Algolia API directly from the cloud container
+(`https://hn.algolia.com/api/v1/search...`), which was fully reachable — no proxy/blocking issues
+this session (confirmed with a plain curl before starting the real queries: 200 OK).
+
+Method note on Algolia relevance ranking: the plain `search` endpoint does NOT do phrase matching —
+multi-word queries are OR'd/ranked by relevance with typo tolerance, so `nbHits` numbers below are
+almost always much larger than the number of genuinely on-topic results. I read the top ~10-15
+relevance-ranked hits per query (Algolia's default sort already surfaces the best matches first)
+rather than trying to page through nbHits. Where that top slice was still off-topic noise (e.g.
+"skills.sh" as tokens matches 40 years of "skills" + a stray ".sh" hit), I've marked the query a
+dead end below rather than padding this log with irrelevant hits.
+
+---
+
+## 1. QUERIES RUN, VERBATIM, IN ORDER
+
+All timestamps below are this session's run order, 2026-09-05.
+
+### Batch 1 — the 8 required terms
+1. `query=claude+skills&tags=story` — https://hn.algolia.com/api/v1/search?query=claude+skills&tags=story — nbHits 1119. **Productive.** Top hit: Claude Skills launch (45607117, 816pts). Also surfaced smaller recent stories: "Hexis: Collaborate on Claude Skills with your teammates" (49568500), "Claude config-drift-checker: CI for your Claude.md, skills and hooks" (49540330) — both new, filed below.
+2. `query=claude+skills&tags=comment` — https://hn.algolia.com/api/v1/search?query=claude+skills&tags=comment — nbHits 4100. **Mostly noise** (recency-sorted-looking top hits were "Ask HN: who's hiring" boilerplate + off-topic). One useful thread surfaced: tkgally on Claude Fable 5.1 sharing a public-repo Claude skill (49530651) — not filed, minor.
+3. `query=claude+skills&tags=story&search_by_date` (search_by_date endpoint) — nbHits 1119 (same corpus, date-sorted). **Productive for freshness check**: confirmed newest skills-adjacent stories as of 2026-09-04/05, incl. Hexis (above) and "AI Coding Agent Skills for Real Engineers" already known.
+4. `query=SKILL.md&tags=story` — https://hn.algolia.com/api/v1/search?query=SKILL.md&tags=story — nbHits 166. **Productive.** Top: "Dockerhub for Skill.md" (46692692, already known), "Skill.md: An open standard" (46723183, already known), plus NEW: Skillhound (48376569, 48367686), getskillify.dev generator (48005847), Sigil (49036750), SKILL.md Hub / openskills.space (46702089), "Analysis of 4000 skills.md repos" (46917394), "Do Skill.md Linters Matter?" (49128578), gaia-skill-tree CLI (48803124).
+5. `query=SKILL.md&tags=comment` — nbHits 642. Mostly noise/off-topic; one relevant: valicord asking "Or you can just have a URL that points to skill.md?" on the MCP Roadmap thread (49405164) — minor, not filed.
+6. `query=agent+skills&tags=story` — https://hn.algolia.com/api/v1/search?query=agent+skills&tags=story — nbHits 2011. **Productive, high-value.** Top hits by points: "Agent Skills" agentskills.io (46871173, 544pts/260c — NEW, not in original file — the community-maintained open spec site), "Agent Skills" addyosmani blog (48015397, 376pts/212c — NEW), SkillsBench arxiv (47040430, 364pts/171c — NEW benchmark paper), "Agent skills that bring team coding standards to Claude Code and Codex" (49169640, 75pts/38c — NEW, directly B1/B2), "You're probably using Agent Skills wrong" (48624327, 74pts/25c — NEW).
+7. `query=agent+skills&tags=comment` — nbHits 27875. Top hits mostly noise (old "agent" = spy/border-agent comments, hiring posts). One relevant: yzliual on "Show HN: Skills Wiki" (49435375/49435376) re: too many AI skills to manage — NEW lead, not deeply pursued (low points).
+8. `query=skills.sh&tags=story` — https://hn.algolia.com/api/v1/search?query=skills.sh&tags=story — nbHits 43. **Mixed.** Genuine skills.sh-ecosystem hits: "Sports-skills.sh" (47066082), "skillstui – TUI for skills.sh" (47717687), "Skills.sh Ecosystem Dashboard" (47203149 — NEW), "Socket brings supply chain security to skills.sh" (47072180 — already known via landscape note, now has a direct source), "Import any skills.sh skill... bluebag.ai" (46827560 — NEW). Rest of top-40 is unrelated "Ask HN: career advice" noise (query tokenizes to generic "skills").
+9. `query=skills.sh&tags=comment` — nbHits 217. **Dead end** — top 15 results are entirely unrelated career-advice/generic "skills" comments from 2007-2015, none about the site. Confirms `search` isn't doing a phrase match on "skills.sh" as a literal string within comment text at high relevance for this query.
+10. `query=agent+registry&tags=story` — https://hn.algolia.com/api/v1/search?query=agent+registry&tags=story — nbHits 565. **Mostly adjacent, not skill-registry-specific.** Top hits are about agent *identity/discovery* registries (A2A/agentic-web infra), not skill package registries: "ACP Agent Registry in JetBrains IDEs" (46814237), "AgentSeek" (48279891), "Chrysalis Zero Trust Agent Registry" (49030178), "Beyond IP lists: a registry format for bots and agents" (Cloudflare, 45766045). None of these are about SKILL.md governance — noted as landscape context, not filed as evidence.
+11. `query=agent+registry&tags=comment` — nbHits 8235. Same pattern — mostly agent-identity/agent-to-agent registries, not skill registries. One relevant tangent: "The ACP Registry Is Live" (46799156/JetBrains) comment thread — not pursued further (different product category).
+12. `search_by_date, query=agent+registry&tags=story` — nbHits 565, date-sorted. Used specifically to check for an AWS Agent Registry launch story — see Null Results section; confirmed none as of pull date.
+13. `query=claude+code+plugin&tags=story` — https://hn.algolia.com/api/v1/search?query=claude+code+plugin&tags=story — nbHits 457. **Productive but mostly novelty plugins, not registry-relevant**: top hits are joke/utility plugins (Mr. Meeseeks voice line 48899529/132pts, "caveman plugin" benchmark 47954745/89pts, "Claude Code Plugin to play music" 46337118/56pts). One directly relevant: "Governor – a Claude Code plugin to reduce token/context waste" (47982718, 16pts/3c) — B2-relevant, not filed (low signal, no direct quote worth pulling).
+14. `query=claude+code+plugin&tags=comment` — nbHits 911. One relevant find: DevAutomationCC on "trigger-tree ... open source Claude Code plugin that logs which project docs the agent actually opens" (49019791/49019792) — B2 "which docs actually get read" signal, not filed (tangential to skills specifically, it's about CLAUDE.md/docs not SKILL.md).
+15. `query=package+manager+for+skills&tags=story` — https://hn.algolia.com/api/v1/search?query=package+manager+for+skills&tags=story — nbHits 40. **Highly productive** — this is the core "gold rush" list. Full inventory in Section 3 below.
+16. `query=package+manager+for+skills&tags=comment` — nbHits 391. **Productive** — surfaced additional package-manager builders not caught by the story search: Skulto (comment only, no dedicated Show HN found — adamos486, id 46940316), Skillfile (comment/Show HN combo, _juli_, id 47335595, story 47335594), mpak (MCP bundles, not skills — Barefootsanders, tangential), "Compose AI agent skills like Python imports" (dorianzheng, 46885113/46885114).
+17. `query=skill+marketplace&tags=story` — https://hn.algolia.com/api/v1/search?query=skill+marketplace&tags=story — nbHits 427. **Productive**, mostly B3 (security incidents) and small marketplace Show HNs. Full list of marketplaces in Section 3; security incidents in Section on B3 quant below.
+18. `query=skill+marketplace&tags=comment` — nbHits 6185. **Productive for B3**: this is where the OpenClaw/ClawHub incident cluster and the "179K GitHub stars, 5 CVEs, 341 flagged marketplace skills, 42K instances in 10 days" AgentVault quote (hugoventures1, 46959629/46959630) turned up, plus kian's "how much do you make selling skills on marketplace... impossible to vet a skill without reading it" (49140987, on the "why do agents need skills" thread — pursued further, see item 22).
+
+### Batch 2 — follow-on terms suggested by what batch 1 and the existing findings file surfaced
+19. `query=context+registry+AI+agents&tags=story` — nbHits 45. Top hit: "Show HN: A Context Registry for AI coding agents" (49552209, already known from existing file's B4 section, quote by parasxos). Rest of top-10 unrelated (agent tool-discovery infra, not skill registries).
+20. `query=npm+for+skills&tags=comment` — nbHits 360. **Productive**: m-hodges's "npm for Skills" quote (already known, confirmed verbatim), plus NEW: thomasfromcdnjs building tpmjs.com "the npm registry for ai tools" (46722074/46727498), onmax's "NPM-agentskills" bundler (46575092/46575093).
+21. `query=brew+for+skills&tags=comment` — nbHits 107. **Productive, found a new tool**: drskill — "brew doctor for your agent's loadout" (jesserobbins, comment 49350237 on story 49350236, 2026-08-18). Fetched full item — see Section 3.
+22. `query=share+skills+with+my+team&tags=comment` — nbHits 430. **Weak/mostly noise** — top hits generic. One tangential hit: Adrig describing "a HTML prototyping skill and a simple upload web app to share it privately with my team" (48449187/48458253) — thin, not filed as a strong quote (too generic/short).
+23. `query=skill+drift&tags=comment` — nbHits 12250. **Dead end** — top hits are all non-technical "drift" (React opinions, Dunning-Kruger, career-skill-atrophy). "Skill drift" as a phrase doesn't concentrate hits in the agent-skills space via this query; the actual best "drift" quote (atxpace, skillrepo.dev) was found via the skillrepo.dev-specific query instead (#31 below).
+24. `query=credential+stealer+skill&tags=comment` — nbHits 227. **Productive, core B3 material.** Full incident-report cluster: ClaytheMachine's original Moltbook post summary (47027789/47027788), AutoPilotAI's report about a credential stealer hidden in 1 of 286 skills on ClawdHub (47121948/46976845), do_anh_tu's "14,704 skills indexed, 3,721 AI deep audited" RankClaw figure (47208602/47027788), rvz linking to the Moltbook post (46820962/46802254).
+25. `query=malicious+skills&tags=comment` — nbHits 559. **Productive.** SkillGuard's arabking quote citing "ClawHavoc campaign (341 flagged skills in 3 days, Jan 2026)" and "Snyk's ToxicSkills audit... 13.4% of skills contain critical security issues" (47868265/47868237) — NEW, strong quantitative B3 datapoint not in existing file. Also matrixgard's "20% contamination number on ClawHub" re: a scanner reporting a similarly large flagged-skill count (47394589/47370624) — NEW. Confirms NoClaw's already-filed figure sits within a cluster of differing vendor-reported counts — see Cross-cutting Observations.
+26. `query=malicious+skills&tags=story` — nbHits 51. **Productive** — full list of security-incident stories in Section 4 (B3 quant landscape). Top: a story about skills targeting Claude Code and Moltbot users (46827731, 181pts/87c) — fetched full thread, see Section 2.
+27. `query=openclaw+skills&tags=story` — nbHits 208. **Productive**, mostly OpenClaw-ecosystem noise + one directly quantitative hit: a "Show HN" for a tool that AI-audited all 14,706 OpenClaw skills and flagged 1,103 as problematic (47287985) — NEW, matches the do_anh_tu figure above and gives a named tool.
+28. `query=sx+package+manager+AI+skills&tags=story` — nbHits 1. **Productive, found the actual Show HN for `sx`** — "Show HN: Sx – an open-source package manager for AI skills, MCPs, and commands" (48151058, 50pts/28c, 2026-05-15, sleuth-io/sx, author `detkin`). The existing findings file only had a *comment* from `mrdonbrown` mentioning "sx" on a different thread (46692692) and did not know this dedicated, higher-traction (50pts/28c — the single highest-point "package manager for skills" Show HN found in this pass) launch thread existed. **This meaningfully updates the existing file's sx characterization** — same author (`detkin`) also authored AGENTS.lock (46797831) and commented pro-skills-for-tribal-knowledge on the "Skills for organizations" mega-thread (46319918) — detkin is a repeat, credible voice across three separate skill-tooling threads.
+29. `query=tessl&tags=story` — nbHits 21339 (query "tessl" alone is apparently fuzzy-matching very broadly; treat nbHits as meaningless). Top 10 by relevance were genuinely all Tessl-related though: confirms Tessl's founder Guy Podjarny (guypod, same person as `sjmaplesec`? — no, sjmaplesec is a different account that posted the original "Snyk founder creates Tessl" story in 2024) has been building toward the skills space since a $125M Series A in Nov 2024 (42137464) and a Martin Fowler "Understanding Spec-Driven-Development: Kiro, Spec-Kit, and Tessl" piece (45610996, 128pts) — useful company-background context for the existing file's Tessl citation, not new evidence text.
+30. `query=ingot+skills&tags=story` — nbHits 2. Confirms existing file's Ingot citation; found the correct/original objectID is **49007271** (Show HN: Ingot, evidence-gated optimization and version control for agent skills, 7pts/2c, 2026-07-22, author laul_pogan) — note the existing findings file cites this same content under id **49007958**, which is a different (adjacent, likely a comment or duplicate) objectID. **Flagging as a possible ID discrepancy to verify** — see Cross-cutting Observations / uncertainties.
+31. `query=AWS+Bedrock+Agent+Registry&tags=story` — nbHits 2, neither relevant (false positives). **Dead end**, reinforces null result.
+32. `query=Amazon+Agent+Registry&tags=story` — nbHits 0. **Dead end.**
+33. `query=skillrepo.dev&tags=story` — nbHits 2. **Productive, important new find.** Two dedicated stories, NOT just the one comment-mention the existing file recorded: (a) "Skills don't have a quality problem. They have a distribution problem" (48652875, 6pts/0c, 2026-06-23) and (b) "SkillRepo – Skillsets: Skill Governance for Teams" (49495080, 2pts/0c, 2026-08-30) — the second one's title is *literally* "Skill Governance for Teams," near-identical framing to Atlan's registry pitch. **This corrects the existing file's explicit claim that "no dedicated Show HN found" for skillrepo.dev — one exists, in fact two, and the more recent one is a governance-framed pitch dated one week before the AWS Agent Registry GA (Aug 31 2026).**
+34. `query=skillrepo.dev&tags=comment` — nbHits 1. Only the already-known atxpace comment (49536348).
+35. `query=why+AI+agents+need+skills&tags=story` — nbHits 48. Top hit: "Ask HN: I still don't understand why AI agents need 'skills'" (49139845, 17pts/18c, 2026-08-02) — fetched full thread, strong B4 material, see Section 2.
+36. `query=skills+for+organizations+partners+ecosystem&tags=story` — nbHits 4. Top hit: **"Skills for organizations, partners, the ecosystem"** (46315414, 289pts/170c, 2025-12-18, Anthropic's own org-skills/directory launch blog post) — **major thread, NOT covered anywhere in the existing findings file.** Fetched in full (170 comments) — see Section 2. This is Anthropic's own team-skills feature announcement and is arguably the single most on-topic HN thread for B1 that exists, given it's literally about org-level skill sharing.
+37. `query=skills+quietly+becoming+unit+of+agent+knowledge&tags=story` — nbHits 1. Top hit: "Skills are quietly becoming the unit of agent knowledge" (47475832, 9pts/13c, 2026-03-22, no URL — likely an Ask HN or text post) — fetched in full, good B1/B2 composition-problem discussion, see Section 2.
+38. `query=skills+manager+claude+cursor+copilot&tags=story` — nbHits 9. Top hit: "Skills Manager – manage AI agent skills across Claude, Cursor, Copilot" (47423910, 3pts/9c, 2026-03-18) — fetched in full, direct B1 (team-level sharing, cross-harness sync) material, see Section 2. Also surfaced Skilldeck (47719403) and "Mother MCP" (46692102) — both filed in Section 3.
+39. `query=Bedrock+AgentCore&tags=story` — nbHits 17. Confirms AWS *does* have an active, multi-year HN presence for Bedrock AgentCore (a different, broader product than "Agent Registry" specifically — AgentCore Gateway from Aug 2025, a "hijacked AI agents" security story from Aug 21 2026, etc.) but **no story anywhere in this set is titled or focused on "Agent Registry" as its own product/feature.**
+40. `search_by_date, query=AWS+agent+registry&tags=story, numericFilters=created_at_i>1754006400` (after 2025-08-01) — used to widen the AWS-registry null-result check; folded into #41.
+41. `search_by_date, query=agent+registry&tags=story, numericFilters=created_at_i>1756598400` (after 2026-08-31, i.e. the stated AWS Agent Registry GA date) — nbHits 214 (all "agent registry"-adjacent stories ever, filter did not apply correctly server-side — Algolia's search_by_date numericFilters behaved inconsistently with a plain quoted timestamp; treat this run as unreliable and see the manual scan of top hits instead, which were all pre-Sept-2026 or unrelated). **Effectively a dead end / tooling limitation**, not a confirmed clean null — flagged as an uncertainty.
+42. `search_by_date, query=agent+registry&tags=story, numericFilters=created_at_i>1743984000,created_at_i<1745020800` (window bracketing 2026-04-09, the stated AWS Agent Registry *preview* date) — nbHits 2, both irrelevant (a Chrome-tab tool and a 2025-04 "AI agent tooling discovery" post). **Clean null** — no HN story in the 12-day window around the AWS preview date.
+
+Combined verdict on AWS Agent Registry: across 5 separate query strategies (exact-phrase-ish, Bedrock-specific, date-windowed around both the Apr 9 preview and Aug 31 GA), **no Hacker News story specifically covering AWS's "Agent Registry" was found**, consistent with and reinforcing the existing findings file's null result on this point.
+
+---
+
+## 2. FULL THREADS OPENED (via /v1/items/<id> — full comment trees), IN ORDER, WITH DISPOSITION
+
+| # | id | Title | Points | Comments | Date | One-line note | Filed? |
+|---|---|---|---|---|---|---|---|
+| 1 | 46315414 | Skills for organizations, partners, the ecosystem (Anthropic's org-skills/directory launch) | 289 | 170 | 2025-12-18 | Mostly a meta-debate ("is this a real standard," MCP-vs-skills fade-out speculation, joke skills); buried in it: Seattle3503's B1 "we already run a git-repo skill marketplace internally, wish it plugged into the web UI," detkin's tribal-knowledge B1 quote, kristo's "still can't symlink skills from Claude Code to codex" B2 cross-harness quote | **Yes — new material extracted, see Section 5** |
+| 2 | 46827731 | Malicious skills targeting Claude Code and Moltbot users | 181 | 87 | 2026-01-30 | Mostly snark about ClawdBot/crypto-bro culture, not skill-registry-specific; but rideontime's "no evidence the skills listed there are scanned by any security tooling... payloads visible in plain text" is a strong concrete B3 quote, and **dang (HN mod) himself flagged the submitted headline as linkbait/misleading, noting the article "describes no actual such incident"** — an important provenance caveat for this whole incident-count cluster | **Partially — see caveat in Section 5/6** |
+| 3 | 49139845 | Ask HN: I still don't understand why AI agents need "skills" | 17 | 18 | 2026-08-02 | Genuinely useful definitional debate; contains the kian/getstowly marketplace-selling exchange (already known via a different query) plus good B4-adjacent "skills = lazy-loaded markdown, nothing magic" consensus and a mention of skillsbench.ai research showing mixed/inconclusive performance evidence | **Yes — see Section 5** |
+| 4 | 47475832 | Skills are quietly becoming the unit of agent knowledge | 9 | 13 | 2026-03-22 | latand6 (skill-marketplace builder, also seen elsewhere) and dmppch (APM package-manager builder) directly debate the "distribution problem is actually a composition/dependency-resolution problem in disguise" — closest thing found to an explicit statement of Atlan's "dependencies" pillar as a felt need | **Yes — see Section 5** |
+| 5 | 47423910 | Skills Manager – manage AI agent skills across Claude, Cursor, Copilot | 3 | 9 | 2026-03-18 | Small thread but dense: prateeksi asks the builder directly about sync-conflict resolution and **"team-level skill sharing, not just individual installs from GitHub repos"**; druide67 notes the same skill text needs different phrasing per agent (Claude vs Copilot) to actually work; QubridAI names "tooling sprawl" outright | **Yes — see Section 5** |
+| 6 | 48652875 | Skills don't have a quality problem. They have a distribution problem (skillrepo.dev blog) | 6 | 0 | 2026-06-23 | No comments; the URL/title itself is the evidence (direct restatement of Atlan's core thesis by a competitor) | **Yes — see Section 3/5** |
+| 7 | 49495080 | SkillRepo – Skillsets: Skill Governance for Teams | 2 | 0 | 2026-08-30 | No comments; title alone is evidence — near-verbatim overlap with Atlan's "governed registry ... for teams" framing, one day before AWS's stated GA | **Yes — see Section 3/5** |
+| 8 | 49350236 | Manage agent loadouts with drskill – "brew doctor for agents" | 1 | 1 | 2026-08-18 | Single comment from jesserobbins describing drskill: audits Skills/MCP loadouts for 34 issue categories incl. missing/duplicate descriptions, SKILL.md spec violations, secrets, and **reads session traces to show which tools actually got called** | **Yes — see Section 3/5 (closest thing found to a "usage/traces" pillar point solution)** |
+| 9 | 49529329 | AI Coding Agent Skills for Real Engineers (mattpocock/skills) | 43 | 14 | 2026-09-01 | Re-fetched to verify existing file's quotes (already extensively cited there) — **all four cited quotes (atxpace, fishfasell, hungryhobbit, clickety_clack, mock-possum) verified accurate against raw JSON.** Found one nuance: mock-possum's B3-filed quote is actually the second half of a longer comment whose first half ("just easier to build it as you go... every time the bot stumbles, teachable moment") is really a B4 "skip preset skill banks" argument — the existing file's B3 framing undersells that this is also counter-evidence. | **Re-verified, not re-filed; nuance flagged in Section 6** |
+
+Threads read via targeted comment-search hits (not full item fetch, single comment sufficed): 46900933 (Tessl/guypod), 49007271/49007958 (Ingot), 46692692 (Dockerhub for Skill.md), 46697908 (skills.sh launch), 45607117 (Claude Skills launch), 49394827 (OzBrain) — **all six were already fully quoted in the existing findings file; not re-fetched in full this session to avoid re-doing verified work**, per the task's instruction not to waste queries re-finding what's already found. Spot-checked one (49529329, row 9 above) as a verification sample and it checked out.
+## 3. FULL LIST — "PACKAGE MANAGER / REGISTRY / MARKETPLACE FOR AGENT SKILLS" SHOW HNs FOUND
+
+Every one found this session, whether or not already in the existing findings file. This supersedes
+the existing file's "at least 12 distinct" summary count with a fuller, named, sourced list.
+Sorted roughly by first-seen date.
+
+| Name | Item ID | Date | Points/Comments | Author | What it claims to do |
+|---|---|---|---|---|---|
+| OpenPackage | 46217088 | 2025-12-10 | 1 / 0 | hyericlee | "open source package manager for AI coding" — general, not skills-only |
+| Enact | 46435383 | 2025-12-30 | 6 / 2 | keithgroves | "A package manager for AI agent tools" |
+| Skills Manager (idoevergreen) | 47423910 | 2026-03-18 | 3 / 9 | evergreenxx | Cross-harness (Claude/Cursor/Copilot) skill file sync, Electron app; explicitly fields a "team-level sharing" feature request in comments |
+| Mother MCP | 46692102 | 2026-01-20 | 2 / 2 | DavidGraca | "Manage your Agent Skills like a boss — Auto provision skills" via an MCP server |
+| Sx | **48151058** | 2026-05-15 | **50 / 28** | detkin | "an open-source package manager for AI skills, MCPs, and commands" (sleuth-io/sx) — **highest-traction Show HN in this whole category found this session**; same author as AGENTS.lock below |
+| Dockerhub for Skill.md (skillregistry.io) | 46692692 | 2026-01-20 | 49 / 26 | tomaspiaggio12 | Registry/hub framed explicitly as "Dockerhub for Skill.md" |
+| AGENTS.lock | 46797831 | 2026-01-28 | 6 / 0 | iryna_kondr (product by detkin's org?) | "a package manager for Agents/Skills/MCPs" |
+| Paks (stakpak) | 46422264 | 2025-12-29 | 4 / 0 | kajogo | "Package Manager for Agent Skills: Publish, Discover, Install Everywhere" |
+| Reseed | 47489570 | 2026-03-23 | 3 / 1 | eterer | "I built a package manager for agent skills" |
+| Skills on Tessl | 46826730 | 2026-01-30 | 1 / 0 | popey | "the package manager for agent skills" — Tessl's own follow-up post |
+| Tessl (core Show HN) | 46900933 | 2026-02-05 | 7 / 2 | guypod | "A package manager for agent skills with built-in evals" — already in existing file |
+| Skill.Fish | 46843774 | 2026-02-01 | 2 / 0 | knoxgraeme | "NPM-style package manager for AI agent skills" |
+| Askill | 46970689 | 2026-02-11 | 1 / 1 | alex_metacraft | "A package manager for AI agent skills with AI safety scoring" |
+| ArteSync | 47167513 | 2026-02-26 | 1 / 0 | tsump | "A package manager for AI coding agent skills" |
+| Agent Package Manager (APM, Microsoft) | 47454448 (and re-posted as 47593879, "solve the Agent Supply Chain pandora box") | 2026-03-20 | 1 / 0 | danielmeppiel | "Agent Package Manager (APM) for Agent Configuration" — Microsoft's own entry; author dmppch also active debating skill-composition on thread #47475832 |
+| SkillCatalog | 47835430 | 2026-04-20 | 2 / 0 | sformisano | "a Git-native skill manager for AI coding tools" |
+| Ingot | 49007271 (existing file cites 49007958 — see uncertainty note) | 2026-07-22 | 7 / 2 | laul_pogan | "evidence-gated optimization and version control for agent skills" |
+| Clawx | 49166289 | 2026-08-04 | 2 / 0 | debarshri | "A package manager where packages are agent tasks" (broader than skills specifically) |
+| Skulto | comment only, no dedicated Show HN found (mentioned in 46940316) | 2026-02-09 | n/a | adamos486 | "offline-first package manager for Claude/Codex agent skills" |
+| Skillfile | 47335594 | 2026-03-11 | (points not captured; low) | _juli_ | "Declarative manager for AI skills and agents (like brewfile)" — GitHub/raw-URL/local sources |
+| drskill | 49350236 | 2026-08-18 (blog dated 07-24, HN post 08-18) | 1 / 1 | jesserobbins posting dbreunig's blog | "brew doctor for your agent's loadout" — audit/lint tool, not install/publish, but same "brew for skills" framing |
+| Skilldeck | 47719403 | 2026-04-10 | 1 / 0 | alierfan | "Desktop app to manage AI agent skill files across tools" |
+| skillrepo.dev (distribution-problem post) | 48652875 | 2026-06-23 | 6 / 0 | atxpace | "Skills don't have a quality problem. They have a distribution problem" — thesis post, not a tool launch per se, but from the same builder as the Skillsets governance post below |
+| SkillRepo Skillsets | 49495080 | 2026-08-30 | 2 / 0 | atxpace | **"Skill Governance for Teams"** — direct positioning overlap with Atlan's registry pitch; one day before AWS Agent Registry's stated GA |
+
+Registries/marketplaces found that are directories/hosting rather than CLI package managers (kept
+separate since they don't claim install/version/dependency semantics the way the above do):
+- skills.sh / Agent Skills Leaderboard (46697908) — already in existing file.
+- claudeskills.cc (45701622, 28pts/19c) — "Share, Discover, and Reuse Claude/OpenAI Agent Skills."
+- Claude Skills Marketplace / skillsmp.com (45836935, 47231764, 45848533 — three separate submissions of the same site).
+- AI Skills Marketplace / skly.ai (46923821).
+- ClawHQ (47024332) — "Fleet management dashboard and skill marketplace for AI agents."
+- Trail of Bits Skills Marketplace (47882044 and re-submitted as 49263123) — a security-firm-curated skill repo, notable because it's from a known security shop, not a random indie builder.
+- Skillhound / skillhound.ai (48376569, 48367686) — "Give your AI access to every public SKILL.md," framed as an index/search engine over public skills rather than an installer.
+- noriskillsets.dev — already in existing file (theahura's critique of skills.sh).
+- skillrepo.dev — see above, corrected from "no dedicated Show HN" to two dedicated posts.
+
+---
+
+## 4. B3 QUANTITATIVE LANDSCAPE — FLAGGED/PROBLEMATIC SKILL COUNTS (full list, with source, for reconciling against the existing file's single NoClaw figure)
+
+The existing findings file cites one number: NoClaw's flagged-skills figure for ClawHub. This session found that number sits inside a cluster of **at least six different vendor/blogger-reported counts**, none of which appear to be independently audited against each other — worth flagging to the requester as a single underlying incident (ClawHub/OpenClaw skill marketplace, Jan-Mar 2026) being re-counted differently by each writeup, not six separate incidents:
+
+| Reported figure | Source | Item ID | Date |
+|---|---|---|---|
+| "1 of 286" skills had a credential-exfiltration issue (original incident) | AutoPilotAI comment citing the original Moltbook finding | 46976845 (comment 47121948) | 2026-02-23 |
+| "341 flagged ClawedBot skills" ("ClawHavoc") | Koi.ai blog, HN submission by Santas | 46901092 | 2026-02-05 |
+| "1,100+ flagged ClawHub skills" | NoClaw's own Show HN (already in existing file) | 47437814 | 2026-03-19 |
+| "824 flagged skills found" | independent scanner builder, Show HN (baz_sec) | 47370624 | 2026-03-13 |
+| "20% contamination" on ClawHub | matrixgard, commenting on the above | comment on 47370624 | 2026-03-16 |
+| "1,103 are flagged" of 14,706 audited | RankClaw Show HN (do_anh_tu) | 47287985 | 2026-03-07 |
+| "14,704 skills indexed, 3,721 AI deep audited" (same RankClaw data, different framing) | do_anh_tu comment | comment on 47027788 | 2026-03-01 |
+| "13.4% of skills contain critical security issues" (Snyk's "ToxicSkills" audit) | arabking, SkillGuard Show HN | 47868237 | 2026-04-22 |
+
+Separately, the original 181-point "Malicious skills targeting Claude Code and Moltbot users" thread
+(46827731) — the highest-points security story found — **was flagged by dang (HN moderator) himself
+as having a linkbait/misleading submitted title, noting the underlying article "describes no actual
+such incident."** This doesn't invalidate the broader ClawHub pattern (which the other seven sources
+above corroborate independently), but it does mean the single highest-points thread in this whole
+research pass is not itself reliable evidence — worth being precise about in the deck.
+
+Full list of B3 story-level hits (security), for completeness, beyond what's summarized above:
+- "Towards a Risk Assessment of Malicious Skill Files in Coding Agents" (arxiv, submitted twice: 49305777 and 49218275).
+- "Malicious AI 'Skills' on OpenClaw's ClawHub Marketplace Bypass Scanners" (48662618).
+- "Malicious Skills Found in OpenClaw's ClawHub Marketplace" (esecurityplanet writeup, 46908022).
+- "Malicious Agent Skills in the Wild" (arxiv, 48987510).
+- "Malicious MoltBot skills used to push password-stealing malware" (BleepingComputer, 46866781).
+- "Show HN: Skillcop: Block malicious Claude Skills before they execute" (47457995) — already known via existing file's "6 security scanners" landscape note; now has a direct item ID.
+- SkillGuard (47868237, arabking) — NEW scanner not in existing file's list of 6.
+- Aguara (mentioned in a "[dead]" story 47269529/comment 47269530) — already in existing file's list of 6, now has a direct quote: "173 rules across 13 categories: prompt injection, credential leaks, data exfiltration, supply chain, SSRF."
+
+---
+
+## 5. NEW EVIDENCE QUOTES EXTRACTED THIS SESSION (candidates to add to the findings file, organized by bucket)
+
+### B1 — Sharing
+- **Seattle3503**, on Anthropic's own "Skills for organizations" launch thread:
+  > "My company has a plugin marketplace in a git repo where we host our shared skills. It would be nice if we could plug that into the web interface."
+  https://news.ycombinator.com/item?id=46315414, comment id 46315929 (2025-12-18)
+  Why it matters: on Anthropic's *own* announcement of org-level skill sharing, a real practitioner's first reaction is "we already built this ourselves in git, please integrate with it" — simultaneously B1 (the sharing need is real and already being solved ad hoc) and B4 (git is the actual mechanism in production, a hosted product is asked to plug into it, not replace it).
+
+- **prateeksi**, on "Skills Manager – manage AI agent skills across Claude, Cursor, Copilot":
+  > "The fragmentation problem across agents is real, we ran into the exact same issue managing rules across different dev environments... Also wondering if you plan to support team-level skill sharing, not just individual installs from GitHub repos."
+  https://news.ycombinator.com/item?id=47423910, comment id 47424726 (2026-03-18)
+  Why it matters: an unprompted request for exactly "team-level sharing" as distinct from "individual installs from GitHub" — nearly a plain-English restatement of Atlan's ownership/access pillar, on a thread with under 10 comments (i.e., a small enough thread that this is a considered response, not noise).
+
+- **dmppch / latand6 exchange**, on "Skills are quietly becoming the unit of agent knowledge":
+  > dmppch: "The distribution problem is harder than it looks because it's actually a composition problem in disguise. A single skill is trivially shareable — zip it, gist it, whatever. But in practice you end up with skills that depend on other skills, or a skill that assumes specific instructions are already loaded, conflicting skills, versioning and supply chain issues - and suddenly you need dependency resolution. I've built a package-manager approach for this (APM)..."
+  > latand6 (reply): "Yeah, I've built my own skill-package manager as well btw! Then it clicked and I hyperfocused for a whole week and vibecoded a skill marketplace haha."
+  https://news.ycombinator.com/item?id=47475832, comment ids 47494948 / 47495718 (2026-03-23)
+  Why it matters: dmppch's comment is the clearest unprompted articulation found anywhere in this research of *why sharing a single skill file is not the hard part* — dependencies between skills, conflicting skills, and versioning are — i.e., independently arriving at Atlan's "dependencies" and "versions" pillars, not just "identity/ownership."
+
+### B2 — Sprawl & cross-harness drift
+- **kristo**, on the Anthropic org-skills thread:
+  > "Still can't symlink skills from Claude code to codex tho :/"
+  https://news.ycombinator.com/item?id=46315414, comment id 46319069 (2025-12-18)
+  Why it matters: terse, upvote-friendly restatement of the exact cross-harness path-fragmentation problem (dave1010uk's longer comment on this already exists in the file) — corroborating evidence that this specific pain point recurs across multiple independent threads over many months (Dec 2025 → Jan 2026 → Sept 2026, i.e. still unresolved 9 months later).
+
+- **druide67**, on "Skills Manager" thread:
+  > "One thing I've noticed managing rules across Claude Code and Copilot: the same instruction produces very different results depending on the agent. Claude follows multi-step rules well, Copilot tends to ignore anything beyond the first line... Seems like the hard problem isn't syncing files — it's that the same 'skill' needs different phrasing per agent to actually work."
+  https://news.ycombinator.com/item?id=47423910, comment id 47425295 (2026-03-18)
+  Why it matters: a *harder* version of the cross-harness problem than simple file-sync — content itself needs to be forked per-harness, which complicates any registry's "one skill, many consumers" assumption. Worth flagging as a nuance/objection for the pitch to pre-empt.
+
+- **QubridAI**, same thread:
+  > "It seems like we're already running into 'tooling sprawl' with AI agents, and this is a good move to help manage it."
+  https://news.ycombinator.com/item?id=47423910, comment id 47456174 (2026-03-20)
+
+### B3 — Trust & safety
+- **rideontime**, on "Malicious skills targeting Claude Code and Moltbot users":
+  > "I don't know how many people are involved in managing the ClawHub registry, but there is no evidence that the skills listed there are scanned by any security tooling. Many of the payloads we found were visible in plain text in the first paragraph of the SKILL.md file."
+  https://news.ycombinator.com/item?id=46827731, comment id 46828390 (2026-01-30)
+  Why it matters: concrete, specific "no scanning happened, and it wouldn't even have been hard to catch" — a direct case for the review/scanning layer a governed registry provides. (Caveat: this comment is itself citing a third-party blog post whose headline dang called linkbait — the underlying claim about ClawHub's lack of scanning is plausible and corroborated by the seven other independent incident reports in Section 4, but treat with the same care as the rest of that cluster.)
+
+- **arabking**, SkillGuard Show HN:
+  > "I built this after the ClawHavoc campaign (341 flagged skills in 3 days, Jan 2026) and after Snyk's ToxicSkills audit, which showed that 13.4% of skills contain critical security issues. There was no OSS scanner..."
+  https://news.ycombinator.com/item?id=47868237, comment id 47868265 (2026-04-22)
+  Why it matters: names a **Snyk-branded security audit ("ToxicSkills") with a specific 13.4% critical-issue rate** — notably, Snyk's founder (Guy Podjarny) is also the person behind Tessl, already the strongest B1 validation in the existing file. Two separate Snyk-lineage data points (Tessl's product thesis + a "ToxicSkills" audit) both independently converge on the skills-governance problem — worth naming Snyk/Podjarny explicitly as a through-line in the deck.
+
+- **jesserobbins** describing **drskill**:
+  > "drskill is 'brew doctor for your agent's loadout', a CLI that audits the Skills and MCP servers your agents are loading. It can scan up to 34 issue categories like missing/duplicate descriptions, SKILL.md spec violations, secrets. It will also audit reads session traces to show which tools actually got called."
+  https://news.ycombinator.com/item?id=49350236, comment id 49350237 (2026-08-18)
+  Why it matters: this is the single closest point-solution found to Atlan's "usage and traces" pillar specifically (not just versioning/ownership) — a tool whose entire premise is auditing which skills/tools actually got invoked, as of Aug 2026, i.e. very recent and squarely adjacent to what a registry's usage-tracking feature would subsume.
+
+### B4 — Counter-evidence
+- **Seattle3503** (see B1 above) doubles as B4: the "please integrate with our existing git repo" framing implies git + a homegrown marketplace is already working for them; a hosted product is welcome only as a plug-in to that, not a replacement.
+
+- **mock-possum**, full comment (existing file only quotes the second half):
+  > "In my experience, it's just easier to build it as you go. Every time the bot stumbles, make sure it's a teachable moment and the lesson is learned. Every once in a while, do some house cleaning. Trying to start with these preset banks of instructions just never seems like it works out in the long run. It's also unsettling catching it behaving in an odd way, and realizing that it was taking a cue from instructions you never wrote, but imported from elsewhere."
+  https://news.ycombinator.com/item?id=49529329, comment id 49531012 (2026-09-01)
+  Why it matters (reclassification note): the existing file files only the back half of this comment under B3 (trust discomfort with imported instructions). Read whole, the comment's primary claim is B4 — "don't start from preset skill banks at all, build organically as the agent stumbles" — with the B3 discomfort offered as a secondary reason. Recommend either re-filing under B4 or cross-listing in both buckets with the fuller quote.
+
+- **kian / getstowly exchange**, "Ask HN: I still don't understand why AI agents need 'skills'":
+  > kian: "how much do you make selling skills on marketplace, just curious? It seems like it'd be impossible to vet a skill without reading it, so the entire concept mystifies me just a little bit."
+  https://news.ycombinator.com/item?id=49139845, comment id 49140987 (2026-08-02)
+  Why it matters: skepticism specifically about *commercial* skill marketplaces (as opposed to free sharing) — relevant if Atlan's registry pitch ever touches monetization/paid skills, a dimension the existing file doesn't cover at all.
+
+- **infotainment / bad_username consensus**, same thread:
+  > infotainment: "'Well-organized markdown docs' are exactly what skills are."
+  > bad_username: "Skills is just lazy loading of well-organized Markdown docs. The 'lazy' part is the core part."
+  https://news.ycombinator.com/item?id=49139845, comment ids 49139888 / 49141677 (2026-08-02)
+  Why it matters: a calm, non-cynical version of the "skills aren't magic" reduction — useful as a level-setting counter-frame distinct from the more emotionally loaded B4 quotes already in the file (Sammi, parasxos, etc.).
+
+---
+
+## 6. EVERYTHING SEEN BUT NOT FILED, AND WHY
+
+- **agentskills.io launch thread** (46871173, 544pts/260c) and **addyosmani's "Agent Skills" blog thread** (48015397, 376pts/212c) — the two highest-point "agent skills" story hits found this session, by a wide margin. **Not opened in full / not filed** this pass due to time budget — these are large (260 and 212 comments) and are about the open spec / general adoption commentary rather than sharing-registry pain specifically, based on their titles and the fact they didn't surface in any of the more targeted registry/sharing/trust queries. **Flagging as the highest-value unopened threads for a follow-up pass** if more research time is available — at 544 and 376 points they are larger than every thread currently cited in the findings file except the original Claude Skills launch itself.
+- **SkillsBench arxiv paper** (47040430, 364pts/171c) — a benchmark paper on how well skills work across tasks; likely contains quantitative performance data relevant to the B4 "do skills even help" question, not opened due to time budget.
+- **"You're probably using Agent Skills wrong"** (48624327, 74pts/25c) — plausibly B2/B4 relevant by title, not opened.
+- OzBrain thread (49394827) — already fully covered by the existing file; not re-opened.
+- Most "Ask HN: Who is hiring/wants to be hired" results that matched skills-related queries — pure noise from the word "skills" in unrelated resume contexts; skipped systematically.
+- Historical (pre-2025) comments matching tokens like "skills," "registry," "marketplace," "drift," "brew" in totally unrelated contexts (border-agent skills, homebrewing, Warren Buffett) — Algolia relevance surfaces some of these because of the endpoint's typo/token matching; all skipped as obvious noise, not enumerated individually above except where shown in query notes.
+- The **agent-identity/agent-discovery flavor of "agent registry"** (ACP, A2A, Agent Passport, Chrysalis Zero Trust, Cloudflare's bot-registry format, agentnameservice) — a large, genuinely active adjacent category on HN, but about *authenticating which agent you're talking to*, not about governing *which skills an agent can use*. Deliberately excluded from the evidence buckets as off-target for Atlan's specific pitch, but worth knowing this is a crowded, well-funded-sounding adjacent space (JetBrains, Cloudflare, several YC-flavored Show HNs) in case the GTM narrative needs to distinguish "agent identity registry" from "agent skill registry."
+- **claude-code-plugin novelty submissions** (meeseeks voice line, elevator music, caveman-mode benchmark) — genuinely the top-points results for "claude code plugin" as a query, but pure entertainment/novelty, not registry-relevant. Confirms that "claude code plugin" as a search term skews toward fun/toy plugins on HN rather than enterprise tooling — a mildly interesting negative signal about what actually goes viral in this space (fun > governance), noted in cross-cutting observations.
+- **mpak / Pharos** (MCP-bundle and MCP-server package managers, 46735585 and 49347380) — adjacent (package managers for MCP servers, not skills) — noted but not filed as skills evidence; could matter if Atlan's registry scope ever expands to MCP servers too.
+
+---
+
+## 7. CROSS-CUTTING OBSERVATIONS
+
+1. **Anthropic's own "Skills for organizations" launch (46315414, Dec 18 2025, 289pts/170c) is the largest and most on-topic B1 thread in the entire corpus and was completely missing from the existing findings file.** It is Anthropic announcing org-level skill sharing themselves — arguably the single most important piece of context for an Atlan Agent Registry pitch, since it establishes (a) Anthropic is already building toward team/org skill governance natively, meaning Atlan's registry is either complementary tooling on top of or a competitive alternative to Anthropic's own roadmap, and (b) the actual top-level comments are overwhelmingly *skeptical, definitional, and MCP-vs-skills debate*, not enthusiastic adoption — a more mixed reception than the existing file's curated B1 quotes would suggest. Recommend reading this thread in full in any follow-up pass; only a fraction of its 170 comments were reviewed here.
+
+2. **The "package manager for skills" gold rush is bigger and more concentrated than the existing file's "~12" estimate.** This session found 24 named package-manager/governance tools (Section 3) plus 9 more directory/marketplace-style sites, most launched between Dec 2025 and Aug 2026 — i.e., a new entrant roughly every 1-2 weeks for 9 straight months, accelerating rather than slowing (the most recent, SkillRepo Skillsets, is dated 2026-08-30, one day before AWS's stated GA). None has runaway traction; the highest-points single Show HN in the whole category is `Sx` at 50 points — still a small-thread, no-clear-winner market as of pull date.
+
+3. **The flagged-skill-count figure the existing file cites from NoClaw is one of at least 6 differently-sourced counts for what appears to be substantially the same underlying ClawHub/OpenClaw incident cluster** (Section 4). None of the sources appear to cross-cite or reconcile with each other. This doesn't weaken the B3 case (multiple independent measurements all land in the "hundreds to low thousands, double-digit percentage of the marketplace" range, which is itself a strong signal) but the existing file presents NoClaw's number as if singular/precise when it's actually the most-quoted of several inconsistent estimates. Recommend citing the range/pattern rather than the single figure if precision matters for the deck.
+
+4. **Snyk lineage is a through-line worth naming explicitly.** Guy Podjarny (Snyk founder, now Tessl) is already the existing file's strongest single validation. This session found a second, separate Snyk-branded artifact — a "ToxicSkills" security audit citing 13.4% of skills having critical issues, referenced by an unrelated builder (SkillGuard's arabking) as their own motivation. Two independent Snyk-adjacent data points, from two different people/products, both converging on "skills need governance," is a stronger signal than the existing file currently surfaces as a single Tessl citation.
+
+5. **skillrepo.dev is a more direct, more recent competitor than the existing file suggested.** The existing file only knew of it via a single in-thread comment (atxpace on the mattpocock thread) and explicitly noted "no dedicated Show HN found." This session found two dedicated posts, the more recent of which (Aug 30, 2026) is literally titled "Skill Governance for Teams" — almost a paraphrase of Atlan's own positioning, and dated one day before AWS's Agent Registry GA. This is the single most important correction to the existing file found this session and should be reflected in any competitor-landscape section of the work sample.
+
+6. **The AWS Agent Registry null result is now confirmed across 5 independent query strategies** (plain phrase, Bedrock-specific, and three different date-windowed searches bracketing both the Apr 9 preview and Aug 31 GA dates) rather than the existing file's 2 queries. Still zero dedicated HN coverage. One of the five attempts (broad post-Aug-31 date filter) produced an unreliable/inconclusive result due to what looks like an Algolia numericFilters quirk — flagged as a tooling limitation, not treated as informative either way.
+
+7. **"Claude Code plugin" as a search term skews toward novelty/entertainment plugins**, not enterprise governance tooling — the top-point results by a wide margin are a Mr. Meeseeks sound-effect plugin (132pts) and a "caveman mode" benchmark (89pts). This is a mild negative signal about organic HN interest in the serious/enterprise angle of this ecosystem versus the fun angle, worth a one-line mention if the GTM narrative wants to acknowledge what actually drives engagement in this community.
+
+---
+
+## 8. UNCERTAINTIES / THINGS TO VERIFY (including re: the existing findings file)
+
+- **Ingot item-ID discrepancy**: the existing findings file cites Ingot's Show HN as item id **49007958**; this session's direct search for "ingot skills" (story tag) returned the same headline/points/comments/author/date but under item id **49007271**. Both could not be independently confirmed against each other within this session's budget (Algolia sometimes has near-duplicate story records, or one number could be a typo in one of the two research passes). **Recommend a single manual check of both URLs (news.ycombinator.com/item?id=49007958 and id=49007271) before final publication** to confirm which is canonical — this is a citation-accuracy risk, not a substance risk (the quote content itself is unaffected either way).
+- **The 46827731 thread's evidentiary status**: HN moderator dang explicitly called the submitted article's headline "linkbait and misleading" and said it "describes no actual such incident" — yet this thread is the highest-points (181) security story found. Any use of this specific thread as evidence should either avoid it or explicitly note the mod's caveat; it should not be cited as if it independently confirms an incident, only as color/reaction commentary (which is genuinely useful, e.g. rideontime's scanning-gap quote — but that quote itself references an unverified third-party claim).
+- **search_by_date numericFilters reliability**: query #41 above (agent+registry, filtered to after 2026-08-31) returned 214 results including stories from well before the filter date, suggesting the numericFilters syntax used (`created_at_i>1756598400` without an explicit `AND`/comma-separated correctly parsed) may not have applied as intended. Where a clean date-bracket query was used instead (query #42, a `>X,<Y` window), results were sane (2 hits, both irrelevant). **Any future AWS-Agent-Registry-specific HN check should use the narrow bracketed-window form, not the single-sided `>` filter, to avoid a false sense of a broader null result than was actually confirmed.**
+- **Existing file's Reddit-inaccessibility conclusion**: out of scope for this HN-focused pass, but nothing in this session's work touched Reddit, so that conclusion stands as-is (not re-verified, not contradicted).
+- **Subreddit member counts** in the existing file are explicitly and correctly flagged there as `[reported]` via third-party trackers (subranking.com, gummysearch.com, prowlo.com), not sourced from Reddit itself — this session did not attempt to re-verify those figures (out of scope for an HN-focused redo) but flags, per the task instructions, that this is the correct level of hedging and should remain unchanged.
