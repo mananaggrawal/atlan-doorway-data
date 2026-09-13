@@ -50,4 +50,36 @@ Why it matters: General "agent sprawl" (not skill-file specific) framing from a 
 Posted 1d before capture. Query: `AI coding agent adoption metrics`. Profile: https://www.linkedin.com/in/benripkens/
 Why it matters: A CTO independently makes the same "seats ≠ real adoption" argument as Abhisheik Deo, from a completely different angle (hours-of-agent-runtime vs. artefact count) — two unconnected practitioners converging on the same measurement gap is a stronger signal than either alone. 66 reactions, 24 comments — one of the higher-engagement practitioner (non-explainer) posts found.
 
+---
+
+## B3 — TRUST: security review, prompt injection, secrets in skills, policy/governance language
+
+**8. [verified] Aditya Goenka — Founder @ Be10x ("Helping 3M+ Professionals Get 10X Productive with AI")**
+> "NVIDIA analyzed 42,000+ AI agent skills across AI marketplaces and found a worrying security risk: nearly 1 in 4 skills could potentially compromise a system."
+Posted 4d before capture. Query: `agent skills security`. Profile: https://www.linkedin.com/in/aditya-goenka/
+Also: NVIDIA built "SkillSpector," an open-source scanner to check AI agent skills before install.
+Why it matters: The single strongest quantified B3 stat in the whole scan (1 in 4 skills, 42,000+ sample) plus a named vendor (NVIDIA) already shipping a pre-install skill scanner — direct evidence the "scan/review before adoption" layer is already being built by a large player. 53 reactions.
+
+**9. [verified] Pethuraj M — offensive-security practitioner ("I hack for a living")**
+> "AgentSeal - A Security toolkit for AI agents. Red-team prompts, detect MCP poisoning, scan skill files, trace toxic data flows."
+Posted 2d before capture. Query: `agent skills security`. Profile: https://www.linkedin.com/in/pethu/
+Why it matters: A second, independent tool ("AgentSeal") whose feature list explicitly includes "scan skill files" — corroborates Goenka/NVIDIA that skill-file scanning is becoming its own small tooling category. Competitive-landscape signal. 50 reactions.
+
+**10. [verified] Sujit Dhanuka — AI Scientist & Mentor**
+> "No registry catches this (it holds a description written before the change), no gateway catches it as a governance matter (permitted and unsanctioned calls look identical on the wire)."
+Posted 4w before capture. Query: `AI agent registry`. Article: https://www.linkedin.com/pulse/why-ai-governance-begins-source-code-sentrai-console-7lfif/
+Context: an agent's tool permissions silently expand after a merged PR (a support-lookup agent gains `initiate_refund`/`transfer_funds`); nothing in the stack — not the registry, not the gateway, not a code scanner — flags it as unauthorized.
+Why it matters: Names the exact failure mode a *static* skills registry doesn't solve on its own (description drift vs. actual runtime capability) — useful as an objection to pre-empt in a registry pitch, not just supporting evidence.
+
+**11. [verified] AI Alleyway (company/publication page)**
+> "I counted Anthropic's official catalogue on 2 September: 291 plugins listed, 53 living in the marketplace repository itself, 238 pointing at repositories owned by 182 other organisations."
+Posted 2d before capture. Query: `skills registry overkill just use a repo`. Company page: https://www.linkedin.com/company/ai-alleyway/ — article: https://aialleyway.com/claude-skills-marketplace/
+Also: of the 53 first-party `plugin.json` files, 23 declare Anthropic as author, 12 name the vendor, 18 name nobody; all 238 external entries are pinned to a 40-character commit SHA (no floating "latest").
+Why it matters: The most rigorous, numbers-first provenance/governance audit of an actual Claude skills marketplace found in the scan — a ready-made case study of exactly the ownership/pinning/attribution gaps a governed registry would close.
+
+**12. [verified] Harendra Dogra — AI Security Consultant, Secure Axis Labs**
+> "Only 21% of executives report complete visibility into agent permissions, tool usage and data access."
+Posted 1w before capture. Query: `agent skills governance`. Profile: https://www.linkedin.com/in/harendra-dogra/
+Why it matters: A named, sourced-sounding statistic on the exact "visibility black hole" a registry addresses, from a security-consulting persona actively selling into this problem (title: AI Security Consultant, offers "strategy calls").
+
 [CONTENT_PLACEHOLDER]
