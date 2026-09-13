@@ -115,4 +115,6 @@ Verdict: 0 useful hits. Author of the claudefa.st plugins-distribution post rema
 
 4. GET request to `https://api.npmjs.org/downloads/point/last-week/skills` → `{"downloads":9363514,"start":"2026-08-23","end":"2026-08-29","package":"skills"}`
 
+5. GET request to `https://registry.npmjs.org/-/v1/search?text=skills%20claude&size=10` → returned a JSON array of matching packages; the ones I actually read off before truncating output: `@vegastack/skills` (monthly 2,369 / weekly 1,483 downloads, "Installer and verifier for VegaStack Agent Skills"), `@gallopsystems/agent-skills` (monthly 1,851 / weekly 705, "symlinked into .claude/skills ... and .agents/skills ... on install"), `@rheged-studio/agent-skills` (monthly 568 / weekly 320, "skills.sh-compatible bundles"). Output was cut off before I saw the rest of the 10 results. NOT written into the filed quantitative_baseline.md as its own table — I only used it internally to sanity-check that the giant "skills" package (38M/month) is an outlier versus these much smaller, more typical skills-adjacent npm packages (in the thousands/month). This comparison itself — "skills" at 38M vs. peers at ~2K — is evidence supporting my distrust flag on the 38M figure, but I did not write the comparison numbers themselves into the filed file. Flagging that omission here.
+
 [CONTENT_PLACEHOLDER]
