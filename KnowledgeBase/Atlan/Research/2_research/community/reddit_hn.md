@@ -140,4 +140,43 @@ All B3 items above are [verified, HN] — pulled directly from raw Algolia API J
 
 Landscape context (not a quote, but relevant B3 signal): at least 6 independent "scan/verify skills before install" security products surfaced solely from HN Show-HN searches in the last year — Vett (vett.sh), Skillcop, Aguara, SkillSpec, Socket's skills.sh integration, and Askill's "AI safety scoring." That many independent security tools targeting one 10-month-old file format is itself a strong B3 signal.
 
+---
+
+## B4 — COUNTER-EVIDENCE (do-nothing case)
+
+**[verified, HN]** Sammi — on OzBrain (shared team knowledge for agents):
+> "I have a folder called reports, plans, and code-reviews in each repo. I put my md files for agents there, and voila they're in the cloud along with my source code in git. I just talk to my local agent about these files and it finds things using grep and whatever. Done. No mcp or special server needed. I've been pitched products like ozbrain before, but I've failed to see the need over what I already have. Seems like more complication for no gain to me. Am I missing something?"
+Link: https://news.ycombinator.com/item?id=49394827, comment id 49396898 / 49396981
+Why it matters: **this is the strongest do-nothing case found.** A working engineer describes a complete, git-native, zero-extra-tooling workflow for sharing agent context across a repo and explicitly says a dedicated product adds "more complication for no gain." Any Atlan pitch has to answer this directly.
+
+**[verified, HN]** lol8675309, same thread:
+> "No git repo - no sharing - just another sign up and be AMAZED page."
+Link: https://news.ycombinator.com/item?id=49394827, comment id 49405691
+Why it matters: terse, upvote-friendly dismissal — git *is* the registry, in this camp's view.
+
+**[verified, HN]** iLoveOncall — on "Dockerhub for Skill.md":
+> "I don't see how anything beyond git is necessary for skills management."
+Link: https://news.ycombinator.com/item?id=46692692, comment id 46699140
+Why it matters: flat "git is enough" position from someone otherwise listing detailed gaps in existing tools — i.e., even critics of current registries don't necessarily conclude a *new* registry is the fix.
+
+**[verified, HN]** parasxos — on "Show HN: A Context Registry for AI Coding Agents":
+> "Every few weeks we rediscover that the thing people actually keep is a folder of markdown in git, and then we build a registry in front of it."
+Link: https://news.ycombinator.com/item?id=49552209, comment id 49552498 (2026-09-03)
+Why it matters: meta-level cynicism about the entire registry-building wave (posted the same week as this research, on a nearly-identical pitch) — names the pattern Atlan needs to differentiate from.
+
+**[verified, HN]** clickety_clack — on "AI Coding Agent Skills for Real Engineers":
+> "it seems like all this could be one moderately-sized AGENTS.md/CLAUDE.md, and much of it doesn't need to be detailed at all... If you're detailing something like TDD, you're probably hampering the model by giving it a definition that is less accurate than the one it has learned in training."
+Link: https://news.ycombinator.com/item?id=49529329, comment id 49530746
+Why it matters: argues skills-as-a-category are often unnecessary overhead, not just that registries are unnecessary — a step further back than B4's usual framing.
+
+**[verified, HN]** pedalpete, on OzBrain thread, describing a working git-branch-based team knowledge pipeline with no external tool:
+> "Our process uses git for tracking, so much of these details are captured natively in the merge... Agent makes a branch, processes the inbox materials, updates the documents that need to be updated..."
+Link: https://news.ycombinator.com/item?id=49394827, comment id 49406323
+Why it matters: another concrete, functioning git-only alternative — reinforces that "commit it to the repo" is a real, currently-working pattern for some teams, not just a hypothetical objection.
+
+**[verified, HN]** travisueki, same thread — skeptical of the paid-hosted framing:
+> "So is this cloud sync for my Md files? Who pays for the diffing and versioning?"
+Link: https://news.ycombinator.com/item?id=49394827, comment id 49394952
+Why it matters: cost/value skepticism specifically about paying for versioning infrastructure — relevant objection-handling material for pricing conversations.
+
 [CONTENT_PLACEHOLDER]
