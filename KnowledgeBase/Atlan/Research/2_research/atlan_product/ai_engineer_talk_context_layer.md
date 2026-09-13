@@ -119,4 +119,41 @@ example if you're in a human team and your marketing changes positioning on your
 changed positioning and so then you know the SDR on your team or your sales development rep they know that they should use that new positioning. This is
 like the infrastructure that we've built for humans inside our organizations.
 
+Agents didn't have them. So our marketing team had these agents and they started making changes to that and then our SDR agent on our website was still
+pitching the old version. Uh we had no idea how any of these things were even connected. So we didn't even know how to
+like run this as as a team of agents. Uh when an agent gets something wrong, this is hard. Uh it was really hard to like
+Chapter 7: The Challenges of Isolated Agent Systems
+trace back what happened. Was it the model? Was it the agent? Was it the context? Like where how do we even go back and fix this? Um and over time we started dealing with uh context sprawl.
+Uh we had the the the hard part about this was agents all had their own memory systems to a certain extent. So they
+were learning they were all learning separately and they were learning differently. Uh it became very very difficult very quickly to say okay what
+does the single version of truth here look like? Um and then over time we actually went through in the last 12 months we've gone through cycles of at
+the agentic layer about 12 months ago we were using one of these no code type builders uh called relevance we went
+from there into Google ADK then we tried glean uh start of this year we moved to cloud code now we are kind of like 50/50
+claude and codeex um and every single time as these changes happened uh our context got trapped in each of these
+individuals systems. Um, so started this year as general purpose agents started to become a thing, we
+Chapter 8: Transitioning to General Purpose Agents
+said, what if there was a different approach with general purpose agents.
+Um, again going back to the human world, well Maya, she's not an individual star.
+She's part of a team, right? And you know, you talk about these dream teams like Maya and someone who runs customer support and someone who launches ads.
+These people work really well together.
+And often these dream teams are built on shared context, right? Uh they have a shared language. Uh they have a shared
+picture of what's true today. They have shared playbooks. Uh they have shared norms, who's allowed to make what decision. Uh and then they learn
+together. I think this is the most important part of it. They have compounding learning loops of what good looks like. uh and they have shared memory that you know oh we launched this
+thing last quarter and it like was terrible and we're not going to make that mistake again right and so we said is there a way to bring that into the
+way we think about AI in our companies and so the mental model we started working on was we said okay we have
+these teams of humans and they're across the board and can these people essentially start building domain skills
+so each of them is responsible for a certain set skills. All of this goes into this common one place which is this
+one company brain of sorts, right? I like to think of this as the context layer. Uh and then this has a bunch of retrieval mechanisms which then talks to
+the general purpose agent across the ecosystem.
+So then we started an experiment. Uh this is some version of what our marketing team ended up building. So you'll see on the left those are all the
+Chapter 9: Marketing Team Case Study: The Context Layer
+systems that our marketing team uses. So data systems, our social and community platforms, our ad platforms, our
+analytics platforms. Um and then you'll see this agent block. Uh we built this very specifically for um having
+openness. [snorts] So we had claw code and co-work. We also had our own claw that we deployed which has you know essentially talks in our slack channels.
+Um and then we used some external products like qualified and artisan.
+[snorts]
+Uh in the middle is kind of this context layer that our team started building. So think of it as our best SEO person was
+building their SEO skill. Uh our best competitive intel person was building the best competitive intel skill and that kind of became this common repo
+that we were building into and pulling out from. [snorts] This sort of became our living brain.
+
 [CONTENT_PLACEHOLDER]
