@@ -109,4 +109,6 @@ Verdict: 0 useful hits. Author of the claudefa.st plugins-distribution post rema
 
 1. GET request to `https://api.npmjs.org/downloads/point/last-month/@anthropic-ai/claude-code` → raw response: `{"downloads":80220622,"start":"2026-07-31","end":"2026-08-29","package":"@anthropic-ai/claude-code"}`
 
+2. GET request to `https://api.npmjs.org/downloads/point/last-week/@anthropic-ai/claude-code` → `{"downloads":21450823,"start":"2026-08-23","end":"2026-08-29","package":"@anthropic-ai/claude-code"}`
+
 [CONTENT_PLACEHOLDER]
