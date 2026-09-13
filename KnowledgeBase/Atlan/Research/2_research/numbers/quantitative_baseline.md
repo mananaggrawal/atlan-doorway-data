@@ -93,4 +93,24 @@ Why it matters for ICP sizing: this is the most credible, large-sample, dated ev
 > "The top 10 O*NET tasks now account for 33% of traffic," up from 28% since August 2025.
 This report does not mention Agent Skills, skill counts, or team-size breakdowns at all — logged as a near-miss (see Could Not Obtain).
 
-[CONTENT_PLACEHOLDER]
+## 5. How many skills does a typical user/team actually have? — HUNTED HARD, LARGELY UNRESOLVED
+
+This was searched most aggressively per instructions. Findings:
+
+- No survey, blog post, or vendor report was found stating a measured average or median number of skills per developer or per team. This is a genuine gap in public data as of 2026-09-05.
+- The closest proxy numbers found are **vendor/publisher skill-catalog sizes**, not per-user or per-team counts, from a secondary skill-directory site (mcpservers.org/agent-skills), [reported, not independently verified]: Microsoft 1,577 skills, Anthropic 927, OpenAI 746, GitHub 567, Vercel 396, Cloudflare 140, Google Workspace 99, Notion 27, Figma 21, Stripe 18 — these describe how many skills a *vendor publishes*, not how many an individual or team *installs/maintains*.
+- A qualitative proxy: Michael Jovanovich's Substack post (responseawareness.substack.com, Nov 27 2025) frames "twenty skills" as the informal point where naive (non-semantic) skill discovery starts wasting meaningful context budget — but this is presented as an illustrative threshold, not a measured typical count. [reported as illustrative only]
+- shimo4228's dev.to post (Feb 22, 2026) describes running audits "every 1-3 days" on a personal skill set because "skills keep growing" — implies personal skill counts grow fast enough to need near-continuous pruning, but no absolute count is given.
+- CLSkills Hub's "Claude Code Skills Report 2026" (31-page PDF, v1.0, April 2026, author Samarth Bhamare, clskillshub.com/report) catalogs "2,392 skill files" across the ecosystem and breaks enterprise skills down by vendor (e.g. SAP is the largest single enterprise category at 107 skills of 845 catalogued), but explicitly does not report a per-developer or per-team baseline. [reported]
+
+**Conclusion for ICP sizing purposes: there is no public, credible number for "typical skills per user/team." Any ICP threshold based on skill count must be treated as a hypothesis to validate in discovery interviews, not as a documented industry baseline.**
+
+## 6. Could Not Obtain
+
+- A measured average/median "skills per developer" or "skills per team" figure — searched extensively (see Section 5); does not appear to exist in public writing as of this pull.
+- A distinct, dated "Skills API" announcement separate from the Oct 16, 2025 Agent Skills launch and the Dec 2025 open-standard/agentskills.io launch — no separate artifact under that name was found.
+- A Google-run public "skill registry" as such — only found: Gemini CLI's support for the open Agent Skills spec (listed on agentskills.io/clients), which is adoption of the standard, not a Google-operated registry.
+- OpenAI's exact "Skills availability" launch date as a named milestone — what was found instead: Simon Willison's Dec 20, 2025 update noting OpenAI added Skills to Codex docs "days after" the Dec 19 open-standard post, and a separate developers.openai.com/codex/skills/ page exists but no dated OpenAI press announcement was located and fetched.
+- A precise, single, stable "total skills listed on skills.sh" figure — the site's own homepage shows a leaderboard and an install counter (1,320,673, verified live) but not an all-up catalog-size counter; secondary sites gave conflicting figures (see Section 1 discrepancy note).
+- Any DORA 2026 report content specifically on AI agent/skill adoption — search returned adjacent AI-coding-productivity commentary (e.g. "93% of developers use AI but productivity is only 10%" via ShiftMag/SecondTalent) but no DORA-branded report was directly located and fetched; not included above because it was not verified against the primary DORA source.
+- Datadog Security Labs' full article body on malicious skills and dynamic context (May 11, 2026) — page metadata/byline confirmed, but full text could not be extracted via fetch (returned navigation/job-listing chrome only).
