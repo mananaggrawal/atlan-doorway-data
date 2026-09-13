@@ -20,4 +20,63 @@ Verification pass conducted 2026-09-05. Every claim was checked against its prim
 | 12 | shareskills.ai exists — who runs it, claims, blog post | CONFIRMED | Live SaaS product: "shareskills — Your team's skills, in sync." Author/review/install SKILL.md files as a team; versioned folders, role-aware approvals, MCP-native sync to Claude/Copilot/Cursor/MCP tools. Run by legal entity **McBourne Enterprises** (per its Terms of Service); pricing in AUD suggests an Australian operator. Free/Team (A$4 per extra user/month)/Enterprise tiers. The blog post at shareskills.ai/blog/sharing-is-not-a-library **does exist**, dated 5 September 2026 (today), titled "Claude can now share skills between colleagues. Here is the difference between sharing and a library." | shareskills.ai; shareskills.ai/terms; shareskills.ai/blog/sharing-is-not-a-library | 2026-09-05 |
 
 
-[CONTENT_PLACEHOLDER]
+## Claim 3 detail — full repo stats (api.github.com, checked 2026-09-05)
+
+| Repo | Stars | Forks | Open issues | Created | Last push |
+|------|------:|------:|------------:|---------|-----------|
+| anthropics/skills | 174,457 | 20,662 | 1,208 | 2025-09-22 | 2026-09-03 |
+| anthropics/claude-code | 144,149 | 23,027 | 13,894 | 2025-02-22 | 2026-09-04 |
+| vercel-labs/skills | 30,452 | 2,613 | 1,184 | 2026-01-14 | 2026-08-18 |
+| openai/codex | 121,711 | 18,669 | 15,414 | 2025-04-13 | 2026-09-05 |
+| ComposioHQ/awesome-claude-skills | 74,518 | 8,576 | 1,403 | 2025-10-17 | 2026-08-10 |
+
+anthropics/skills is a real, actively-pushed repo ("Public repository for Agent Skills") — the 174K+ star count is unusual for a docs/skills repo but is genuinely what the API returns, not an error or a mis-scraped figure.
+
+## Exact quotes (verbatim, character-for-character)
+
+**#1 (issue #28327 body):**
+> My team would like to share SKILLS we write within the team. We created a repo to keep them central.
+
+Confirmed exact match, no paraphrase.
+
+**#2 (issue #39403 body):**
+> Right now, skills are scoped to a single project. For organizations that want to standardize Claude workflows across multiple repos and teams, there's no clean native way to share a common skill library without resorting to symlinks or duplicating skill files everywhere.
+
+Confirmed exact match, no paraphrase.
+
+**#6 (JetBrains blog, blog.jetbrains.com/research/2026/08/ai-coding-agent-adoption-2026/):**
+> As of May–July 2026, 90% of professional developers were using AI coding agents at work at least weekly in one form or another (local agents or remote cloud agents), with 68% using them daily.
+
+> In May–July 2026, around 39% of professional developers worldwide were using Claude Code at work, up from 18% in January 2026. In the United States, its adoption is even higher at 47% – thus, almost half of US developers are using Claude Code at work.
+
+> We recently ran the Developer Ecosystem Survey 2026 – a large-scale, globally representative survey of more than 15,000 professional developers worldwide, currently in its tenth year.
+
+**#7 (github.com/NVIDIA/SkillSpector README):**
+> AI agent skills (used by Claude Code, Codex CLI, Gemini CLI, etc.) execute with implicit trust and minimal vetting. Research shows that 26.1% of skills contain vulnerabilities and 5.2% show likely malicious intent.
+> - Dataset: 42,447 skills from major marketplaces
+> - Vulnerable: 26.1% contain at least one vulnerability
+> - High-severity: 5.2% show likely malicious intent
+
+**#8 (issue vercel-labs/skills#1552 body, filed by user "eeee2345", OPEN):**
+> Across ~96,000 skills scanned (ClawHub, skills.sh, MCP registries), 552 were confirmed malicious after manual review.
+> In ClawHub specifically (9,676 skills), ATR flagged 182 as CRITICAL — instruction-level attacks that signature-based scanning missed.
+> A single threat actor accounted for 354 malicious skills, at a 100% malicious rate across their uploads.
+
+**#10 (AWS release notes, docs.aws.amazon.com/bedrock-agentcore/latest/devguide/registry-faq.html):**
+> September 17, 2026 — Migration window closes. The old bedrock-agentcore namespace shuts down on this date. You lose read/write access to the service and any remaining data in the old namespace. After this date, you must use the agent-registry namespace.
+
+**#11 (code.claude.com/docs/en/skills, current version):**
+> descriptions into context so Claude knows what's available. The listing always contains every skill name, but if you have many skills, Claude Code shortens descriptions to fit the listing's character budget, which can strip the keywords Claude needs to match your request. The budget scales at 1% of the model's context window. When the listing overflows, Claude Code drops descriptions starting with the skills you invoke least, so the skills you use most keep their full text.
+
+> the combined description and when_to_use text is truncated at 1,536 characters in the skill listing to reduce context usage.
+> ...since each entry's combined text is capped at 1,536 characters regardless of budget. The cap is configurable with skillListingMaxDescChars.
+
+Note: prior to a fix (GH issue anthropics/claude-code#47627, filed 2026-04-13, closed), this same doc incorrectly stated a 250-character per-entry cap left over from before the limit was raised in Changelog v2.1.105. The 1,536 figure is current and correct as of 2026-09-05.
+
+## Notes and caveats for the client
+
+- **Weakest sourcing in the deck:** Claim 8 (96,000 skills / 552 malicious) rests entirely on an unverified assertion inside an open, unresolved GitHub feature-request issue filed by a private individual promoting their own scanning tool. The quote is accurate, but the underlying data has no independent audit trail, no linked report, and no corroboration — do not present it to the client as established fact without this caveat attached.
+- **Claim 7 (NVIDIA/SkillSpector)** is real and the headline numbers (42,447 skills, 26.1%/5.2%) are correct, but "nearly 1 in 4 skills could potentially compromise a system" over-dramatizes NVIDIA's own framing, which separates "contains a vulnerability" (26.1%) from "likely malicious" (5.2%, the more apt proxy for "compromise"). Recommend rephrasing to NVIDIA's own language if this appears in a client-facing deck.
+- **Claim 3** — the anthropics/skills star count is not an error to flag as "implausible"; it independently verified as accurate at both check points. Treat as confirmed, just note the live-counter drift (174,451 claimed vs. 174,457 now).
+- **Claim 9b** (agentskills.io spec date) could not be confirmed via an explicit on-site statement; it rests on circumstantial but consistent triangulation (repo creation date, Wayback Machine first capture, contemporaneous external coverage). Flag as corroborated-but-not-primary-sourced if precision matters.
+- All GitHub API lookups above were made via an unauthenticated api.github.com session from the user's local device (the cloud sandbox's proxy blocks unauthenticated GitHub API access entirely, returning "GitHub access to this repository is not enabled for this session").
